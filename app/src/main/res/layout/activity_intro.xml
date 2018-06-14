@@ -69,7 +69,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/header"
-        app:customTFont="CircularPro-Book.otf"
+        app:customTFont="Electrolize-Regular.ttf"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BRText"/>
