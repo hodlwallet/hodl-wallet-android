@@ -35,7 +35,7 @@
             android:maxLines="1"
             android:padding="8dp"
             android:selectAllOnFocus="true"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/dank_gray"
             android:textColorHint="@color/light_gray"
             android:textCursorDrawable="@null"
             app:layout_constraintBottom_toTopOf="@+id/filter_buttons_layout"
