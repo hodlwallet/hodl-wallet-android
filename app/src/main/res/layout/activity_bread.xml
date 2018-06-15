@@ -250,25 +250,26 @@
             android:paddingBottom="8dp"
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
-            android:paddingTop="16dp" />
+            android:paddingTop="16dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <com.breadwallet.presenter.customviews.BRText
+            android:id="@+id/empty_tx_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="220dp"
+            android:text="@string/TransactionDetails.emptyMessage"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp"
+            app:customTFont="Electrolize-Regular.ttf"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
 
     </LinearLayout>
-
-    <com.breadwallet.presenter.customviews.BRText
-        android:id="@+id/empty_tx_tip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/TransactionDetails.emptyMessage"
-        android:textColor="@color/light_gray"
-        android:textSize="18sp"
-        app:customTFont="Electrolize-Regular.ttf"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"/>
 
 
     <LinearLayout
