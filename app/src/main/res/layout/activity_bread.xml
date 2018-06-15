@@ -5,7 +5,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:animateLayoutChanges="true"
-                android:background="@color/extra_light_blue_background"
+                android:background="@color/gray_background"
                 android:clipToPadding="false"
                 android:descendantFocusability="beforeDescendants"
                 android:filterTouchesWhenObscured="true"
@@ -32,7 +32,7 @@
                 android:id="@+id/bread_bar"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:background="@drawable/bread_gradient"
+                android:background="@color/gray_background"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:contentInsetLeft="0dp"
@@ -187,7 +187,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="1px"
             android:animateLayoutChanges="true"
-            android:background="@drawable/loading_wallet_layout"
+            android:background="@color/gray_background"
             android:visibility="visible"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
@@ -233,9 +233,10 @@
     <LinearLayout
         android:id="@+id/recycler_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="286dp"
         android:layout_above="@+id/bottom_toolbar_layout1"
         android:layout_below="@+id/toolbar_layout"
+        android:layout_marginBottom="0dp"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
 
@@ -249,8 +250,7 @@
             android:paddingBottom="8dp"
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
-            android:paddingTop="16dp"
-            />
+            android:paddingTop="16dp" />
 
     </LinearLayout>
 
@@ -277,7 +277,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/extra_light_blue_background"
+        android:background="@color/dark_gray"
         android:elevation="9dp"
         android:orientation="horizontal"
         android:weightSum="3"
@@ -299,7 +299,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_send"/>
+                android:src="@drawable/ic_send" />
 
             <com.breadwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
@@ -309,7 +309,7 @@
                 android:text="@string/Send.sendLabel"
                 android:textAllCaps="true"
                 android:textColor="@color/pin_pad_text"
-                app:customTFont="Electrolize-Regular.ttf"/>
+                app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 
         <LinearLayout
@@ -326,7 +326,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_receive"/>
+                android:src="@drawable/ic_receive" />
 
             <com.breadwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
@@ -336,7 +336,7 @@
                 android:text="@string/Button.receive"
                 android:textAllCaps="true"
                 android:textColor="@color/pin_pad_text"
-                app:customTFont="Electrolize-Regular.ttf"/>
+                app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 
         <LinearLayout
@@ -353,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_menu"/>
+                android:src="@drawable/ic_menu" />
 
             <com.breadwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
@@ -363,7 +363,7 @@
                 android:text="@string/Button.menu"
                 android:textAllCaps="true"
                 android:textColor="@color/pin_pad_text"
-                app:customTFont="Electrolize-Regular.ttf"/>
+                app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 
     </LinearLayout>
