@@ -36,7 +36,7 @@
             <com.breadwallet.presenter.customviews.BRText
                 android:id="@+id/webview_title"
                 android:textColor="@color/black"
-                app:customTFont="CircularPro-Bold.otf"
+                app:customTFont="Electrolize-Regular.ttf"
                 android:layout_centerHorizontal="true"
                 android:text="Simplex Checkout"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +48,7 @@
                 android:id="@+id/close"
                 android:text="Close"
                 android:textColor="@color/button_primary_normal"
-                app:customTFont="CircularPro-Bold.otf"
+                app:customTFont="Electrolize-Regular.ttf"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:paddingEnd="8dp"
