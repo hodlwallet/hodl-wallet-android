@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/background_layout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/black_trans"
-              android:filterTouchesWhenObscured="true"
-              >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_trans"
+    android:filterTouchesWhenObscured="true"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                 android:id="@+id/separator2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray_border"
+                android:background="@color/gray_background"
                 />
 
             <LinearLayout
@@ -194,7 +194,8 @@
                 android:id="@+id/qr_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:src="@drawable/ic_check_mark_grey"
@@ -220,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="8dp"
-                app:backgroundColor="@color/dark_blue"
+                app:backgroundColor="@color/logo_gradient_start"
                 app:withStroke="false">
 
                 <com.breadwallet.presenter.customviews.BRText
@@ -240,13 +241,8 @@
                 android:id="@+id/share_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="72dp"
-                android:layout_marginStart="72dp"
                 android:drawableStart="@drawable/ic_share_vertical_gray"
                 android:paddingBottom="12dp"
-                android:paddingLeft="48dp"
-                android:paddingRight="48dp"
                 android:paddingTop="12dp"
                 android:text="@string/Receive.share"
                 android:textColor="@color/light_gray"
@@ -263,7 +259,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2.0"
                 app:backgroundColor="@color/extra_light_blue_background"
-                app:strokeColor="@color/extra_light_gray"
+                app:strokeColor="@color/dark_gray"
                 app:withStroke="true">
 
                 <com.breadwallet.presenter.customviews.BRButton
@@ -308,7 +304,9 @@
                 android:id="@+id/separator"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray_border"/>
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/gray_background"/>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/request_button"
