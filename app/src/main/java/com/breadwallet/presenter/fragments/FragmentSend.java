@@ -161,7 +161,6 @@ public class FragmentSend extends Fragment {
         isoText.setTextSize(18);
         isoText.setTextColor(getContext().getColor(R.color.light_gray));
         isoText.requestLayout();
-        signalLayout.setOnTouchListener(new SlideDetector(getContext(), signalLayout));
 
         signalLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -139,8 +139,6 @@ public class FragmentReceive extends Fragment {
 
         signalLayout.setLayoutTransition(BRAnimator.getDefaultTransition());
 
-        signalLayout.setOnTouchListener(new SlideDetector(getContext(), signalLayout));
-
         return rootView;
     }
 
