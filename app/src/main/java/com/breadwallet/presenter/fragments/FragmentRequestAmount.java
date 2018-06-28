@@ -155,6 +155,9 @@ public class FragmentRequestAmount extends Fragment {
         signalLayout.removeView(copiedLayout);
         signalLayout.removeView(request);
 
+        shareButtonsLayout.setBackgroundColor(getContext().getColor(R.color.dark_gray));
+        copiedLayout.setBackgroundColor(getContext().getColor(R.color.gray_background));
+
         showCurrencyList(false);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
 
@@ -466,7 +469,6 @@ public class FragmentRequestAmount extends Fragment {
             shareButton.setType(2);
         } else {
             signalLayout.addView(shareButtonsLayout, signalLayout.getChildCount() - 1);
-            shareButton.setType(3);
             showCopiedLayout(false);
         }
     }

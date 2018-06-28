@@ -112,7 +112,7 @@ public class BRLinearLayoutWithCaret extends LinearLayout {
         backgroundPaint.setStyle(Paint.Style.FILL);
         backgroundPaint.setColor(getContext().getColor(R.color.extra_light_blue_background));
 
-        setBackgroundColor(getContext().getColor(R.color.dark_gray));
+        setBackgroundColor(getContext().getColor(android.R.color.transparent));
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.BRLinearLayoutWithCaret);
         final int N = a.getIndexCount();
         for (int i = 0; i < N; ++i) {
