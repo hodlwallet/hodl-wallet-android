@@ -218,7 +218,6 @@ public class FragmentReceive extends Fragment {
     private void showShareButtons(boolean b) {
         if (!b) {
             signalLayout.removeView(shareButtonsLayout);
-            shareButton.setType(2);
         } else {
             signalLayout.addView(shareButtonsLayout, isReceive ? signalLayout.getChildCount() - 2 : signalLayout.getChildCount());
             showCopiedLayout(false);
