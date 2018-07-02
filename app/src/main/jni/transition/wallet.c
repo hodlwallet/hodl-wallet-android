@@ -28,6 +28,7 @@
 #include "BRBIP39Mnemonic.h"
 #include "BRBase58.h"
 #include <assert.h>
+#include <stdlib.h>
 #include <BRBIP38Key.h>
 #include <BRInt.h>
 #include <BRTransaction.h>
@@ -535,7 +536,7 @@ JNIEXPORT jlong JNICALL
 Java_com_breadwallet_wallet_BRWalletManager_feeForTransactionAmount(JNIEnv *env, jobject obj,
                                                                     jlong amount) {
     if (!_wallet) return 0;
-    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "current fee: %lu", BRWalletFeePerKb(_wallet));
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "current fee: %llu", BRWalletFeePerKb(_wallet));
     uint64_t fee = BRWalletFeeForTxAmount(_wallet, (uint64_t) amount);
     return (jlong) fee;
 }
@@ -707,7 +708,7 @@ JNIEXPORT void JNICALL Java_com_breadwallet_wallet_BRWalletManager_setFeePerKb(J
                                                                                jlong fee,
                                                                                jboolean ignore) {
     if (!_wallet || ignore) return;
-    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "setFeePerKb, ignore:%d, fee: %li",
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "setFeePerKb, ignore:%d, fee: %lli",
                         ignore, fee);
     BRWalletSetFeePerKb(_wallet, (uint64_t) fee);
 }
@@ -903,7 +904,7 @@ Java_com_breadwallet_wallet_BRWalletManager_txHashSha256Hex(JNIEnv *env, jobject
     BRSHA256(&sha256Hash, theHash.u8, sizeof(theHash));
 
 //    UInt256 reversedHash = UInt256Reverse(sha256Hash);
-    char *result = u256hex(sha256Hash);
+    const char *result = u256hex(sha256Hash);
     return (*env)->NewStringUTF(env, result);
 }
 
