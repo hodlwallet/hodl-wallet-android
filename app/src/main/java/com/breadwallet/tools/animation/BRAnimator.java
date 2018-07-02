@@ -406,7 +406,6 @@ public class BRAnimator {
         signalLayout.setTranslationY(reverse ? translationY : translationY + signalHeight);
 
         signalLayout.animate().translationY(reverse ? BreadActivity.screenParametersPoint.y : translationY).setDuration(SLIDE_ANIMATION_DURATION)
-                .setInterpolator(reverse ? new DecelerateInterpolator() : new OvershootInterpolator(0.7f))
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {

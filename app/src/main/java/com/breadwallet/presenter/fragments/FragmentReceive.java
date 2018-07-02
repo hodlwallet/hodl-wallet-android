@@ -137,6 +137,9 @@ public class FragmentReceive extends Fragment {
         signalLayout.removeView(shareButtonsLayout);
         signalLayout.removeView(copiedLayout);
 
+        shareButtonsLayout.setBackgroundColor(getContext().getColor(R.color.dark_gray));
+        copiedLayout.setBackgroundColor(getContext().getColor(R.color.gray_background));
+
         signalLayout.setLayoutTransition(BRAnimator.getDefaultTransition());
 
         return rootView;
@@ -215,10 +218,8 @@ public class FragmentReceive extends Fragment {
     private void showShareButtons(boolean b) {
         if (!b) {
             signalLayout.removeView(shareButtonsLayout);
-            shareButton.setType(2);
         } else {
             signalLayout.addView(shareButtonsLayout, isReceive ? signalLayout.getChildCount() - 2 : signalLayout.getChildCount());
-            shareButton.setType(3);
             showCopiedLayout(false);
         }
     }

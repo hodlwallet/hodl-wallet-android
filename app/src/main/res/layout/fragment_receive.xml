@@ -1,15 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/background_layout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/black_trans"
-              android:filterTouchesWhenObscured="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_trans"
+    android:filterTouchesWhenObscured="true"
     >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_gravity="bottom"
         >
 
         <LinearLayout
@@ -36,7 +38,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:text="@string/Receive.title"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/header"
                     app:customTFont="Electrolize-Regular.ttf"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +52,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"
+                    android:background="@color/gray_border"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -61,7 +63,7 @@
                     android:layout_width="@dimen/faq_dimen"
                     android:layout_height="@dimen/faq_dimen"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/faq_question_black"
+                    android:background="@drawable/faq_question_white"
                     app:layout_constraintBottom_toBottomOf="@+id/title"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/title"/>
@@ -70,7 +72,7 @@
                     android:id="@+id/close_button"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:background="@drawable/ic_close_black_24dp"
+                    android:background="@drawable/ic_close_yellow_24dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginBottom="0dp"
@@ -146,7 +148,7 @@
                     android:id="@+id/separator5"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/extra_light_gray"
+                    android:background="@color/gray_border"
                     />
 
                 <android.support.v7.widget.RecyclerView
@@ -163,7 +165,7 @@
                 android:id="@+id/separator2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/extra_light_gray"
+                android:background="@color/gray_background"
                 />
 
             <LinearLayout
@@ -177,14 +179,14 @@
                     android:id="@+id/keyboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/extra_light_gray"
+                    android:background="@color/gray_border"
                     />
 
                 <View
                     android:id="@+id/separator3"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/extra_light_gray"
+                    android:background="@color/gray_border"
                     />
             </LinearLayout>
 
@@ -192,33 +194,30 @@
                 android:id="@+id/qr_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/ic_check_mark_grey"
-                />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_check_mark_grey" />
 
             <com.breadwallet.presenter.customviews.BRText
                 android:id="@+id/address_text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
+                android:ellipsize="middle"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:singleLine="true"
                 android:text="----------------------------------"
                 android:textColor="@color/light_gray"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
 
             <com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret
                 android:id="@+id/copied_layout"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="-16dp"
                 android:layout_marginBottom="8dp"
-                app:backgroundColor="@color/dark_blue"
+                app:backgroundColor="@color/logo_gradient_start"
                 app:withStroke="false">
 
                 <com.breadwallet.presenter.customviews.BRText
@@ -229,28 +228,24 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
-                    android:textSize="@dimen/paragraph"
                     android:text="@string/Receive.copied"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/paragraph" />
             </com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/share_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="72dp"
-                android:layout_marginStart="72dp"
+                android:layout_height="@dimen/big_button_height"
+                android:orientation="horizontal"
                 android:drawableStart="@drawable/ic_share_vertical_gray"
-                android:paddingBottom="12dp"
-                android:paddingLeft="48dp"
-                android:paddingRight="48dp"
-                android:paddingTop="12dp"
                 android:text="@string/Receive.share"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:buttonType="2"
-                app:isBreadButton="true"
+                android:background="@color/dark_gray"
+                android:layout_gravity="bottom"
+                app:buttonType="1"
+                app:isBreadButton="false"
                 />
 
             <com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret
@@ -259,9 +254,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2.0"
-                app:backgroundColor="@color/extra_light_blue_background"
-                app:strokeColor="@color/extra_light_gray"
+                app:backgroundColor="@color/gray_background"
+                app:strokeColor="@color/dark_gray"
                 app:withStroke="true">
 
                 <com.breadwallet.presenter.customviews.BRButton
@@ -305,25 +299,21 @@
             <View
                 android:id="@+id/separator"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/separator_gray"/>
+                android:layout_height="2dp"
+                android:layout_gravity="bottom"
+                android:background="@color/gray_background"/>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/request_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/big_button_height"
-                android:layout_marginBottom="0dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:padding="10dp"
                 android:text="@string/Receive.request"
-                android:textColor="@color/almost_black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:buttonType="2"
-                app:isBreadButton="true"/>
+                android:background="@color/dark_gray"
+                android:layout_gravity="bottom"
+                app:buttonType="1"
+                app:isBreadButton="false"/>
 
         </LinearLayout>
 
