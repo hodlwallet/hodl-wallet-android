@@ -128,16 +128,16 @@ public class DisplayCurrencyActivity extends BRActivity {
     private void setButton(boolean left) {
         if (left) {
             BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITS);
-            leftButton.setTextColor(getColor(R.color.white));
-            leftButton.setBackground(getDrawable(R.drawable.b_half_left_blue));
-            rightButton.setTextColor(getColor(R.color.dark_blue));
-            rightButton.setBackground(getDrawable(R.drawable.b_half_right_blue_stroke));
+            leftButton.setTextColor(getColor(R.color.almost_black));
+            leftButton.setBackground(getDrawable(R.drawable.b_half_left_white_currency));
+            rightButton.setTextColor(getColor(R.color.white));
+            rightButton.setBackground(getDrawable(R.drawable.b_half_right_white_stroke));
         } else {
             BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITCOINS);
-            leftButton.setTextColor(getColor(R.color.dark_blue));
-            leftButton.setBackground(getDrawable(R.drawable.b_half_left_blue_stroke));
-            rightButton.setTextColor(getColor(R.color.white));
-            rightButton.setBackground(getDrawable(R.drawable.b_half_right_blue));
+            leftButton.setTextColor(getColor(R.color.white));
+            leftButton.setBackground(getDrawable(R.drawable.b_half_left_white_stroke));
+            rightButton.setTextColor(getColor(R.color.almost_black));
+            rightButton.setBackground(getDrawable(R.drawable.b_half_right_white_currency));
         }
         updateExchangeRate();
 

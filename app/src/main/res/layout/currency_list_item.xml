@@ -3,7 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@color/dark_gray"
                 android:filterTouchesWhenObscured="true"
                 android:orientation="vertical">
 
@@ -21,7 +21,7 @@
         android:paddingStart="16dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/sub_header"
         app:customTFont="Electrolize-Regular.ttf"/>
 
@@ -32,7 +32,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/ic_check_mark_blue"
+        android:background="@drawable/ic_check_mark_white"
         android:filterTouchesWhenObscured="true"
         android:visibility="gone"/>
 
