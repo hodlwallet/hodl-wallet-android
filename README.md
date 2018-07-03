@@ -2,7 +2,7 @@
 ----------------------------------
 
 [![download](/images/icon-google-play.png)]
-(https://play.google.com/store/apps/details?id=com.breadwallet)
+(https://play.google.com/store/apps/details?id=co.hodlwallet)
 
 ###bitcoin done right
 
