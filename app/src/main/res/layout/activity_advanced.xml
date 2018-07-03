@@ -6,7 +6,7 @@
     android:id="@+id/activity_intro_set_pit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/extra_light_blue_background"
+    android:background="@color/gray_background"
     tools:context="com.breadwallet.presenter.activities.SetPinActivity">
 
     <com.breadwallet.presenter.customviews.BRText
@@ -17,7 +17,7 @@
         android:layout_marginStart="@dimen/bread_margin"
         android:layout_marginTop="@dimen/bread_margin"
         android:text="@string/Settings.advancedTitle"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/header"
         app:customTFont="Electrolize-Regular.ttf"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="0dp"
-        android:background="@color/extra_light_blue_background"
+        android:background="@color/gray_background"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
