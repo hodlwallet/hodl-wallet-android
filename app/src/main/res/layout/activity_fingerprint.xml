@@ -3,7 +3,7 @@
                                                         android:id="@+id/layout"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="match_parent"
-                                                        android:background="@color/white"
+                                                        android:background="@color/gray_background"
                                                         android:filterTouchesWhenObscured="true"
                                                         android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_alignParentTop="true"
-        android:background="@drawable/finger_gradient"
+        android:background="@color/gray_background"
         android:orientation="vertical">
 
 
@@ -70,7 +70,7 @@
         android:layout_margin="@dimen/bread_margin"
         android:lineSpacingMultiplier="1.2"
         android:text="@string/TouchIdSettings.label"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/sub_header"/>
 
     <com.breadwallet.presenter.customviews.BRText
@@ -83,7 +83,7 @@
         android:paddingEnd="8dp"
         android:paddingStart="16dp"
         android:text="@string/TouchIdSettings.switchLabel.android"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/paragraph"
         app:customTFont="Electrolize-Regular.ttf"/>
 
@@ -106,7 +106,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@color/extra_light_gray"/>
+        android:background="@color/gray_border"/>
 
     <com.breadwallet.presenter.customviews.BRText
         android:id="@+id/limit_exchange"
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/divider1"
         android:layout_margin="@dimen/bread_margin"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         />
 
@@ -127,7 +127,7 @@
         android:layout_marginTop="14dp"
         android:lineSpacingMultiplier="1.2"
         android:text="@string/TouchIdSettings.customizeText.android"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/sub_header"/>
 
 </com.breadwallet.presenter.customviews.BRRelativeLayout>

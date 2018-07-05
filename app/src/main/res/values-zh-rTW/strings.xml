@@ -545,7 +545,7 @@
   <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
   <string name="TouchIdSettings.customizeText">你可以在%1$s自訂你的 Touch ID 支出限額。</string>
   <!-- Fingerprint enabling description body -->
-  <string name="TouchIdSettings.customizeText.android">您可以從「指紋授權花費限制」畫面自訂「指紋驗證花費限制」</string>
+  <string name="TouchIdSettings.customizeText.android">您可以從\u200B「指紋授權花費限制」畫面\u200B自訂「指紋驗證花費限制」。</string>
   <!-- Instruction for the fingerprint setup -->
   <string name="TouchIdSettings.disabledWarning.body.android">您尚未啟用此裝置上的指紋驗證。前往「設定」 -&gt; 「安全性」來設定指紋驗證。</string>
   <!-- Fingerprint Is Not Setup -->

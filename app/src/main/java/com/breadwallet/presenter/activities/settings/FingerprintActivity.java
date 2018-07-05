@@ -124,10 +124,8 @@ public class FingerprintActivity extends BRActivity {
                 ds.setUnderlineText(false);
             }
         };
-        //start index of the last space (beginning of the last word)
-        int indexOfSpace = limitInfo.getText().toString().lastIndexOf(" ");
         // make the whole text clickable if failed to select the last word
-        ss.setSpan(clickableSpan, indexOfSpace == -1 ? 0 : indexOfSpace, limitInfo.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan, limitInfo.getText().toString().indexOf("\u200B"), limitInfo.getText().toString().lastIndexOf("\u200B"), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         limitInfo.setText(ss);
         limitInfo.setMovementMethod(LinkMovementMethod.getInstance());
