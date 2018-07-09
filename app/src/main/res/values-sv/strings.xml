@@ -545,7 +545,7 @@
   <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
   <string name="TouchIdSettings.customizeText">Du kan anpassa din utgiftsgräns i Touch ID från %1$s.</string>
   <!-- Fingerprint enabling description body -->
-  <string name="TouchIdSettings.customizeText.android">Du kan anpassa ditt maxbelopp med fingeravtrycksautentisering från skärmen Maxbelopp med fingeravtrycksauktorisering</string>
+  <string name="TouchIdSettings.customizeText.android">Du kan anpassa ditt maxbelopp med fingeravtrycksautentisering från \u200Bskärmen Maxbelopp med fingeravtrycksauktorisering\u200B.</string>
   <!-- Instruction for the fingerprint setup -->
   <string name="TouchIdSettings.disabledWarning.body.android">Du har inte aktiverat fingeravtrycksautentisering på den här enheten. Gå till Inställningar &gt; Säkerhet för att konfigurera fingeravtrycksautentisering.</string>
   <!-- Fingerprint Is Not Setup -->

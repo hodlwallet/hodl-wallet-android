@@ -545,7 +545,7 @@
   <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
   <string name="TouchIdSettings.customizeText">Puoi personalizzare il tuo limite di spesa tramite Touch ID %1$s.</string>
   <!-- Fingerprint enabling description body -->
-  <string name="TouchIdSettings.customizeText.android">Puoi personalizzare l’Autenticazione Impronta per il Limite di Spesa nella schermata Autenticazione Impronta per Limite di Spesa</string>
+  <string name="TouchIdSettings.customizeText.android">Puoi personalizzare l’Autenticazione Impronta per il Limite di Spesa nella \u200Bschermata Autenticazione Impronta per Limite di Spesa\u200B.</string>
   <!-- Instruction for the fingerprint setup -->
   <string name="TouchIdSettings.disabledWarning.body.android">Non hai abilitato l’autenticazione tramite impronta digitale su questo dispositivo. Vai su Impostazioni -&gt; Sicurezza per impostarla.</string>
   <!-- Fingerprint Is Not Setup -->

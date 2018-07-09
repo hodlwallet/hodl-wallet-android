@@ -3,7 +3,7 @@
                                                         android:id="@+id/layout"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="match_parent"
-                                                        android:background="@color/white"
+                                                        android:background="@color/gray_background"
                                                         android:filterTouchesWhenObscured="true"
                                                         android:orientation="vertical">
 
@@ -11,7 +11,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@drawable/bread_gradient"
+        android:background="@color/gray_background"
         android:orientation="vertical">
 
 
@@ -77,7 +77,7 @@
         android:layout_margin="@dimen/bread_margin"
         android:lineSpacingMultiplier="1.3"
         android:text="@string/SecurityCenter.info"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/sub_header"/>
 
     <ListView
@@ -87,7 +87,9 @@
         android:layout_below="@+id/textView10"
         android:layout_margin="@dimen/bread_margin"
         android:footerDividersEnabled="true"
-        android:headerDividersEnabled="true">
+        android:headerDividersEnabled="true"
+        android:divider="#65696E"
+        android:dividerHeight="1dp">
 
     </ListView>
 

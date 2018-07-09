@@ -157,7 +157,7 @@ public class SecurityCenterActivity extends BRActivity {
         boolean isPinSet = BRKeyStore.getPinCode(this).length() == 6;
         itemList.clear();
         itemList.add(new BRSecurityCenterItem(getString(R.string.SecurityCenter_pinTitle), getString(R.string.SecurityCenter_pinDescription),
-                isPinSet ? R.drawable.ic_check_mark_blue : R.drawable.ic_check_mark_grey, new View.OnClickListener() {
+                isPinSet ? R.drawable.ic_check_mark_yellow : R.drawable.ic_check_mark_grey, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SecurityCenterActivity.this, UpdatePinActivity.class);
@@ -168,7 +168,7 @@ public class SecurityCenterActivity extends BRActivity {
 
         int resId = Utils.isFingerprintEnrolled(SecurityCenterActivity.this)
                 && BRSharedPrefs.getUseFingerprint(SecurityCenterActivity.this)
-                ? R.drawable.ic_check_mark_blue
+                ? R.drawable.ic_check_mark_yellow
                 : R.drawable.ic_check_mark_grey;
 
         if (Utils.isFingerprintAvailable(this)) {
@@ -185,7 +185,7 @@ public class SecurityCenterActivity extends BRActivity {
 
         boolean isPaperKeySet = BRSharedPrefs.getPhraseWroteDown(this);
         itemList.add(new BRSecurityCenterItem(getString(R.string.SecurityCenter_paperKeyTitle), getString(R.string.SecurityCenter_paperKeyDescription),
-                isPaperKeySet ? R.drawable.ic_check_mark_blue : R.drawable.ic_check_mark_grey, new View.OnClickListener() {
+                isPaperKeySet ? R.drawable.ic_check_mark_yellow : R.drawable.ic_check_mark_grey, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SecurityCenterActivity.this, WriteDownActivity.class);
