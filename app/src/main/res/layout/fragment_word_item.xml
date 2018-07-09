@@ -7,8 +7,8 @@
 
     <com.breadwallet.presenter.customviews.BRText
         android:id="@+id/word_button"
-        android:layout_width="136dp"
-        android:layout_height="96dp"
+        android:layout_width="272dp"
+        android:layout_height="64dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_phrase_word"
