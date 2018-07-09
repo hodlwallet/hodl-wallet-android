@@ -230,7 +230,7 @@ public class PaperKeyProveActivity extends BRActivity {
     private void validateWord(EditText view) {
         String word = view.getText().toString();
         boolean valid = SmartValidator.isWordValid(this, word);
-        view.setTextColor(getColor(valid ? R.color.light_gray : R.color.red_text));
+        view.setTextColor(getColor(valid ? R.color.logo_gradient_start : R.color.red_text));
 //        if (!valid)
 //            SpringAnimator.failShakeAnimation(this, view);
         if (isWordCorrect(true)) {
