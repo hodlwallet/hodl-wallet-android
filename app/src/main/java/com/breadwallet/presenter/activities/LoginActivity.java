@@ -115,7 +115,7 @@ public class LoginActivity extends BRActivity {
         keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_trans_button);
         keyboard.setBRButtonTextColor(R.color.white);
         keyboard.setShowDot(false);
-        keyboard.setBreadground(getDrawable(R.drawable.bread_gradient));
+        keyboard.setBreadground(getDrawable(R.drawable.receive_layout));
         keyboard.setCustomButtonBackgroundColor(10, getColor(android.R.color.transparent));
         keyboard.setDeleteImage(getDrawable(R.drawable.ic_delete_white));
 
