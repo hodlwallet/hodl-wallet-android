@@ -7,7 +7,7 @@
     android:id="@+id/search_bar"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/extra_light_blue_background"
+    android:background="@color/dark_gray"
     android:contentInsetLeft="0dp"
     android:contentInsetStart="0dp"
     android:elevation="8dp"
@@ -35,8 +35,8 @@
             android:maxLines="1"
             android:padding="8dp"
             android:selectAllOnFocus="true"
-            android:textColor="@color/dank_gray"
-            android:textColorHint="@color/light_gray"
+            android:textColor="@color/almost_black"
+            android:textColorHint="@color/almost_black"
             android:textCursorDrawable="@null"
             app:layout_constraintBottom_toTopOf="@+id/filter_buttons_layout"
             app:layout_constraintHorizontal_bias="0.0"
@@ -69,11 +69,12 @@
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:text="@string/Search.sent"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/almost_black"
                 android:textSize="@dimen/paragraph"
+                android:background="@color/extra_light_blue_background"
                 app:buttonType="2"
                 app:customBFont="Electrolize-Regular.ttf"
-                app:isBreadButton="true"/>
+                app:isBreadButton="false"/>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/received_filter"
@@ -86,11 +87,12 @@
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:text="@string/Search.received"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/almost_black"
                 android:textSize="@dimen/paragraph"
+                android:background="@color/extra_light_blue_background"
                 app:buttonType="2"
                 app:customBFont="Electrolize-Regular.ttf"
-                app:isBreadButton="true"/>
+                app:isBreadButton="false"/>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/pending_filter"
@@ -103,11 +105,12 @@
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:text="@string/Search.pending"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/almost_black"
                 android:textSize="@dimen/paragraph"
+                android:background="@color/extra_light_blue_background"
                 app:buttonType="2"
                 app:customBFont="Electrolize-Regular.ttf"
-                app:isBreadButton="true"/>
+                app:isBreadButton="false"/>
 
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/complete_filter"
@@ -120,11 +123,12 @@
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:text="@string/Search.complete"
-                android:textColor="@color/light_gray"
+                android:textColor="@color/almost_black"
                 android:textSize="@dimen/paragraph"
+                android:background="@color/extra_light_blue_background"
                 app:buttonType="2"
                 app:customBFont="Electrolize-Regular.ttf"
-                app:isBreadButton="true"/>
+                app:isBreadButton="false"/>
 
         </LinearLayout>
 
@@ -138,6 +142,7 @@
             android:background="@android:color/transparent"
             android:paddingTop="8dp"
             android:text="@string/Button.cancel"
+            android:textColor="@color/white"
             app:isBreadButton="false"
             app:layout_constraintBottom_toBottomOf="@+id/search_edit"
             app:layout_constraintRight_toRightOf="parent"
