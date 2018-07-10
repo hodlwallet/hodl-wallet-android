@@ -545,7 +545,7 @@
   <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
   <string name="TouchIdSettings.customizeText">Вы можете настроить лимит расходов Touch ID через %1$s.</string>
   <!-- Fingerprint enabling description body -->
-  <string name="TouchIdSettings.customizeText.android">Вы можете настраивать ваш расходный лимит с аутентификацией по отпечаткам пальцев с экрана \"Расходный лимит с авторизацией по отпечаткам пальцев\"</string>
+  <string name="TouchIdSettings.customizeText.android">Вы можете настраивать ваш расходный лимит с аутентификацией по отпечаткам пальцев с \u200Bэкрана \"Расходный лимит с авторизацией по отпечаткам пальцев\"\u200B.</string>
   <!-- Instruction for the fingerprint setup -->
   <string name="TouchIdSettings.disabledWarning.body.android">Вы не включили аутентификацию по отпечаткам пальцев на данном устройстве. Перейдите в \"Настройки\" -&gt; \"Безопасность\", чтобы настроить аутентификацию по отпечаткам пальцев.</string>
   <!-- Fingerprint Is Not Setup -->

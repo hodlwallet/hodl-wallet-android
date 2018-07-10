@@ -6,7 +6,7 @@
     android:id="@+id/activity_intro_set_pit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/extra_light_blue_background"
+    android:background="@color/gray_background"
     tools:context="com.breadwallet.presenter.activities.SetPinActivity">
 
     <com.breadwallet.presenter.customviews.BRText
@@ -16,7 +16,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:text="@string/TouchIdSpendingLimit.title.android"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/white"
         android:textSize="@dimen/header"
         app:customTFont="Electrolize-Regular.ttf"
         app:layout_constraintEnd_toStartOf="@+id/faq_button"
@@ -33,6 +33,7 @@
         android:lineSpacingMultiplier="1.2"
         android:textSize="@dimen/sub_header"
         android:text="@string/TouchIdSpendingLimit.body"
+        android:textColor="@color/white"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"/>
@@ -58,6 +59,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title"
-        android:background="@drawable/faq_question_black"/>
+        android:background="@drawable/faq_question_white"/>
 
 </android.support.constraint.ConstraintLayout>

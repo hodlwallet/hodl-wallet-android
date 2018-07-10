@@ -545,7 +545,7 @@
   <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
   <string name="TouchIdSettings.customizeText">%1$sからTouch ID利用限度額を変更できます。</string>
   <!-- Fingerprint enabling description body -->
-  <string name="TouchIdSettings.customizeText.android">指紋認証利用上限は指紋認証利用上限画面でカスタマイズできます</string>
+  <string name="TouchIdSettings.customizeText.android">指紋認証利用上限は\u200B指紋認証利用上限画面\u200Bでカスタマイズできます。</string>
   <!-- Instruction for the fingerprint setup -->
   <string name="TouchIdSettings.disabledWarning.body.android">この機器は指紋認証が有効化されていません。設定 -&gt; セキュリティに移動して指紋認証を設定してください。</string>
   <!-- Fingerprint Is Not Setup -->

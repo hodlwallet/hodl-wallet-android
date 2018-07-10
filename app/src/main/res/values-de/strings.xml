@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <!-- App name -->
-    <string name="About.appName.android">BRD</string>
+    <string name="About.appName.android">HODL Wallet</string>
     <!-- About screen blog label -->
     <string name="About.blog">Blog</string>
     <!-- About screen footer -->
@@ -545,7 +545,7 @@
     <!-- You can customize your Touch ID Spending Limit from the [TouchIdSettings.linkText gets added here as a button] -->
     <string name="TouchIdSettings.customizeText">Sie können über %1$s ein Ausgabenmaximum für Touch ID festlegen.</string>
     <!-- Fingerprint enabling description body -->
-    <string name="TouchIdSettings.customizeText.android">Sie können Ihr Ausgabelimit für die Fingerabdruck-Authentifizierung auf dem Bildschirm „Ausgabelimit bei Fingerabdruck-Autorisierung” anpassen</string>
+    <string name="TouchIdSettings.customizeText.android">Sie können Ihr Ausgabelimit für die Fingerabdruck-Authentifizierung auf dem \u200BBildschirm „Ausgabelimit bei Fingerabdruck-Autorisierung” anpassen\u200B.</string>
     <!-- Instruction for the fingerprint setup -->
     <string name="TouchIdSettings.disabledWarning.body.android">Sie haben die Fingerabdruck-Authentifizierung auf diesem Gerät nicht aktiviert. Gehen Sie zu „Einstellungen” -&gt; „Sicherheit”, um die Fingerabdruck-Authentifizierung einzurichten.</string>
     <!-- Fingerprint Is Not Setup -->

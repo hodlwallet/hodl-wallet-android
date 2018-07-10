@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/background_layout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@android:color/transparent"
-              android:filterTouchesWhenObscured="true"
-              android:paddingLeft="12dp"
-              android:paddingRight="12dp"
-              android:scrollY="0dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:filterTouchesWhenObscured="true"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:scrollY="0dp">
 
     <LinearLayout
         android:id="@+id/signal_layout"
@@ -17,7 +17,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:animateLayoutChanges="true"
-        android:background="@drawable/receive_layout"
+        android:background="@color/dark_gray"
         android:clickable="true"
         android:orientation="vertical"
         android:padding="0dp"
@@ -37,7 +37,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/bread_margin"
                 android:layout_marginRight="@dimen/bread_margin"
-                android:background="@drawable/ic_close_black_24dp"
+                android:background="@drawable/ic_close_white_24dp"
                 />
 
             <com.breadwallet.presenter.customviews.BRText
@@ -48,7 +48,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/bread_margin"
                 android:text="@string/TransactionDetails.title"
-                android:textColor="@color/almost_black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/header"
                 app:customTFont="Electrolize-Regular.ttf"
                 />
@@ -62,14 +62,14 @@
                 android:layout_marginEnd="@dimen/bread_margin"
                 android:layout_marginLeft="@dimen/bread_margin"
                 android:layout_marginRight="@dimen/bread_margin"
-                android:background="@drawable/faq_question_black"/>
+                android:background="@drawable/faq_question_white"/>
 
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/title"
-                android:background="@color/separator_gray"
+                android:background="@color/dark_gray"
                 />
 
 
@@ -106,7 +106,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="sent --- "
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="true"
                     android:textSize="30sp"
                     app:customTFont="Electrolize-Regular.ttf"
@@ -122,7 +122,7 @@
                     android:singleLine="true"
                     android:ellipsize="middle"
                     android:text=""
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="false"
                     android:textSize="16sp"
                     app:customTFont="Electrolize-Regular.ttf"
@@ -134,7 +134,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="true"/>
 
                 <com.breadwallet.presenter.customviews.BRText
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/Transaction.available"
-                    android:textColor="#48F0B8"
+                    android:textColor="@color/logo_gradient_start"
                     android:textIsSelectable="true"
                     app:customTFont="Electrolize-Regular.ttf"/>
 
@@ -170,7 +170,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     />
 
                 <View
@@ -197,7 +197,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="true"/>
 
                 <View
@@ -223,7 +223,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:id="@+id/to_from"
@@ -243,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="true"/>
 
                 <View
@@ -252,7 +252,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:layout_width="wrap_content"
@@ -270,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/almost_black"
+                    android:textColor="@color/white"
                     android:textIsSelectable="true"/>
 
                 <View
@@ -278,7 +278,7 @@
                     android:layout_height="1dp"
                     android:layout_marginBottom="32dp"
                     android:layout_marginTop="16dp"
-                    android:background="@color/separator_gray"/>
+                    android:background="@color/gray_border"/>
 
             </LinearLayout>
 
