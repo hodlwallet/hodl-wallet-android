@@ -100,7 +100,7 @@
             android:text="@string/WritePaperPhrase.previous"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:buttonType="2"
+            app:buttonType="1"
             app:isBreadButton="false" />
 
         <View
@@ -119,7 +119,7 @@
             android:text="@string/RecoverWallet.next"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:buttonType="2"
+            app:buttonType="1"
             app:isBreadButton="false" />
 
     </LinearLayout>

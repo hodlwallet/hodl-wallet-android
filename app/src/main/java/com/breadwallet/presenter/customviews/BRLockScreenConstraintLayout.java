@@ -52,20 +52,20 @@ public class BRLockScreenConstraintLayout extends ConstraintLayout {
 
     public BRLockScreenConstraintLayout(Context context) {
         super(context);
-        init();
+        // init();
     }
 
     public BRLockScreenConstraintLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        // init();
     }
 
     public BRLockScreenConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        // init();
     }
 
-    private void init() {
+    /* private void init() {
         trianglesPaintBlack = new Paint();
         trianglesPaint = new Paint();
         trianglesPaintBlack.setStyle(Paint.Style.FILL);
@@ -148,6 +148,6 @@ public class BRLockScreenConstraintLayout extends ConstraintLayout {
         canvas.drawPath(pathBlack, trianglesPaintBlack);
         canvas.drawPath(path, trianglesPaint);
 
-    }
+    } */
 
 }
