@@ -28,6 +28,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,6 +112,8 @@ public class FragmentSend extends Fragment {
     private ConstraintLayout amountLayout;
     private BRButton regular;
     private BRButton economy;
+    private SeekBar feeSlider;
+    private TextView currentText;
     private BRLinearLayoutWithCaret feeLayout;
     private boolean feeButtonsShown = false;
     private BRText feeDescription;
@@ -152,6 +155,8 @@ public class FragmentSend extends Fragment {
 
         regular = (BRButton) rootView.findViewById(R.id.left_button);
         economy = (BRButton) rootView.findViewById(R.id.right_button);
+        feeSlider = (SeekBar) rootView.findViewById(R.id.seek_bar);
+        currentText = (TextView) rootView.findViewById(R.id.current_fee);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
 
@@ -484,6 +489,25 @@ public class FragmentSend extends Fragment {
             }
         });
 //        updateText();
+        feeSlider.setMax((int)(BRSharedPrefs.getFeePerKb(getContext()) / 1000L));
+        feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int currentFee = (int)(BRSharedPrefs.getEconomyFeePerKb(getContext()) / 1000L);
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                currentFee = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                currentText.setText(Integer.toString(currentFee));
+            }
+        });
+
 
     }
 
