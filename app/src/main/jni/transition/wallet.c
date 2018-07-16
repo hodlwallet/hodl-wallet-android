@@ -255,12 +255,6 @@ Java_com_breadwallet_wallet_BRWalletManager_createWallet(JNIEnv *env, jobject th
                             "BRWalletNew with tx nr: %zu", sizeof(_transactions));
         w = BRWalletNew(_transactions, txCount, pubKey);
 
-        if (!w) {
-            __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ",  "w (wallet) is NULL!");
-
-            return;
-        }
-
         _transactionsCounter = 0;
 
         if (_transactions) {
