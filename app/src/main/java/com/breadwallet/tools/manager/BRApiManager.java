@@ -8,6 +8,7 @@ import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
 import com.breadwallet.BreadApp;
+import com.breadwallet.BuildConfig;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.entities.CurrencyEntity;
 import com.breadwallet.tools.sqlite.CurrencyDataSource;
@@ -175,7 +176,8 @@ public class BRApiManager {
 
 
     public static JSONArray fetchRates(Activity activity) {
-        String jsonString = urlGET(activity, "https://" + BreadApp.HOST + "/rates");
+        String jsonString = BuildConfig.BITCOIN_TESTNET ? urlGET(activity, "https://" + BreadApp.HOST + "/hodl.staging/rates.json") :
+                urlGET(activity, "https://" + BreadApp.HOST + "/hodl/rates.json");
         JSONArray jsonArray = null;
         if (jsonString == null) return null;
         try {
@@ -203,17 +205,30 @@ public class BRApiManager {
     }
 
     public static void updateFeePerKb(Context app) {
-        String jsonString = urlGET(app, "https://" + BreadApp.HOST + "/fee-per-kb");
+        String jsonString = urlGET(app, "https://" + BreadApp.HOST + "/hodl/fee-estimator.json");
         if (jsonString == null || jsonString.isEmpty()) {
             Log.e(TAG, "updateFeePerKb: failed to update fee, response string: " + jsonString);
             return;
         }
+        long highFee;
         long fee;
         long economyFee;
+        String highFeeTime;
+        String regularFeeTime;
+        String economyFeeTime;
         try {
             JSONObject obj = new JSONObject(jsonString);
-            fee = obj.getLong("fee_per_kb");
-            economyFee = obj.getLong("fee_per_kb_economy");
+            highFee = obj.getLong("fastest_sat_per_kilobyte");
+            fee = obj.getLong("normal_sat_per_kilobyte");
+            economyFee = obj.getLong("slow_sat_per_kilobyte");
+            highFeeTime = obj.getString("fastest_time_text");
+            regularFeeTime = obj.getString("normal_time_text");
+            economyFeeTime = obj.getString("slow_time_text");
+            if (highFee != 0 && highFee < BRWalletManager.getInstance().maxFee()) {
+                BRSharedPrefs.putHighFeePerKb(app, highFee);
+            } else {
+                FirebaseCrash.report(new NullPointerException("Fastest fee is weird:" + highFee));
+            }
             if (fee != 0 && fee < BRWalletManager.getInstance().maxFee()) {
                 BRSharedPrefs.putFeePerKb(app, fee);
                 BRWalletManager.getInstance().setFeePerKb(fee, isEconomyFee); //todo improve that logic
@@ -222,10 +237,13 @@ public class BRApiManager {
                 FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
             }
             if (economyFee != 0 && economyFee < BRWalletManager.getInstance().maxFee()) {
-                BRSharedPrefs.putEconomyFeePerKb(app, economyFee);
+                BRSharedPrefs.putLowFeePerKb(app, economyFee);
             } else {
                 FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
             }
+            BRSharedPrefs.putHighFeeTimeText(app, highFeeTime);
+            BRSharedPrefs.putFeeTimeText(app, regularFeeTime);
+            BRSharedPrefs.putEconomyFeeTimeText(app, economyFeeTime);
         } catch (JSONException e) {
             Log.e(TAG, "updateFeePerKb: FAILED: " + jsonString, e);
             BRReportsManager.reportBug(e);

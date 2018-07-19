@@ -68,13 +68,22 @@ public class BRConstants {
     public static final String SECURE_TIME_PREFS = "secureTime";
     public static final String PHRASE_WARNING_TIME = "phraseWarningTime";
     public static final String EXCHANGE_RATES = "exchangeRates";
-    public static final String FEE_KB_PREFS = "feeKb";
-    public static final String ECONOMY_FEE_KB_PREFS = "EconomyFeeKb";
     public static final String LITTLE_CIRCLE = "\u2022";
     public static String SUPPORT_EMAIL = "support@breadwallet.com";
 
     public static final int ONE_BITCOIN = 100000000;
     public static final int HUNDRED_BITS = 10000000;
+
+    /**
+     * Fee Prefs
+     */
+    public static final String HIGH_FEE_KB_PREFS = "HighFeekb";
+    public static final String FEE_KB_PREFS = "feeKb";
+    public static final String ECONOMY_FEE_KB_PREFS = "EconomyFeeKb";
+    public static final String LOW_FEE_KB_PREFS = "LowFeeKb";
+    public static final String HIGH_FEE_TIME_TEXT = "HighFeeTimeText";
+    public static final String FEE_TIME_TEXT = "feeTimeText";
+    public static final String ECONOMY_FEE_TIME_TEXT = "EconomyFeeKb";
 
 //    /**
 //     * BRWalletManager
