@@ -490,11 +490,12 @@ public class FragmentSend extends Fragment {
             }
         });
 //        updateText();
-        feeSlider.setMax(2);
+        feeSlider.setMax(500);
+        final int divisor = feeSlider.getMax() / 4;
         int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
-        currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(economy / 1000L)));
+        currentText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int currentFee = feeSlider.getProgress();
+            int currentFee = feeSlider.getProgress() / divisor;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 currentFee = progress;
@@ -508,15 +509,23 @@ public class FragmentSend extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 long fee = 0;
-                switch (currentFee) {
+                switch (currentFee / divisor) {
                     case 0:
                         fee = BRSharedPrefs.getLowFeePerKb(getContext());
+                        feeSlider.setProgress(0);
                         break;
                     case 1:
                         fee = BRSharedPrefs.getFeePerKb(getContext());
+                        feeSlider.setProgress(divisor * 2);
                         break;
                     case 2:
+                        fee = BRSharedPrefs.getFeePerKb(getContext());
+                        feeSlider.setProgress(divisor * 2);
+                        break;
+                    case 3:
                         fee = BRSharedPrefs.getHighFeePerKb(getContext());
+                        feeSlider.setProgress(feeSlider.getMax());
+                        break;
                 }
                 BRWalletManager.getInstance().setFeePerKb(fee, false);
                 currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(fee / 1000L)));
