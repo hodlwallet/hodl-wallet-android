@@ -2,6 +2,7 @@ package com.breadwallet.presenter.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -489,9 +490,11 @@ public class FragmentSend extends Fragment {
             }
         });
 //        updateText();
-        feeSlider.setMax((int)(BRSharedPrefs.getFeePerKb(getContext()) / 1000L));
+        feeSlider.setMax(2);
+        int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
+        currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(economy / 1000L)));
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int currentFee = (int)(BRSharedPrefs.getEconomyFeePerKb(getContext()) / 1000L);
+            int currentFee = feeSlider.getProgress();
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 currentFee = progress;
@@ -504,7 +507,19 @@ public class FragmentSend extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                currentText.setText(Integer.toString(currentFee));
+                long fee = 0;
+                switch (currentFee) {
+                    case 0:
+                        fee = BRSharedPrefs.getLowFeePerKb(getContext());
+                        break;
+                    case 1:
+                        fee = BRSharedPrefs.getFeePerKb(getContext());
+                        break;
+                    case 2:
+                        fee = BRSharedPrefs.getHighFeePerKb(getContext());
+                }
+                BRWalletManager.getInstance().setFeePerKb(fee, false);
+                currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(fee / 1000L)));
             }
         });
 
