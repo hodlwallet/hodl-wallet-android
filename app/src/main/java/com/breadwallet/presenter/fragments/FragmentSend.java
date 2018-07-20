@@ -112,6 +112,7 @@ public class FragmentSend extends Fragment {
     private ConstraintLayout amountLayout;;
     private SeekBar feeSlider;
     private TextView currentText;
+    private TextView currentTime;
     private BRLinearLayoutWithCaret feeLayout;
     private boolean feeButtonsShown = true;
     private BRText feeDescription;
@@ -150,6 +151,7 @@ public class FragmentSend extends Fragment {
 
         feeSlider = (SeekBar) rootView.findViewById(R.id.seek_bar);
         currentText = (TextView) rootView.findViewById(R.id.current_fee);
+        currentTime = (TextView) rootView.findViewById(R.id.current_time);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
 
@@ -462,6 +464,7 @@ public class FragmentSend extends Fragment {
         final int divisor = feeSlider.getMax() / 4;
         int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
         currentText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
+        currentTime.setText(BRSharedPrefs.getEconomyFeeTimeText(getContext()));
 
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int currentFee = 0;
@@ -481,22 +484,27 @@ public class FragmentSend extends Fragment {
                 switch (currentFee / divisor) {
                     case 0:
                         fee = BRSharedPrefs.getLowFeePerKb(getContext());
+                        currentTime.setText(BRSharedPrefs.getEconomyFeeTimeText(getContext()));
                         feeSlider.setProgress(0);
                         break;
                     case 1:
                         fee = BRSharedPrefs.getFeePerKb(getContext());
+                        currentTime.setText(BRSharedPrefs.getFeeTimeText(getContext()));
                         feeSlider.setProgress(divisor * 2);
                         break;
                     case 2:
                         fee = BRSharedPrefs.getFeePerKb(getContext());
+                        currentTime.setText(BRSharedPrefs.getFeeTimeText(getContext()));
                         feeSlider.setProgress(divisor * 2);
                         break;
                     case 3:
                         fee = BRSharedPrefs.getHighFeePerKb(getContext());
+                        currentTime.setText(BRSharedPrefs.getHighFeeTimeText(getContext()));
                         feeSlider.setProgress(feeSlider.getMax());
                         break;
                     case 4:
                         fee = BRSharedPrefs.getHighFeePerKb(getContext());
+                        currentTime.setText(BRSharedPrefs.getHighFeeTimeText(getContext()));
                         feeSlider.setProgress(feeSlider.getMax());
                         break;
                 }
