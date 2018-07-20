@@ -103,22 +103,18 @@ public class FragmentSend extends Fragment {
     private EditText amountEdit;
     private TextView balanceText;
     private TextView feeText;
-    private ImageView edit;
     private long curBalance;
     private String selectedIso;
     private Button isoButton;
     private int keyboardIndex;
     private LinearLayout keyboardLayout;
     private ImageButton close;
-    private ConstraintLayout amountLayout;
-    private BRButton regular;
-    private BRButton economy;
+    private ConstraintLayout amountLayout;;
     private SeekBar feeSlider;
     private TextView currentText;
     private BRLinearLayoutWithCaret feeLayout;
-    private boolean feeButtonsShown = false;
+    private boolean feeButtonsShown = true;
     private BRText feeDescription;
-    private BRText warningText;
     public static boolean isEconomyFee;
     private boolean amountLabelOn = true;
 
@@ -146,16 +142,12 @@ public class FragmentSend extends Fragment {
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         balanceText = (TextView) rootView.findViewById(R.id.balance_text);
         feeText = (TextView) rootView.findViewById(R.id.fee_text);
-        edit = (ImageView) rootView.findViewById(R.id.edit);
         isoButton = (Button) rootView.findViewById(R.id.iso_button);
         keyboardLayout = (LinearLayout) rootView.findViewById(R.id.keyboard_layout);
         amountLayout = (ConstraintLayout) rootView.findViewById(R.id.amount_layout);
         feeLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.fee_buttons_layout);
         feeDescription = (BRText) rootView.findViewById(R.id.fee_description);
-        warningText = (BRText) rootView.findViewById(R.id.warning_text);
 
-        regular = (BRButton) rootView.findViewById(R.id.left_button);
-        economy = (BRButton) rootView.findViewById(R.id.right_button);
         feeSlider = (SeekBar) rootView.findViewById(R.id.seek_bar);
         currentText = (TextView) rootView.findViewById(R.id.current_fee);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
@@ -174,16 +166,6 @@ public class FragmentSend extends Fragment {
             }
         });
 
-
-        showFeeSelectionButtons(feeButtonsShown);
-
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feeButtonsShown = !feeButtonsShown;
-                showFeeSelectionButtons(feeButtonsShown);
-            }
-        });
         keyboardIndex = signalLayout.indexOfChild(keyboardLayout);
 
         ImageButton faq = (ImageButton) rootView.findViewById(R.id.faq_button);
@@ -202,7 +184,6 @@ public class FragmentSend extends Fragment {
         });
 
         showKeyboard(false);
-        setButton(true);
 
         signalLayout.setLayoutTransition(BRAnimator.getDefaultTransition());
 
@@ -220,8 +201,8 @@ public class FragmentSend extends Fragment {
                     amountEdit.setTextSize(24);
                     balanceText.setVisibility(View.VISIBLE);
                     feeText.setVisibility(View.VISIBLE);
-                    edit.setVisibility(View.VISIBLE);
-                    isoText.setTextColor(getContext().getColor(R.color.almost_black));
+                    // edit.setVisibility(View.VISIBLE);
+                    isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
                     isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
                     isoText.setTextSize(28);
                     final float scaleX = amountEdit.getScaleX();
@@ -477,25 +458,13 @@ public class FragmentSend extends Fragment {
             }
         });
 
-        regular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setButton(true);
-            }
-        });
-        economy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setButton(false);
-            }
-        });
-//        updateText();
         feeSlider.setMax(500);
         final int divisor = feeSlider.getMax() / 4;
         int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
         currentText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
+
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int currentFee = feeSlider.getProgress() / divisor;
+            int currentFee = 0;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 currentFee = progress;
@@ -526,12 +495,17 @@ public class FragmentSend extends Fragment {
                         fee = BRSharedPrefs.getHighFeePerKb(getContext());
                         feeSlider.setProgress(feeSlider.getMax());
                         break;
+                    case 4:
+                        fee = BRSharedPrefs.getHighFeePerKb(getContext());
+                        feeSlider.setProgress(feeSlider.getMax());
+                        break;
                 }
                 BRWalletManager.getInstance().setFeePerKb(fee, false);
                 currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(fee / 1000L)));
             }
         });
 
+        updateText();
 
     }
 
@@ -709,9 +683,9 @@ public class FragmentSend extends Fragment {
         } else {
             balanceText.setTextColor(getContext().getColor(R.color.light_gray));
             feeText.setTextColor(getContext().getColor(R.color.light_gray));
-            amountEdit.setTextColor(getContext().getColor(R.color.almost_black));
+            amountEdit.setTextColor(getContext().getColor(R.color.logo_gradient_start));
             if (!amountLabelOn)
-                isoText.setTextColor(getContext().getColor(R.color.almost_black));
+                isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
         }
         balanceString = String.format(getString(R.string.Send_balance), formattedBalance);
         balanceText.setText(String.format("%s", balanceString));
@@ -742,6 +716,7 @@ public class FragmentSend extends Fragment {
             signalLayout.removeView(feeLayout);
         } else {
             signalLayout.addView(feeLayout, signalLayout.indexOfChild(amountLayout) + 1);
+            signalLayout.addView(feeLayout, signalLayout.indexOfChild(amountLayout) + 1);
 
         }
     }
@@ -760,30 +735,6 @@ public class FragmentSend extends Fragment {
             }
         }
         amountEdit.setText(newAmount.toString());
-    }
-
-    private void setButton(boolean isRegular) {
-        if (isRegular) {
-            isEconomyFee = false;
-            BRWalletManager.getInstance().setFeePerKb(BRSharedPrefs.getFeePerKb(getContext()), false);
-            regular.setTextColor(getContext().getColor(R.color.white));
-            regular.setBackground(getContext().getDrawable(R.drawable.b_half_left_blue));
-            economy.setTextColor(getContext().getColor(R.color.dark_blue));
-            economy.setBackground(getContext().getDrawable(R.drawable.b_half_right_blue_stroke));
-            feeDescription.setText(String.format(getString(R.string.FeeSelector_estimatedDeliver), getString(R.string.FeeSelector_regularTime)));
-            warningText.getLayoutParams().height = 0;
-        } else {
-            isEconomyFee = true;
-            BRWalletManager.getInstance().setFeePerKb(BRSharedPrefs.getEconomyFeePerKb(getContext()), false);
-            regular.setTextColor(getContext().getColor(R.color.dark_blue));
-            regular.setBackground(getContext().getDrawable(R.drawable.b_half_left_blue_stroke));
-            economy.setTextColor(getContext().getColor(R.color.white));
-            economy.setBackground(getContext().getDrawable(R.drawable.b_half_right_blue));
-            feeDescription.setText(String.format(getString(R.string.FeeSelector_estimatedDeliver), getString(R.string.FeeSelector_economyTime)));
-            warningText.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        }
-        warningText.requestLayout();
-        updateText();
     }
 
     private boolean isInputValid(String input) {
