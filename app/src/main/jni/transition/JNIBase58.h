@@ -10,9 +10,9 @@ extern "C" {
 #endif
 
 JNIEXPORT jstring JNICALL Java_com_jniwrappers_BRBase58_base58Encode(
-        JNIEnv *env,
-        jobject thiz,
-        jbyteArray data);
+    JNIEnv *env,
+    jobject thiz,
+    jbyteArray data);
 
 #ifdef __cplusplus
 }

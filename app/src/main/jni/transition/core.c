@@ -38,7 +38,7 @@ const int TEST_REQ = 0;
 
 JNIEXPORT jobject JNICALL
 Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv *env, jobject obj,
-                                                                       jbyteArray payment) {
+        jbyteArray payment) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "parsePaymentRequest");
     if (!payment) return NULL;
 
@@ -62,8 +62,8 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
     }
 
     BRPaymentProtocolRequest *nativeRequest = BRPaymentProtocolRequestParse(
-            (const uint8_t *) bytePayment,
-            requestLength);
+                (const uint8_t *) bytePayment,
+                requestLength);
 
     if (!nativeRequest) {
         (*env)->SetIntField(env, entity, jerror, 7);
@@ -73,9 +73,9 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
     size_t outputsCount = nativeRequest->details->outCount;
     uint64_t totalAmount = 0;
     jobjectArray stringArray = (jobjectArray) (*env)->NewObjectArray(env, (jsize) outputsCount,
-                                                                     (*env)->FindClass(env,
-                                                                                       "java/lang/String"),
-                                                                     (*env)->NewStringUTF(env, ""));
+                               (*env)->FindClass(env,
+                                       "java/lang/String"),
+                               (*env)->NewStringUTF(env, ""));
 
     for (size_t i = 0; i < outputsCount; i++) {
         BRTxOutput *op = &nativeRequest->details->outputs[i];
@@ -86,11 +86,11 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
 
     __android_log_print(ANDROID_LOG_DEBUG, "parsePaymentRequest",
                         "nativeRequest->details->network: %s, "
-                                "BITCOIN_TESTNET: %d", nativeRequest->details->network,
+                        "BITCOIN_TESTNET: %d", nativeRequest->details->network,
                         BITCOIN_TESTNET);
 
     if ((strcmp(nativeRequest->details->network, "main") == 0 && BITCOIN_TESTNET == 1) ||
-        (strcmp(nativeRequest->details->network, "main") != 0 && BITCOIN_TESTNET == 0)) {
+            (strcmp(nativeRequest->details->network, "main") != 0 && BITCOIN_TESTNET == 0)) {
         (*env)->SetIntField(env, entity, jerror, 3);
         return entity;
     }
@@ -98,7 +98,7 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
     //Create serialized paymentProtocolPayment
     BRAddress changeAddress = BRWalletReceiveAddress(_wallet);
     BRTransaction *tx = BRWalletCreateTxForOutputs(_wallet, nativeRequest->details->outputs,
-                                                   nativeRequest->details->outCount);
+                        nativeRequest->details->outCount);
 
     if (!tx) {
         (*env)->SetIntField(env, entity, jerror, 1);
@@ -107,8 +107,8 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
 
     uint64_t feeForTx = BRWalletFeeForTx(_wallet, tx);
     uint64_t amountToBeSent =
-            BRWalletAmountSentByTx(_wallet, tx) - BRWalletAmountReceivedFromTx(_wallet, tx) -
-            feeForTx;
+        BRWalletAmountSentByTx(_wallet, tx) - BRWalletAmountReceivedFromTx(_wallet, tx) -
+        feeForTx;
 
 
     if (amountToBeSent != totalAmount) {
@@ -118,9 +118,9 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
 
     BRPaymentProtocolPayment *paymentProtocolPayment;
     paymentProtocolPayment = BRPaymentProtocolPaymentNew(nativeRequest->details->merchantData,
-                                                         nativeRequest->details->merchDataLen,
-                                                         &tx, 1, &totalAmount, &changeAddress, 1,
-                                                         nativeRequest->details->memo);
+                             nativeRequest->details->merchDataLen,
+                             &tx, 1, &totalAmount, &changeAddress, 1,
+                             nativeRequest->details->memo);
     uint8_t buf[BRPaymentProtocolPaymentSerialize(paymentProtocolPayment, NULL, 0)];
     size_t len = BRPaymentProtocolPaymentSerialize(paymentProtocolPayment, buf, sizeof(buf));
 
@@ -134,7 +134,7 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
     jbyte *bytesPaymentProtocolPayment = (jbyte *) buf;
     size_t bytesPaymentProtocolPaymentSize = len;
     jbyteArray byteArrayPaymentProtocolPayment = (*env)->NewByteArray(env,
-                                                                      (jsize) bytesPaymentProtocolPaymentSize);
+            (jsize) bytesPaymentProtocolPaymentSize);
     (*env)->SetByteArrayRegion(env, byteArrayPaymentProtocolPayment, 0,
                                (jsize) bytesPaymentProtocolPaymentSize,
                                bytesPaymentProtocolPayment);
@@ -207,9 +207,9 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv
 
 JNIEXPORT jbyteArray JNICALL
 Java_com_breadwallet_tools_security_BitcoinUrlHandler_getCertificatesFromPaymentRequest(JNIEnv *env,
-                                                                                     jobject obj,
-                                                                                     jbyteArray payment,
-                                                                                     jint index) {
+        jobject obj,
+        jbyteArray payment,
+        jint index) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getCertificatesFromPaymentRequest");
     if (!payment) return NULL;
 
@@ -220,8 +220,8 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_getCertificatesFromPayment
     if (!bytePayment) return NULL;
 
     BRPaymentProtocolRequest *nativeRequest = BRPaymentProtocolRequestParse(
-            (const uint8_t *) bytePayment,
-            requestLength);
+                (const uint8_t *) bytePayment,
+                requestLength);
     //testing the raw request example!!!!!!
 
     if (!nativeRequest) return NULL;
@@ -243,7 +243,7 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_getCertificatesFromPayment
 
 JNIEXPORT jstring JNICALL
 Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentACK(JNIEnv *env, jobject obj,
-                                                                   jbyteArray paymentACK) {
+        jbyteArray paymentACK) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "parsePaymentACK");
     if (!paymentACK) return NULL;
 
@@ -253,7 +253,7 @@ Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentACK(JNIEnv *en
     if (!bytePayment) return NULL;
 
     BRPaymentProtocolACK *ack = BRPaymentProtocolACKParse((const uint8_t *) bytePayment,
-                                                          requestLength);
+                                requestLength);
     if (!ack || !ack->memo) return NULL;
     return (*env)->NewStringUTF(env, ack->memo);
 }
