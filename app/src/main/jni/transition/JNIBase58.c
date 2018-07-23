@@ -8,9 +8,9 @@
 #include "JNIBase58.h"
 
 JNIEXPORT jstring JNICALL Java_com_jniwrappers_BRBase58_base58Encode(
-        JNIEnv *env,
-        jobject thiz,
-        jbyteArray data) {
+    JNIEnv *env,
+    jobject thiz,
+    jbyteArray data) {
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, 0);
     size_t dataLen = (size_t) (*env)->GetArrayLength(env, data);
 

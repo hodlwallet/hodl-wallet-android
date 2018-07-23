@@ -14,9 +14,9 @@
 static BRKey _key;
 
 JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_compactSign(
-        JNIEnv *env,
-        jobject thiz,
-        jbyteArray data) {
+    JNIEnv *env,
+    jobject thiz,
+    jbyteArray data) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "compactSign, _key: %s", _key.secret);
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, 0);
 
@@ -33,9 +33,9 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_compactSign(
 }
 
 JNIEXPORT jboolean JNICALL Java_com_jniwrappers_BRKey_setPrivKey(
-        JNIEnv *env,
-        jobject thiz,
-        jbyteArray privKey) {
+    JNIEnv *env,
+    jobject thiz,
+    jbyteArray privKey) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "key is not set yet, _key: %s", _key.secret);
 
     jbyte *bytePrivKey = (*env)->GetByteArrayElements(env, privKey, 0);
@@ -48,9 +48,9 @@ JNIEXPORT jboolean JNICALL Java_com_jniwrappers_BRKey_setPrivKey(
 }
 
 JNIEXPORT void JNICALL Java_com_jniwrappers_BRKey_setSecret(
-        JNIEnv *env,
-        jobject thiz,
-        jbyteArray privKey) {
+    JNIEnv *env,
+    jobject thiz,
+    jbyteArray privKey) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "key is not set yet, _key: %s", _key.secret);
 
     jbyte *bytePrivKey = (*env)->GetByteArrayElements(env, privKey, 0);
@@ -60,8 +60,8 @@ JNIEXPORT void JNICALL Java_com_jniwrappers_BRKey_setSecret(
 }
 
 JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_encryptNative(JNIEnv *env, jobject thiz,
-                                                                      jbyteArray data,
-                                                                      jbyteArray nonce) {
+        jbyteArray data,
+        jbyteArray nonce) {
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, NULL);
     jbyte *byteNonce = (*env)->GetByteArrayElements(env, nonce, NULL);
     jsize dataSize = (*env)->GetArrayLength(env, data);
@@ -70,8 +70,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_encryptNative(JNIEnv *en
     uint8_t out[16 + dataSize];
 
     size_t outSize = BRChacha20Poly1305AEADEncrypt(out, sizeof(out), &_key, (uint8_t *) byteNonce,
-                                                   (uint8_t *) byteData, (size_t) dataSize, NULL,
-                                                   0);
+                     (uint8_t *) byteData, (size_t) dataSize, NULL,
+                     0);
 
     jbyteArray result = (*env)->NewByteArray(env, (jsize) outSize);
     (*env)->SetByteArrayRegion(env, result, 0, (jsize) outSize, (const jbyte *) out);
@@ -82,8 +82,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_encryptNative(JNIEnv *en
 }
 
 JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_decryptNative(JNIEnv *env, jobject thiz,
-                                                                      jbyteArray data,
-                                                                      jbyteArray nonce) {
+        jbyteArray data,
+        jbyteArray nonce) {
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, NULL);
     jbyte *byteNonce = (*env)->GetByteArrayElements(env, nonce, NULL);
     jsize dataSize = (*env)->GetArrayLength(env, data);
@@ -92,8 +92,8 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_decryptNative(JNIEnv *en
     uint8_t out[dataSize];
 
     size_t outSize = BRChacha20Poly1305AEADDecrypt(out, sizeof(out), &_key, (uint8_t *) byteNonce,
-                                                   (uint8_t *) byteData,
-                                                   (size_t) (dataSize), NULL, 0);
+                     (uint8_t *) byteData,
+                     (size_t) (dataSize), NULL, 0);
     if (sizeof(out) == 0) return NULL;
     jbyteArray result = (*env)->NewByteArray(env, (jsize) outSize);
     (*env)->SetByteArrayRegion(env, result, 0, (jsize) outSize, (const jbyte *) out);
