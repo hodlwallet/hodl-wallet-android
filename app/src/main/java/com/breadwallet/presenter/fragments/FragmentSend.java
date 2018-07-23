@@ -102,7 +102,6 @@ public class FragmentSend extends Fragment {
     private TextView isoText;
     private EditText amountEdit;
     private TextView balanceText;
-    private TextView feeText;
     private long curBalance;
     private String selectedIso;
     private Button isoButton;
@@ -111,13 +110,14 @@ public class FragmentSend extends Fragment {
     private ImageButton close;
     private ConstraintLayout amountLayout;;
     private SeekBar feeSlider;
-    private TextView currentText;
+    private TextView feeText;
     private TextView currentTime;
     private BRLinearLayoutWithCaret feeLayout;
     private boolean feeButtonsShown = true;
-    private BRText feeDescription;
     public static boolean isEconomyFee;
     private boolean amountLabelOn = true;
+    private boolean didSet = false;
+    private boolean balanceShown = false;
 
     private static String savedMemo;
     private static String savedIso;
@@ -142,20 +142,19 @@ public class FragmentSend extends Fragment {
         commentEdit = (EditText) rootView.findViewById(R.id.comment_edit);
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         balanceText = (TextView) rootView.findViewById(R.id.balance_text);
-        feeText = (TextView) rootView.findViewById(R.id.fee_text);
         isoButton = (Button) rootView.findViewById(R.id.iso_button);
         keyboardLayout = (LinearLayout) rootView.findViewById(R.id.keyboard_layout);
         amountLayout = (ConstraintLayout) rootView.findViewById(R.id.amount_layout);
         feeLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.fee_buttons_layout);
-        feeDescription = (BRText) rootView.findViewById(R.id.fee_description);
 
         feeSlider = (SeekBar) rootView.findViewById(R.id.seek_bar);
-        currentText = (TextView) rootView.findViewById(R.id.current_fee);
+        feeText = (TextView) rootView.findViewById(R.id.fee_text);
         currentTime = (TextView) rootView.findViewById(R.id.current_time);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
 
         amountBuilder = new StringBuilder(0);
+        showBalance(balanceShown);
         setListeners();
         isoText.setText(getString(R.string.Send_amountLabel));
         isoText.setTextSize(18);
@@ -189,6 +188,8 @@ public class FragmentSend extends Fragment {
 
         signalLayout.setLayoutTransition(BRAnimator.getDefaultTransition());
 
+        updateText();
+
         return rootView;
     }
 
@@ -201,9 +202,7 @@ public class FragmentSend extends Fragment {
                     amountLabelOn = false;
                     amountEdit.setHint("0");
                     amountEdit.setTextSize(24);
-                    balanceText.setVisibility(View.VISIBLE);
-                    feeText.setVisibility(View.VISIBLE);
-                    // edit.setVisibility(View.VISIBLE);
+                    // balanceText.setVisibility(View.VISIBLE);
                     isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
                     isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
                     isoText.setTextSize(28);
@@ -246,13 +245,11 @@ public class FragmentSend extends Fragment {
 
                     int px4 = Utils.getPixelsFromDps(getContext(), 4);
 //                    int px8 = Utils.getPixelsFromDps(getContext(), 8);
-                    set.connect(balanceText.getId(), ConstraintSet.TOP, isoText.getId(), ConstraintSet.BOTTOM, px4);
-                    set.connect(feeText.getId(), ConstraintSet.TOP, balanceText.getId(), ConstraintSet.BOTTOM, px4);
-                    set.connect(feeText.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, px4);
-                    set.connect(isoText.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, px4);
-                    set.connect(isoText.getId(), ConstraintSet.BOTTOM, -1, ConstraintSet.TOP, -1);
+                    // set.connect(isoText.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, px4);
+                    // set.connect(isoText.getId(), ConstraintSet.BOTTOM, -1, ConstraintSet.TOP, -1);
                     set.applyTo(amountLayout);
-
+                    balanceShown = !balanceShown;
+                    showBalance(balanceShown);
                 }
 
             }
@@ -411,7 +408,6 @@ public class FragmentSend extends Fragment {
                 if (satoshiAmount.longValue() > BRWalletManager.getInstance().getBalance(getActivity())) {
                     allFilled = false;
                     SpringAnimator.failShakeAnimation(getActivity(), balanceText);
-                    SpringAnimator.failShakeAnimation(getActivity(), feeText);
                 }
 
                 if (allFilled)
@@ -463,7 +459,7 @@ public class FragmentSend extends Fragment {
         feeSlider.setMax(500);
         final int divisor = feeSlider.getMax() / 4;
         int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
-        currentText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
+        feeText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
         currentTime.setText(BRSharedPrefs.getEconomyFeeTimeText(getContext()));
 
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -509,11 +505,10 @@ public class FragmentSend extends Fragment {
                         break;
                 }
                 BRWalletManager.getInstance().setFeePerKb(fee, false);
-                currentText.setText(String.format(getString(R.string.FeeSelector_satByte), (int)(fee / 1000L)));
+                feeText.setText(String.format(getString(R.string.FeeSelector_satByte), (int) (fee / 1000L)));
+                updateText();
             }
         });
-
-        updateText();
 
     }
 
@@ -684,20 +679,24 @@ public class FragmentSend extends Fragment {
         String aproxFee = BRCurrency.getFormattedCurrencyString(getActivity(), iso, feeForISO);
         if (new BigDecimal((tmpAmount.isEmpty() || tmpAmount.equalsIgnoreCase(".")) ? "0" : tmpAmount).doubleValue() > balanceForISO.doubleValue()) {
             balanceText.setTextColor(getContext().getColor(R.color.warning_color));
-            feeText.setTextColor(getContext().getColor(R.color.warning_color));
             amountEdit.setTextColor(getContext().getColor(R.color.warning_color));
             if (!amountLabelOn)
                 isoText.setTextColor(getContext().getColor(R.color.warning_color));
         } else {
             balanceText.setTextColor(getContext().getColor(R.color.light_gray));
-            feeText.setTextColor(getContext().getColor(R.color.light_gray));
             amountEdit.setTextColor(getContext().getColor(R.color.logo_gradient_start));
             if (!amountLabelOn)
                 isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
         }
+        if (!tmpAmount.isEmpty()) {
+            feeText.setText(aproxFee);
+            didSet = true;
+        } else if (tmpAmount.isEmpty() && didSet) {
+            feeText.setText(aproxFee);
+            didSet = false;
+        }
         balanceString = String.format(getString(R.string.Send_balance), formattedBalance);
         balanceText.setText(String.format("%s", balanceString));
-        feeText.setText(String.format(getString(R.string.Send_fee), aproxFee));
         amountLayout.requestLayout();
     }
 
@@ -719,13 +718,11 @@ public class FragmentSend extends Fragment {
         }
     }
 
-    private void showFeeSelectionButtons(boolean b) {
+    private void showBalance(boolean b) {
         if (!b) {
-            signalLayout.removeView(feeLayout);
+            feeLayout.removeView(balanceText);
         } else {
-            signalLayout.addView(feeLayout, signalLayout.indexOfChild(amountLayout) + 1);
-            signalLayout.addView(feeLayout, signalLayout.indexOfChild(amountLayout) + 1);
-
+            feeLayout.addView(balanceText, 1);
         }
     }
 

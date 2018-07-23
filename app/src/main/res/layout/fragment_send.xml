@@ -200,30 +200,6 @@
                 app:layout_constraintTop_toTopOf="@+id/iso_text"
                 app:layout_constraintVertical_bias="0.5"/>
 
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/balance_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iso_text"
-                android:layout_marginTop="8dp"
-                android:text="Current Balance"
-                android:textColor="@color/light_gray"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/fee_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/balance_text"
-                android:layout_marginTop="8dp"
-                android:text="Network Fee"
-                android:textColor="@color/light_gray"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
-                app:layout_constraintTop_toTopOf="parent"/>
-
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/iso_button"
                 android:layout_width="80dp"
@@ -267,24 +243,31 @@
             </View>
 
             <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/fee_description"
+                android:id="@+id/balance_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/iso_text"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
+                android:text="Current Balance"
                 android:textColor="@color/light_gray"
-                />
+                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/info_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:id="@+id/fee_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/FeeSelector.transactionFee"
@@ -302,21 +285,22 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/FeeSelector.estConfirmation"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     app:layout_constraintRight_toRightOf="parent"/>
 
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
                 <com.breadwallet.presenter.customviews.BRText
-                    android:id="@+id/current_fee"
+                    android:id="@+id/fee_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:text="-"
@@ -329,7 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:text="-"
@@ -341,14 +325,15 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
                 <com.breadwallet.presenter.customviews.BRText
                     android:id="@+id/economy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/FeeSelector.economy"
@@ -361,7 +346,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:gravity="center"
@@ -376,7 +361,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:textSize="@dimen/paragraph"
+                    android:textSize="@dimen/sub_header"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:gravity="center"
@@ -388,12 +373,14 @@
             </android.support.constraint.ConstraintLayout>
 
             <SeekBar
+                android:layout_marginBottom="8dp"
                 android:id="@+id/seek_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:progressTint="@color/logo_gradient_start"
-                android:progressBackgroundTint="@color/gray"
+                android:progressBackgroundTint="@android:color/white"
+                android:thumb="@drawable/seekbar_thumb"
                 android:thumbTint="@color/white"/>
 
 
