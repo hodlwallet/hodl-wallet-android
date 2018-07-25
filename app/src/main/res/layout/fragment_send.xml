@@ -97,6 +97,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="0.6"
                 android:background="@android:color/transparent"
+                android:textColor="@color/white"
                 android:ellipsize="middle"
                 android:ems="10"
                 android:hint="@string/Send.toLabel"
