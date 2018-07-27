@@ -392,7 +392,7 @@
                 />
 
             <com.breadwallet.presenter.customviews.BRButton
-                android:id="@+id/customFee"
+                android:id="@+id/custom_fee"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@android:color/transparent"
