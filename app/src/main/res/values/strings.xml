@@ -164,6 +164,16 @@
   <string name="FeeSelector.regular">Regular</string>
   <!-- E.g. [This transaction is predicted to complete in] 10-60 minutes -->
   <string name="FeeSelector.regularTime">10-60 minutes</string>
+  <!-- Transaction Fee title -->
+  <string name="FeeSelector.transactionFee">Transaction Fee</string>
+  <!-- Estimated Confirmation Title-->
+  <string name="FeeSelector.estConfirmation">Est. Confirmation</string>
+  <!-- E.g. [Amount] sat/byte -->
+  <string name="FeeSelector.satByte">%1$s sat/byte</string>
+  <!-- Normal title on fee slider -->
+  <string name="FeeSelector.normal">Normal</string>
+  <!-- High title on fee slider -->
+  <string name="FeeSelector.high">High</string>
   <!-- Fee Selector title -->
   <string name="FeeSelector.title">Processing Speed</string>
   <!-- Checking private key balance progress view text -->

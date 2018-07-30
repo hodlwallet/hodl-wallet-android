@@ -165,6 +165,18 @@ public class BRSharedPrefs {
         editor.apply();
     }
 
+    public static long getHighFeePerKb(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getLong(BRConstants.HIGH_FEE_KB_PREFS, 0);
+    }
+
+    public static void putHighFeePerKb(Context context, long fee) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(BRConstants.HIGH_FEE_KB_PREFS, fee);
+        editor.apply();
+    }
+
     public static long getFeePerKb(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getLong(BRConstants.FEE_KB_PREFS, 0);
@@ -186,6 +198,54 @@ public class BRSharedPrefs {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putLong(BRConstants.ECONOMY_FEE_KB_PREFS, fee);
+        editor.apply();
+    }
+
+    public static long getLowFeePerKb(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getLong(BRConstants.LOW_FEE_KB_PREFS, 0);
+    }
+
+    public static void putLowFeePerKb(Context context, long fee) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(BRConstants.LOW_FEE_KB_PREFS, fee);
+        editor.apply();
+    }
+
+    public static String getHighFeeTimeText(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(BRConstants.HIGH_FEE_TIME_TEXT, "");
+    }
+
+    public static void putHighFeeTimeText(Context context, String time) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(BRConstants.HIGH_FEE_TIME_TEXT, time);
+        editor.apply();
+    }
+
+    public static String getFeeTimeText(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(BRConstants.FEE_TIME_TEXT, "");
+    }
+
+    public static void putFeeTimeText(Context context, String time) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(BRConstants.FEE_TIME_TEXT, time);
+        editor.apply();
+    }
+
+    public static String getEconomyFeeTimeText(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(BRConstants.ECONOMY_FEE_TIME_TEXT, "");
+    }
+
+    public static void putEconomyFeeTimeText(Context context, String time) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(BRConstants.ECONOMY_FEE_TIME_TEXT, time);
         editor.apply();
     }
 

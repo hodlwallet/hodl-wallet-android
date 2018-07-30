@@ -43,7 +43,7 @@
             android:text="@string/UnlockScreen.touchIdTitle.android"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-            android:textColor="?android:attr/textColorSecondary"
+            android:textColor="@color/white"
             android:textSize="20sp"/>
 
         <com.breadwallet.presenter.customviews.BRText
@@ -57,7 +57,7 @@
             android:gravity="center"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.Material.Subhead"
-            android:textColor="?android:attr/textColorSecondary"/>
+            android:textColor="@color/white"/>
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:id="@+id/fingerprint_container"
@@ -88,7 +88,7 @@
                 android:filterTouchesWhenObscured="true"
                 android:gravity="center_vertical"
                 android:text="@string/UnlockScreen.touchIdInstructions.android"
-                android:textColor="@color/hint_color"/>
+                android:textColor="@color/hodl_light_gray"/>
         </RelativeLayout>
 
         <LinearLayout
