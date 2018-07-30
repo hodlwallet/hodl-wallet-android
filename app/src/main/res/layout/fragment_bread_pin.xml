@@ -34,8 +34,8 @@
         <com.breadwallet.presenter.customviews.BRText
             android:id="@+id/message"
             android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:gravity="center_horizontal"
+            android:layout_height="100dp"
+            android:gravity="center"
             android:layout_centerVertical="true"
             android:lineSpacingMultiplier="1.3"
             android:text="@string/VerifyPin.authorize"

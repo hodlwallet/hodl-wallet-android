@@ -97,6 +97,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="0.6"
                 android:background="@android:color/transparent"
+                android:textColor="@color/white"
                 android:ellipsize="middle"
                 android:ems="10"
                 android:hint="@string/Send.toLabel"
@@ -200,30 +201,6 @@
                 app:layout_constraintTop_toTopOf="@+id/iso_text"
                 app:layout_constraintVertical_bias="0.5"/>
 
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/balance_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iso_text"
-                android:layout_marginTop="8dp"
-                android:text="Current Balance"
-                android:textColor="@color/light_gray"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/fee_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/balance_text"
-                android:layout_marginTop="8dp"
-                android:text="Network Fee"
-                android:textColor="@color/light_gray"
-                android:visibility="invisible"
-                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
-                app:layout_constraintTop_toTopOf="parent"/>
-
             <com.breadwallet.presenter.customviews.BRButton
                 android:id="@+id/iso_button"
                 android:layout_width="80dp"
@@ -247,19 +224,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"/>
 
-
-            <ImageView
-                android:id="@+id/edit"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/edit"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/fee_text"
-                app:layout_constraintLeft_toRightOf="@+id/fee_text"
-                />
-
         </android.support.constraint.ConstraintLayout>
 
         <com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret
@@ -269,83 +233,156 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="2.0"
-            app:backgroundColor="@color/extra_light_blue_background"
-            app:strokeColor="@color/extra_light_gray"
+            app:backgroundColor="@color/gray_background"
+            app:strokeColor="@color/gray_background"
             app:withStroke="true">
 
-            <com.breadwallet.presenter.customviews.BRText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/FeeSelector.title"
-                android:textSize="@dimen/sub_header"
-                android:textColor="@color/almost_black"
-                android:textStyle="bold"/>
-
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/fee_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/light_gray"
-                />
-
-            <LinearLayout
-                android:id="@+id/buttons_layout"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:weightSum="2.0"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/BRText2">
-
-                <com.breadwallet.presenter.customviews.BRButton
-                    android:id="@+id/left_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="1.0"
-                    android:background="@drawable/b_half_left_blue"
-                    android:padding="0dp"
-                    android:text="@string/FeeSelector.regular"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:customBFont="Electrolize-Regular.ttf"
-                    app:isBreadButton="false"
-                    />
-
-                <com.breadwallet.presenter.customviews.BRButton
-                    android:id="@+id/right_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:background="@drawable/b_half_right_blue_stroke"
-                    android:padding="0dp"
-                    android:text="@string/FeeSelector.economy"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14sp"
-                    app:customBFont="Electrolize-Regular.ttf"
-                    app:isBreadButton="false"
-                    />
-            </LinearLayout>
+                android:layout_height="1dp"
+                android:background="@color/gray_border">
+            </View>
 
             <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/warning_text"
+                android:id="@+id/balance_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textSize="@dimen/paragraph"
+                android:layout_below="@+id/iso_text"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:text="@string/FeeSelector.economyWarning"
-                android:textColor="@color/red_text"
-                />
+                android:text="Current Balance"
+                android:textColor="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="@+id/iso_text"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/fee_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/FeeSelector.transactionFee"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/confirm_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/FeeSelector.estConfirmation"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sub_header"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/fee_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="-"
+                    android:textColor="@color/gray_text_tint"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="-"
+                    android:textColor="@color/gray_text_tint"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/economy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/FeeSelector.economy"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:text="@string/FeeSelector.normal"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+                <com.breadwallet.presenter.customviews.BRText
+                    android:id="@+id/high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/sub_header"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:text="@string/FeeSelector.high"
+                    android:textColor="@color/white"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <SeekBar
+                android:layout_marginBottom="8dp"
+                android:id="@+id/seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:progressTint="@color/logo_gradient_start"
+                android:progressBackgroundTint="@android:color/white"
+                android:thumb="@drawable/seekbar_thumb"
+                android:thumbTint="@color/white"/>
 
 
         </com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret>
@@ -368,7 +405,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/gray_border"
-                />
+                >
+
+            </com.breadwallet.presenter.customviews.BRKeyboard>
 
             <View
                 android:id="@+id/separator3"
