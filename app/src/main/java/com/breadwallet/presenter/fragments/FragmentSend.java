@@ -212,6 +212,7 @@ public class FragmentSend extends Fragment {
                     amountLabelOn = false;
                     amountEdit.setHint("0");
                     amountEdit.setTextSize(24);
+                    amountEdit.setHintTextColor(getContext().getColor(R.color.logo_gradient_start));
                     // balanceText.setVisibility(View.VISIBLE);
                     isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
                     isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
