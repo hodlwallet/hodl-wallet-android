@@ -316,7 +316,7 @@ Java_com_breadwallet_wallet_BRPeerManager_create(JNIEnv *env, jobject thiz,
 }
 
 JNIEXPORT void JNICALL Java_com_breadwallet_wallet_BRPeerManager_connect(JNIEnv *env,
-        jobject thiz) {
+                                                                         jobject thiz) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "connect");
     if (_peerManager) BRPeerManagerConnect(_peerManager);
 }
@@ -325,7 +325,7 @@ JNIEXPORT void JNICALL Java_com_breadwallet_wallet_BRPeerManager_connect(JNIEnv 
 //Call multiple times with all the blocks from the DB
 JNIEXPORT void JNICALL
 Java_com_breadwallet_wallet_BRPeerManager_putBlock(JNIEnv *env, jobject thiz, jbyteArray block,
-        int blockHeight) {
+                                                   int blockHeight) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "putBlock");
 
     if (!_blocks) {
@@ -348,7 +348,7 @@ Java_com_breadwallet_wallet_BRPeerManager_putBlock(JNIEnv *env, jobject thiz, jb
 
 JNIEXPORT void JNICALL
 Java_com_breadwallet_wallet_BRPeerManager_createBlockArrayWithCount(JNIEnv *env, jobject thiz,
-        size_t blockCount) {
+                                                                    size_t blockCount) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ",
                         "block array created with count: %zu", blockCount);
     _blocks = calloc(blockCount, sizeof(*_blocks));
@@ -359,7 +359,7 @@ Java_com_breadwallet_wallet_BRPeerManager_createBlockArrayWithCount(JNIEnv *env,
 //Call multiple times with all the peers from the DB
 JNIEXPORT void JNICALL
 Java_com_breadwallet_wallet_BRPeerManager_putPeer(JNIEnv *env, jobject thiz, jbyteArray peerAddress,
-        jbyteArray peerPort, jbyteArray peerTimeStamp) {
+                                                  jbyteArray peerPort, jbyteArray peerTimeStamp) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "putPeer");
 
     if (!_peers) {
@@ -382,7 +382,7 @@ Java_com_breadwallet_wallet_BRPeerManager_putPeer(JNIEnv *env, jobject thiz, jby
 
 JNIEXPORT void JNICALL
 Java_com_breadwallet_wallet_BRPeerManager_createPeerArrayWithCount(JNIEnv *env, jobject thiz,
-        size_t peerCount) {
+                                                                   size_t peerCount) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "peer array created with count: %zu",
                         peerCount);
     _peers = calloc(peerCount, sizeof(BRPeer));
@@ -399,15 +399,15 @@ Java_com_breadwallet_wallet_BRPeerManager_syncProgress(JNIEnv *env, jobject thiz
 }
 
 JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_getCurrentBlockHeight(JNIEnv *env,
-        jobject thiz) {
+                                                                                       jobject thiz) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "getCurrentBlockHeight");
     if (!_peerManager) return 0;
     return (jint) BRPeerManagerLastBlockHeight(_peerManager);
 }
 
 JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_getRelayCount(JNIEnv *env,
-        jobject thiz,
-        jbyteArray txHash) {
+                                                                               jobject thiz,
+                                                                               jbyteArray txHash) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "getCurrentBlockHeight");
     if (!_peerManager) return 0;
     jbyte *byteTxHash = (*env)->GetByteArrayElements(env, txHash, 0);
@@ -417,7 +417,7 @@ JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_getRelayCount(J
 }
 
 JNIEXPORT jboolean JNICALL Java_com_breadwallet_wallet_BRPeerManager_isCreated(JNIEnv *env,
-        jobject obj) {
+                                                                               jobject obj) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "peerManager isCreated %s",
                         _peerManager ? "yes" : "no");
     return (jboolean) ((_peerManager) ? JNI_TRUE : JNI_FALSE);
@@ -425,7 +425,7 @@ JNIEXPORT jboolean JNICALL Java_com_breadwallet_wallet_BRPeerManager_isCreated(J
 
 //0 = disconnected, 1 = connecting, 2 = connected, -1 = _peerManager is null, -2 = something went wrong.
 JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_connectionStatus(JNIEnv *env,
-        jobject obj) {
+                                                                                  jobject obj) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "isConnected");
     if (!_peerManager) return -1;
     BRPeerStatus status = BRPeerManagerConnectStatus(_peerManager);
@@ -437,21 +437,21 @@ JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_connectionStatu
 }
 
 JNIEXPORT jint JNICALL Java_com_breadwallet_wallet_BRPeerManager_getEstimatedBlockHeight(
-    JNIEnv *env, jobject thiz) {
+        JNIEnv *env, jobject thiz) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "getEstimatedBlockHeight");
     if (!_peerManager || !_wallet) return 0;
     return (jint) BRPeerManagerEstimatedBlockHeight(_peerManager);
 }
 
 JNIEXPORT jlong JNICALL Java_com_breadwallet_wallet_BRPeerManager_getLastBlockTimestamp(
-    JNIEnv *env, jobject thiz) {
+        JNIEnv *env, jobject thiz) {
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "getLastBlockTimestamp");
     if (!_peerManager || !_wallet) return 0;
     return (jint) BRPeerManagerLastBlockTimestamp(_peerManager);
 }
 
 JNIEXPORT jstring JNICALL Java_com_breadwallet_wallet_BRPeerManager_getCurrentPeerName(
-    JNIEnv *env, jobject thiz) {
+        JNIEnv *env, jobject thiz) {
 //    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getEstimatedBlockHeight");
     if (!_peerManager || !_wallet) return 0;
 
@@ -459,7 +459,7 @@ JNIEXPORT jstring JNICALL Java_com_breadwallet_wallet_BRPeerManager_getCurrentPe
 }
 
 JNIEXPORT jboolean JNICALL Java_com_breadwallet_wallet_BRPeerManager_setFixedPeer(
-    JNIEnv *env, jobject thiz, jstring node, jint port) {
+        JNIEnv *env, jobject thiz, jstring node, jint port) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "updateFixedPeer");
     if (!_peerManager) return JNI_FALSE;
     const char *host = (*env)->GetStringUTFChars(env, node, NULL);
@@ -482,7 +482,7 @@ JNIEXPORT jboolean JNICALL Java_com_breadwallet_wallet_BRPeerManager_setFixedPee
 }
 
 JNIEXPORT void JNICALL Java_com_breadwallet_wallet_BRPeerManager_peerManagerFreeEverything(
-    JNIEnv *env, jobject thiz) {
+        JNIEnv *env, jobject thiz) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "peerManagerFreeEverything");
 
     if (_peerManager) {
