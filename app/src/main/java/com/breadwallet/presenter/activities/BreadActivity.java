@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.breadwallet.R;
-import com.breadwallet.presenter.activities.settings.DisplayCurrencyActivity;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.customviews.BRSearchBar;
@@ -476,7 +475,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
                 //current amount in satoshis
                 final BigDecimal amount = new BigDecimal(BRSharedPrefs.getCatchedBalance(BreadActivity.this));
-                final BigDecimal oneBTC = new BigDecimal(BRConstants.ONE_BITCOIN);
+                final BigDecimal oneBTC = new BigDecimal(ONE_BITCOIN);
 
                 //amount in BTC units
                 BigDecimal btcAmount = BRExchange.getBitcoinForSatoshis(BreadActivity.this, amount);
