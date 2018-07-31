@@ -824,6 +824,7 @@ public class FragmentSend extends Fragment {
         alertDialog.setMessage(getString(R.string.FeeSelector_customBody));
 
         final EditText input = new EditText(getActivity());
+        input.setHint(getString(R.string.FeeSelector_customHint));
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
@@ -849,7 +850,7 @@ public class FragmentSend extends Fragment {
 
         customDialog = alertDialog.show();
 
-                //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
+        //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
         customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
