@@ -849,7 +849,7 @@ public class FragmentSend extends Fragment {
 
         customDialog = alertDialog.show();
 
-        //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
+                //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
         customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -875,7 +875,7 @@ public class FragmentSend extends Fragment {
                             input.setText("");
                             input.setCursorVisible(true);
                         }
-                    }, 1500);
+                    }, 2000);
                 }
             }
         });
