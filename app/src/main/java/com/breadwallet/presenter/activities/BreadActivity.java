@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.settings.DisplayCurrencyActivity;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.customviews.BRSearchBar;
@@ -53,6 +54,7 @@ import static com.breadwallet.presenter.activities.ReEnterPinActivity.reEnterPin
 import static com.breadwallet.presenter.activities.SetPinActivity.introSetPitActivity;
 import static com.breadwallet.tools.animation.BRAnimator.t1Size;
 import static com.breadwallet.tools.animation.BRAnimator.t2Size;
+import static com.breadwallet.tools.util.BRConstants.ONE_BITCOIN;
 import static com.breadwallet.tools.util.BRConstants.PLATFORM_ON;
 
 /**
@@ -111,6 +113,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     private ImageButton searchIcon;
     public ViewFlipper barFlipper;
     private BRSearchBar searchBar;
+    private TextView btcPrice;
     //    private boolean isSwapped;
     private ConstraintLayout toolBarConstraintLayout;
     private String savedFragmentTag;
@@ -402,6 +405,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         toolbarLayout = (LinearLayout) findViewById(R.id.toolbar_layout);
 //        syncingLayout = (ConstraintLayout) findViewById(R.id.syncing_layout);
 //        recyclerLayout = (LinearLayout) findViewById(R.id.recycler_layout);
+        btcPrice = (TextView) findViewById(R.id.btc_price);
         searchIcon = (ImageButton) findViewById(R.id.search_icon);
         barFlipper = (ViewFlipper) findViewById(R.id.tool_bar_flipper);
         searchBar = (BRSearchBar) findViewById(R.id.search_bar);
@@ -472,6 +476,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
                 //current amount in satoshis
                 final BigDecimal amount = new BigDecimal(BRSharedPrefs.getCatchedBalance(BreadActivity.this));
+                final BigDecimal oneBTC = new BigDecimal(BRConstants.ONE_BITCOIN);
 
                 //amount in BTC units
                 BigDecimal btcAmount = BRExchange.getBitcoinForSatoshis(BreadActivity.this, amount);
@@ -480,12 +485,17 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
                 //amount in currency units
                 BigDecimal curAmount = BRExchange.getAmountFromSatoshis(BreadActivity.this, iso, amount);
                 final String formattedCurAmount = BRCurrency.getFormattedCurrencyString(BreadActivity.this, iso, curAmount);
+
+                //amount per BTC
+                BigDecimal priceAmount = BRExchange.getAmountFromSatoshis(BreadActivity.this, iso, oneBTC);
+                final String formattedBTCPrice = BRCurrency.getFormattedCurrencyString(BreadActivity.this, iso, priceAmount);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         primaryPrice.setText(formattedBTCAmount);
                         secondaryPrice.setText(String.format("%s", formattedCurAmount));
-
+                        btcPrice.setText(String.format("1 BTC = %s", formattedBTCPrice));
                     }
                 });
                 TxManager.getInstance().updateTxList(BreadActivity.this);
