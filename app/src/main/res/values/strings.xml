@@ -174,6 +174,14 @@
   <string name="FeeSelector.normal">Normal</string>
   <!-- High title on fee slider -->
   <string name="FeeSelector.high">High</string>
+  <!-- Custom Fee title -->
+  <string name="FeeSelector.customFee">Custom Fee</string>
+  <!-- Custom Fee warning -->
+  <string name="FeeSelector.customBody">Setting custom Fee is not recommended. If the Fee is too low, the transaction may never get confirmed.</string>
+  <!-- Custom Fee error message -->
+  <string name="FeeSelector.customError">Fee is too high. Maximum fee is 1200 sat/byte.</string>
+  <!-- Custom Fee sat/byte hint -->
+  <string name="FeeSelector.customHint">sat/byte</string>
   <!-- Fee Selector title -->
   <string name="FeeSelector.title">Processing Speed</string>
   <!-- Checking private key balance progress view text -->

@@ -127,6 +127,9 @@ public class BRConstants {
     public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_EVEN;
     public static final boolean WAL = true;
 
+    public static final long BYTE_SHIFT = 1000;
+    public static final long FEE_LIMIT = 1200000;
+
     /**
      * Support Center article ids.
      */

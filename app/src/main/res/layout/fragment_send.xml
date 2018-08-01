@@ -384,6 +384,23 @@
                 android:thumb="@drawable/seekbar_thumb"
                 android:thumbTint="@color/white"/>
 
+            <View
+                android:id="@+id/separator6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_border"
+                />
+
+            <com.breadwallet.presenter.customviews.BRButton
+                android:id="@+id/custom_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:text="@string/FeeSelector.customFee"
+                android:textColor="@color/gray_text_tint"
+                android:textSize="@dimen/paragraph"
+                />
+
 
         </com.breadwallet.presenter.customviews.BRLinearLayoutWithCaret>
 
@@ -419,7 +436,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="40dp">
 
             <com.breadwallet.presenter.customviews.BREdit
                 android:id="@+id/comment_edit"
@@ -431,7 +448,8 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/Send.descriptionLabel"
                 android:textColorHint="@color/gray_text_tint"
-                android:textSize="@dimen/sub_header"
+                android:textSize="@dimen/paragraph"
+                android:textColor="@color/white"
                 android:inputType="textPersonName"
                 android:maxLength="250"
                 />
