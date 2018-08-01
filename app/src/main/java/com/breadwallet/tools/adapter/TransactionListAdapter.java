@@ -262,6 +262,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         convertView.arrowIcon.setImageResource(received ? R.drawable.arrow_down_bold_circle : R.drawable.arrow_up_bold_circle);
         convertView.mainLayout.setBackgroundResource(getResourceByPos(position));
         convertView.sentReceived.setText(received ? mContext.getString(R.string.TransactionDetails_received, "") : mContext.getString(R.string.TransactionDetails_sent, ""));
+        convertView.sentReceived.setTextColor(received ? mContext.getColor(R.color.logo_gradient_start) : mContext.getColor(R.color.gray_text_tint));
         convertView.toFrom.setText(received ? String.format(mContext.getString(R.string.TransactionDetails_from), "") : String.format(mContext.getString(R.string.TransactionDetails_to), ""));
 //        final String addr = position == 1? "1HB5XMLmzFVj8ALj6mfBsbifRoD4miY36v" : "35SwXe97aPRUsoaUTH1Dr3SB7JptH39pDZ"; //testing
         final String addr = item.getTo()[0];
@@ -341,6 +342,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         boolean isBTCPreferred = BRSharedPrefs.getPreferredBTC(mContext);
         String iso = isBTCPreferred ? "BTC" : BRSharedPrefs.getIso(mContext);
         convertView.amount.setText(BRCurrency.getFormattedCurrencyString(mContext, iso, BRExchange.getAmountFromSatoshis(mContext, iso, new BigDecimal(satoshisAmount))));
+        convertView.amount.setTextColor(received ? mContext.getColor(R.color.logo_gradient_start) : mContext.getColor(R.color.gray_text_tint));
 
         //if it's 0 we use the current time.
         long timeStamp = item.getTimeStamp() == 0 ? System.currentTimeMillis() : item.getTimeStamp() * 1000;

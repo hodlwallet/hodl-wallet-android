@@ -1,10 +1,13 @@
 package com.breadwallet.presenter.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,6 +19,8 @@ import android.support.transition.TransitionManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +59,9 @@ import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.BRExchange;
 import com.breadwallet.tools.util.BRCurrency;
+import com.breadwallet.tools.util.TrustedNode;
 import com.breadwallet.tools.util.Utils;
+import com.breadwallet.wallet.BRPeerManager;
 import com.breadwallet.wallet.BRWalletManager;
 
 import java.math.BigDecimal;
@@ -113,6 +120,8 @@ public class FragmentSend extends Fragment {
     private TextView feeText;
     private TextView currentTime;
     private BRLinearLayoutWithCaret feeLayout;
+    private Button customFee;
+    private AlertDialog customDialog;
     private boolean feeButtonsShown = true;
     public static boolean isEconomyFee;
     private boolean amountLabelOn = true;
@@ -152,6 +161,7 @@ public class FragmentSend extends Fragment {
         currentTime = (TextView) rootView.findViewById(R.id.current_time);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
+        customFee = (Button) rootView.findViewById(R.id.custom_fee);
 
         amountBuilder = new StringBuilder(0);
         showBalance(balanceShown);
@@ -202,6 +212,7 @@ public class FragmentSend extends Fragment {
                     amountLabelOn = false;
                     amountEdit.setHint("0");
                     amountEdit.setTextSize(24);
+                    amountEdit.setHintTextColor(getContext().getColor(R.color.logo_gradient_start));
                     // balanceText.setVisibility(View.VISIBLE);
                     isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
                     isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
@@ -458,7 +469,7 @@ public class FragmentSend extends Fragment {
 
         feeSlider.setMax(500);
         final int divisor = feeSlider.getMax() / 4;
-        int economy = (int)(BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L);
+        long economy = BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L;
         feeText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
         currentTime.setText(BRSharedPrefs.getEconomyFeeTimeText(getContext()));
 
@@ -505,8 +516,16 @@ public class FragmentSend extends Fragment {
                         break;
                 }
                 BRWalletManager.getInstance().setFeePerKb(fee, false);
-                feeText.setText(String.format(getString(R.string.FeeSelector_satByte), (int) (fee / 1000L)));
+                feeText.setText(String.format(getString(R.string.FeeSelector_satByte), (fee / 1000L)));
                 updateText();
+            }
+        });
+
+        customFee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+                createDialog();
             }
         });
 
@@ -787,6 +806,80 @@ public class FragmentSend extends Fragment {
             }, 500);
 
         }
+    }
+
+    private void createDialog() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        final TextView customTitle = new TextView(getActivity());
+
+        customTitle.setGravity(Gravity.CENTER);
+        customTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        int pad32 = Utils.getPixelsFromDps(getActivity(), 32);
+        int pad16 = Utils.getPixelsFromDps(getActivity(), 16);
+        customTitle.setPadding(pad16, pad16, pad16, pad16);
+        customTitle.setText(getString(R.string.FeeSelector_customFee));
+        customTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        customTitle.setTypeface(null, Typeface.BOLD);
+        alertDialog.setCustomTitle(customTitle);
+        alertDialog.setMessage(getString(R.string.FeeSelector_customBody));
+
+        final EditText input = new EditText(getActivity());
+        input.setHint(getString(R.string.FeeSelector_customHint));
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        int pix = Utils.getPixelsFromDps(getActivity(), 24);
+
+        input.setPadding(pix, 0, pix, pix);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+
+        alertDialog.setNegativeButton(getString(R.string.Button_cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.setPositiveButton(getString(R.string.Button_ok),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        customDialog = alertDialog.show();
+
+        //Overriding the handler immediately after show is probably a better approach than OnShowListener as described below
+        customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = input.getText().toString();
+                long fee = Long.parseLong(str) * BRConstants.BYTE_SHIFT;
+                if (fee < BRConstants.FEE_LIMIT) {
+                    BRWalletManager.getInstance().setFeePerKb(fee, false);
+                    if (amountBuilder.toString().isEmpty()) {
+                        feeText.setText(String.format(getString(R.string.FeeSelector_satByte), (fee / 1000L)));
+                    } else {
+                        updateText();
+                    }
+                    customDialog.dismiss();
+                } else {
+                    customTitle.setText(getString(R.string.Alert_error));
+                    customDialog.setMessage(getString(R.string.FeeSelector_customError));
+                    input.setCursorVisible(false);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            customTitle.setText(getString(R.string.FeeSelector_customFee));
+                            customDialog.setMessage(getString(R.string.FeeSelector_customBody));
+                            input.setText("");
+                            input.setCursorVisible(true);
+                        }
+                    }, 2000);
+                }
+            }
+        });
     }
 
 }
