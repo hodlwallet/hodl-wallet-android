@@ -116,8 +116,8 @@ public class FragmentRequestAmount extends Fragment {
         amountLayout = (RelativeLayout) rootView.findViewById(R.id.amount_layout);
         amountLayout.setVisibility(View.VISIBLE);
         keyboard = (BRKeyboard) rootView.findViewById(R.id.keyboard);
-        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_white_button);
-        keyboard.setBRKeyboardColor(R.color.white);
+        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_dark_button);
+        keyboard.setBRKeyboardColor(R.color.gray_background);
         isoText = (TextView) rootView.findViewById(R.id.iso_text);
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         amountBuilder = new StringBuilder(0);
@@ -150,6 +150,10 @@ public class FragmentRequestAmount extends Fragment {
 
         mTitle.setText(getString(R.string.Receive_request));
         setListeners();
+
+        amountEdit.setTextColor(getContext().getColor(R.color.logo_gradient_start));
+        amountEdit.setHintTextColor(getContext().getColor(R.color.logo_gradient_start));
+        isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
 
         signalLayout.removeView(shareButtonsLayout);
         signalLayout.removeView(copiedLayout);
@@ -464,7 +468,6 @@ public class FragmentRequestAmount extends Fragment {
     private void showShareButtons(boolean b) {
         if (!b) {
             signalLayout.removeView(shareButtonsLayout);
-            shareButton.setType(2);
         } else {
             signalLayout.addView(shareButtonsLayout, signalLayout.getChildCount() - 1);
             showCopiedLayout(false);
