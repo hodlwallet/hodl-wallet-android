@@ -112,7 +112,7 @@ public class LoginActivity extends BRActivity {
                 handleClick(key);
             }
         });
-        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_trans_button);
+        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_gray_button);
         keyboard.setBRButtonTextColor(R.color.white);
         keyboard.setShowDot(false);
         keyboard.setBreadground(getDrawable(R.drawable.receive_layout));
