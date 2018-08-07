@@ -62,6 +62,8 @@ add_library( # Specifies the name of the library.
              src/main/jni/breadwallet-core/BRTransaction.h
              src/main/jni/breadwallet-core/BRWallet.c
              src/main/jni/breadwallet-core/BRWallet.h
+             src/main/jni/breadwallet-core/BRTest.c
+             src/main/jni/breadwallet-core/BRTest.h
 
              src/main/jni/transition/core.c
              src/main/jni/transition/core.h
@@ -71,6 +73,8 @@ add_library( # Specifies the name of the library.
              src/main/jni/transition/JNIBIP32Sequence.h
              src/main/jni/transition/JNIKey.c
              src/main/jni/transition/JNIKey.h
+             src/main/jni/transition/JNITest.c
+             //src/main/jni/transition/JNITest.h
              src/main/jni/transition/PeerManager.c
              src/main/jni/transition/PeerManager.h
              src/main/jni/transition/wallet.c
