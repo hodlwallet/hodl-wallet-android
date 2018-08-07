@@ -74,7 +74,7 @@ add_library( # Specifies the name of the library.
              src/main/jni/transition/JNIKey.c
              src/main/jni/transition/JNIKey.h
              src/main/jni/transition/JNITest.c
-             //src/main/jni/transition/JNITest.h
+             src/main/jni/transition/JNITest.h
              src/main/jni/transition/PeerManager.c
              src/main/jni/transition/PeerManager.h
              src/main/jni/transition/wallet.c
