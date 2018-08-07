@@ -141,8 +141,8 @@ public class FragmentSend extends Fragment {
         backgroundLayout = (ScrollView) rootView.findViewById(R.id.background_layout);
         signalLayout = (LinearLayout) rootView.findViewById(R.id.signal_layout);
         keyboard = (BRKeyboard) rootView.findViewById(R.id.keyboard);
-        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_white_button);
-        keyboard.setBRKeyboardColor(R.color.white);
+        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_dark_button);
+        keyboard.setBRKeyboardColor(R.color.gray_background);
         isoText = (TextView) rootView.findViewById(R.id.iso_text);
         addressEdit = (EditText) rootView.findViewById(R.id.address_edit);
         scan = (Button) rootView.findViewById(R.id.scan);
