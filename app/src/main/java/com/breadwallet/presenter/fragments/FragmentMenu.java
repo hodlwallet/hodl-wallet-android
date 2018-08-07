@@ -35,6 +35,7 @@ import com.breadwallet.tools.animation.SlideDetector;
 import com.breadwallet.BuildConfig;
 import com.platform.APIClient;
 import com.platform.HTTPServer;
+import com.jniwrappers.BRTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,10 @@ public class FragmentMenu extends Fragment {
                 @Override
                 public void onClick(View v) {
                     // TODO: HODL Run test code and show a dialog if fail
+                    BRTest brTest = new BRTest();
+
+                    brTest.BRCoreTests();
+
                     Log.d("BRCoreTest","Starting BRcore tests...");
                 }
             }));

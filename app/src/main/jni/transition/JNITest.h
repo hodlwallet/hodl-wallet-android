@@ -12,7 +12,7 @@ extern "C" {
 
 #include <jni.h>
 
-JNIEXPORT jint JNICALL Java_com_jniwrappers_BRTest_BRCoreTests();
+JNIEXPORT jboolean JNICALL Java_com_jniwrappers_BRTest_BRCoreTests();
 
 #ifdef __cplusplus
 }
