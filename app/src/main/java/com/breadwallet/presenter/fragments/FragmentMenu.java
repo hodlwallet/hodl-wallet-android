@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ import com.breadwallet.presenter.entities.BRMenuItem;
 import com.breadwallet.presenter.interfaces.BROnSignalCompletion;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.SlideDetector;
+import com.breadwallet.BuildConfig;
 import com.platform.APIClient;
 import com.platform.HTTPServer;
 
@@ -95,6 +97,19 @@ public class FragmentMenu extends Fragment {
         close = (ImageButton) rootView.findViewById(R.id.close_button);
 
         itemList = new ArrayList<>();
+
+        // Show test in menu for DEBUG builds only!
+        boolean testEnabled = BuildConfig.DEBUG;
+
+        if (testEnabled)
+            // Adds the button that calls the tests for BRCore. I suppose we can share an icon with settings for test ;-)
+            itemList.add(new BRMenuItem(getString(R.string.MenuButton_testBRCore), R.drawable.ic_settings, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: HODL Run test code and show a dialog if fail
+                    Log.d("BRCoreTest","Starting BRcore tests...");
+                }
+            }));
 
         itemList.add(new BRMenuItem(getString(R.string.MenuButton_security), R.drawable.ic_shield, new View.OnClickListener() {
             @Override

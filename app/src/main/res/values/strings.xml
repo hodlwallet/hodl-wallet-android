@@ -250,6 +250,8 @@
   <string name="ManageWallet.title">Manage Wallet</string>
   <!-- Buy bitcoin title -->
   <string name="MenuButton.buy">Buy Bitcoin</string>
+  <!-- Test BRCore -->
+  <string name="MenuButton.testBRCore">Test BRCore</string>
   <!-- Menu button title -->
   <string name="MenuButton.lock">Lock Wallet</string>
   <!-- Menu button title -->
