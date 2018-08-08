@@ -681,7 +681,7 @@
   <!-- Update PIN caption text -->
   <string name="UpdatePin.caption">Remember this PIN. If you forget it, you won\'t be able to access your bitcoin.</string>
   <!-- PIN creation info. -->
-  <string name="UpdatePin.createInstruction">Your PIN will be used to unlock your BRD and send money.</string>
+  <string name="UpdatePin.createInstruction">Your PIN will be used to unlock your wallet and send money.</string>
   <!-- Update PIN title -->
   <string name="UpdatePin.createTitle">Set PIN</string>
   <!-- Update PIN title -->
