@@ -121,15 +121,15 @@ public class FragmentSupport extends Fragment {
 
         if (articleId != null && !articleId.isEmpty()) {
             if (Locale.getDefault().getLanguage() == Locale.US.getLanguage())
-                theUrl = theUrl + "/knowledge/" + articleId;
+                theUrl = theUrl + "/knowledge/" + articleId + "#nonav";
             else
-                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge/" + articleId;
+                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge/" + articleId + "#nonav";
         }
         else {
             if (Locale.getDefault().getLanguage() == Locale.US.getLanguage())
-                theUrl = theUrl + "/knowledge/";
+                theUrl = theUrl + "/knowledge#nonav";
             else
-                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge/";
+                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge#nonav";
         }
 
 
