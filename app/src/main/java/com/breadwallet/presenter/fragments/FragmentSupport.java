@@ -29,6 +29,7 @@ import com.platform.HTTPServer;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Locale;
 
 import static com.platform.HTTPServer.URL_SUPPORT;
 
@@ -118,8 +119,20 @@ public class FragmentSupport extends Fragment {
         webSettings.setDomStorageEnabled(true);
         webSettings.setJavaScriptEnabled(true);
 
-        if (articleId != null && !articleId.isEmpty())
-            theUrl = theUrl + "/article?slug=" + articleId;
+        if (articleId != null && !articleId.isEmpty()) {
+            if (Locale.getDefault().getLanguage() == Locale.US.getLanguage())
+                theUrl = theUrl + "/knowledge/" + articleId;
+            else
+                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge/" + articleId;
+        }
+        else {
+            if (Locale.getDefault().getLanguage() == Locale.US.getLanguage())
+                theUrl = theUrl + "/knowledge/";
+            else
+                theUrl = theUrl + "/" + Locale.getDefault().getLanguage() + "/knowledge/";
+        }
+
+
 
         Log.d(TAG, "onCreate: theUrl: " + theUrl + ", articleId: " + articleId);
         webView.loadUrl(theUrl);
