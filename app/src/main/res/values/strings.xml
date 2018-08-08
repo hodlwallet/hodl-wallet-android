@@ -25,7 +25,7 @@
   <!-- Default wallet name -->
   <string name="AccountHeader.defaultWalletName">My BRD</string>
   <!-- Third party keyboard warning -->
-  <string name="Alert.customKeyboard.android">It looks like you are using a third-party keyboard, which can record what you type and steal your Paper Key. Please switch to the default Android keyboard for extra protection.</string>
+  <string name="Alert.customKeyboard.android">It looks like you are using a third-party keyboard, which can record what you type and steal your Backup Recover Key. Please switch to the default Android keyboard for extra protection.</string>
   <!-- Error alert title -->
   <string name="Alert.error">Error</string>
   <!-- Keystore error -->
@@ -43,7 +43,7 @@
   <!-- Addresses Copied Alert sub header -->
   <string name="Alerts.copiedAddressesSubheader">All wallet addresses successfully copied.</string>
   <!-- Alert Header Label (the paper key was set) -->
-  <string name="Alerts.paperKeySet">Paper Key Set</string>
+  <string name="Alerts.paperKeySet">Backup Recovery Key Set</string>
   <!-- Alert Subheader label (playfully positive) -->
   <string name="Alerts.paperKeySetSubheader">Awesome!</string>
   <!-- Alert Header label (the PIN was set) -->
@@ -133,7 +133,7 @@
   <!-- Total Cost: ($5.00) -->
   <string name="Confirmation.totalLabel">Total Cost:</string>
   <!-- Confirm paper phrase view label. -->
-  <string name="ConfirmPaperPhrase.label">To make sure everything was written down correctly, please enter the following words from your paper key.</string>
+  <string name="ConfirmPaperPhrase.label">To make sure everything was written down correctly, please enter the following words from your backup recovery key.</string>
   <!-- Word label eg. Word #1, Word #2 -->
   <string name="ConfirmPaperPhrase.word">Word #%1$s</string>
   <!-- Bitcoin denomination picker label -->
@@ -309,7 +309,7 @@
   <!-- Device encryption prompt title -->
   <string name="Prompts.NoScreenLock.title.android">Screen lock disabled</string>
   <!-- Warning about paper key. -->
-  <string name="Prompts.PaperKey.body">Your Paper Key must be saved in case you ever lose or change your phone. Tap here to continue.</string>
+  <string name="Prompts.PaperKey.body">Your Backup Recovery Key must be saved in case you ever lose or change your phone. Tap here to continue.</string>
   <!-- An action is required (You must do this action). -->
   <string name="Prompts.PaperKey.title">Action Required</string>
   <!-- Transaction rejected prompt body -->
@@ -363,11 +363,11 @@
   <!-- Reset PIN with paper key: header -->
   <string name="RecoverWallet.header_reset_pin">Reset PIN</string>
   <!-- Enter paper key instruction -->
-  <string name="RecoverWallet.instruction">Enter Paper Key</string>
+  <string name="RecoverWallet.instruction">Enter Backup Recovery Key</string>
   <!-- Recover wallet intro -->
-  <string name="RecoverWallet.intro">Recover your BRD with your paper key.</string>
+  <string name="RecoverWallet.intro">Recover your wallet with your backup recovery key.</string>
   <!-- Invalid paper key message -->
-  <string name="RecoverWallet.invalid">The paper key you entered is invalid. Please double-check each word and try again.</string>
+  <string name="RecoverWallet.invalid">The backup recovery key you entered is invalid. Please double-check each word and try again.</string>
   <!-- Previous button accessibility label -->
   <string name="RecoverWallet.leftArrow">Left Arrow</string>
   <!-- Next button label -->
@@ -377,9 +377,9 @@
   <!-- Next button accessibility label -->
   <string name="RecoverWallet.rightArrow">Right Arrow</string>
   <!-- Recover wallet sub-header -->
-  <string name="RecoverWallet.subheader">Enter the paper key for the wallet you want to recover.</string>
+  <string name="RecoverWallet.subheader">Enter the backup recovery key for the wallet you want to recover.</string>
   <!-- Reset PIN with paper key: sub-header -->
-  <string name="RecoverWallet.subheader_reset_pin">To reset your PIN, enter the words from your paper key into the boxes below.</string>
+  <string name="RecoverWallet.subheader_reset_pin">To reset your PIN, enter the words from your backup recovery key into the boxes below.</string>
   <!-- No amount entered error message. -->
   <string name="RequestAnAmount.noAmount">Please enter an amount first.</string>
   <!-- Request a specific amount of bitcoin -->
@@ -421,7 +421,7 @@
   <!-- Paper Key button description -->
   <string name="SecurityCenter.paperKeyDescription">The only way to access your bitcoin if you lose or upgrade your phone.</string>
   <!-- Paper Key button title -->
-  <string name="SecurityCenter.paperKeyTitle">Paper Key</string>
+  <string name="SecurityCenter.paperKeyTitle">Backup Recovery Key</string>
   <!-- PIN button description -->
   <string name="SecurityCenter.pinDescription">Protects your BRD from unauthorized users.</string>
   <!-- PIN button title -->
@@ -533,13 +533,13 @@
   <!-- Share data switch label. -->
   <string name="ShareData.toggleLabel">Share Anonymous Data?</string>
   <!-- button label -->
-  <string name="StartPaperPhrase.againButtonTitle">Write Down Paper Key Again</string>
+  <string name="StartPaperPhrase.againButtonTitle">Write Down Backup Recovery Again</string>
   <!-- Paper key explanation text. -->
-  <string name="StartPaperPhrase.body">Your paper key is the only way to restore your BRD if your phone is lost, stolen, broken, or upgraded.\n\nWe will show you a list of words to write down on a piece of paper and keep safe.</string>
+  <string name="StartPaperPhrase.body">Your backup recovery key is the only way to restore your wallet if your phone is lost, stolen, broken, or upgraded.\n\nWe will show you a list of words to write down on a piece of paper and keep safe.</string>
   <!-- button label -->
-  <string name="StartPaperPhrase.buttonTitle">Write Down Paper Key</string>
+  <string name="StartPaperPhrase.buttonTitle">Write Down Backup Recovery Key</string>
   <!-- Argument is date -->
-  <string name="StartPaperPhrase.date">You last wrote down your paper key on %1$s</string>
+  <string name="StartPaperPhrase.date">You last wrote down your backup recovery key on %1$s</string>
   <!-- Start view message -->
   <string name="StartViewController.message">The easy and secure way to use bitcoin.</string>
   <!-- Syncing view connectiong state header text -->
@@ -735,11 +735,11 @@
   <!-- Failed wipe wallet alert title -->
   <string name="WipeWallet.failedTitle">Failed</string>
   <!-- Enter phrase to wipe wallet instruction. -->
-  <string name="WipeWallet.instruction">To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet\'s Paper Key.</string>
+  <string name="WipeWallet.instruction">To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet\'s Backup Recovery Key.</string>
   <!-- Start wipe wallet view message -->
   <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different BRD wallet on this device.</string>
   <!-- Start wipe wallet view warning -->
-  <string name="WipeWallet.startWarning">Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key.</string>
+  <string name="WipeWallet.startWarning">Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Backup Recovery Key.</string>
   <!-- Wipe wallet navigation item title. -->
   <string name="WipeWallet.title">Start or Recover Another Wallet</string>
   <!-- Wipe wallet button title -->
