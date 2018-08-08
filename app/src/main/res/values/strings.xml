@@ -259,11 +259,11 @@
   <!-- Menu button title -->
   <string name="MenuButton.support">Support</string>
   <!-- button label -->
-  <string name="MenuViewController.createButton">Create New Wallet</string>
+  <string name="MenuViewController.createButton">CREATE NEW WALLET</string>
   <!-- Menu modal title -->
   <string name="MenuViewController.modalTitle">Menu</string>
   <!-- button label -->
-  <string name="MenuViewController.recoverButton">Recover Wallet</string>
+  <string name="MenuViewController.recoverButton">RECOVER WALLET</string>
   <!-- Switch to automatic mode button label -->
   <string name="NodeSelector.automaticButton">Switch to Automatic Mode</string>
   <!-- Node is connected label -->
