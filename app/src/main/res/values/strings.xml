@@ -359,7 +359,7 @@
   <!-- Done button text -->
   <string name="RecoverWallet.done">Done</string>
   <!-- Recover wallet header -->
-  <string name="RecoverWallet.header">Recover Wallet</string>
+  <string name="RecoverWallet.header">RECOVER WALLET</string>
   <!-- Reset PIN with paper key: header -->
   <string name="RecoverWallet.header_reset_pin">Reset PIN</string>
   <!-- Enter paper key instruction -->
