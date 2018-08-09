@@ -317,7 +317,7 @@
   <!-- Button on fingerprint prompt so the user can enter their PIN instead -->
   <string name="Prompts.TouchId.usePin.android">PIN</string>
   <!-- Upgrade PIN prompt body. -->
-  <string name="Prompts.UpgradePin.body">HODL er blevet opgraderet til at bruge en 6-cifret PIN. Tryk her for at opgradere.</string>
+  <string name="Prompts.UpgradePin.body">HODL Pung er blevet opgraderet til at bruge en 6-cifret PIN. Tryk her for at opgradere.</string>
   <!-- Upgrade PIN prompt title. -->
   <string name="Prompts.UpgradePin.title">Opgader PIN</string>
   <!-- Notifications will be added later but users can set their preferences now, which is why we specify "in the future". -->
@@ -379,7 +379,7 @@
   <!-- extimated time -->
   <string name="ReScan.body1">20-45 minutter</string>
   <!-- Syncing explanation -->
-  <string name="ReScan.body2">Hvis en transaktion vises som gennemført i bitcoin netværket, men ikke i dit HODL pung.</string>
+  <string name="ReScan.body2">Hvis en transaktion vises som gennemført i bitcoin netværket, men ikke i dit pung.</string>
   <!-- Syncing explanation -->
   <string name="ReScan.body3">Du modtager gentagne gange en fejlmeddelelse om at din transaktion er blevet afvist.</string>
   <!-- Start Sync button label -->
@@ -409,13 +409,13 @@
   <!-- Paper Key button title -->
   <string name="SecurityCenter.paperKeyTitle">Paper key</string>
   <!-- PIN button description -->
-  <string name="SecurityCenter.pinDescription">Beskytter dit HODL pung mod uberettigede brugere.</string>
+  <string name="SecurityCenter.pinDescription">Beskytter dit pung mod uberettigede brugere.</string>
   <!-- PIN button title -->
   <string name="SecurityCenter.pinTitle">6-cifret PIN</string>
   <!-- Security Center Title -->
   <string name="SecurityCenter.title">Sikkerhedscenter</string>
   <!-- Touch ID button description -->
-  <string name="SecurityCenter.touchIdDescription">Lås dit Break op og send penge op til en vis grænse.</string>
+  <string name="SecurityCenter.touchIdDescription">Lås dit pung op og send penge op til en vis grænse.</string>
   <!-- Touch ID button title -->
   <string name="SecurityCenter.touchIdTitle">Touch ID</string>
   <!-- Security center fingerprint authentication button -->
@@ -699,7 +699,7 @@
   <!-- Authorize transaction with touch id message -->
   <string name="VerifyPin.touchIdMessage">Godkend denne transaktion</string>
   <!-- 'No wallet' warning for watch app -->
-  <string name="Watch.noWalletWarning">Åben HODL iPhone appen for at konfigurere din pung.</string>
+  <string name="Watch.noWalletWarning">Åben HODL Pung iPhone appen for at konfigurere din pung.</string>
   <!-- Dismiss button label -->
   <string name="Webview.dismiss">Afvis</string>
   <!-- Webview loading error message -->
@@ -721,7 +721,7 @@
   <!-- Enter phrase to wipe wallet instruction. -->
   <string name="WipeWallet.instruction">Indtast denne wallets gendannelsessætning for at slette den og starte eller gendanne en anden. Din nuværende saldo forbliver med denne sætning.</string>
   <!-- Start wipe wallet view message -->
-  <string name="WipeWallet.startMessage">Påbegyndelse eller gendannelse af en anden tegnebog giver mulighed for at få adgang samt administrere en HODL tegnebog på denne enhed.</string>
+  <string name="WipeWallet.startMessage">Påbegyndelse eller gendannelse af en anden tegnebog giver mulighed for at få adgang samt administrere en tegnebog på denne enhed.</string>
   <!-- Start wipe wallet view warning -->
   <string name="WipeWallet.startWarning">Du vil ikke længere være i stand til at få adgang til din nuværende HODL tegnebog fra denne enhed. Saldoen vil forblive på frasen.</string>
   <!-- Wipe wallet navigation item title. -->
