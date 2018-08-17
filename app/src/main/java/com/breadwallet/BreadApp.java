@@ -14,7 +14,6 @@ import android.view.WindowManager;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.tools.listeners.SyncReceiver;
 import com.breadwallet.tools.util.Utils;
-import com.google.firebase.crash.FirebaseCrash;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,8 +74,6 @@ public class BreadApp extends Application {
         if (Utils.isEmulatorOrDebug(this)) {
 //            BRKeyStore.putFailCount(0, this);
             HOST = "precio.bitstop.co";
-            FirebaseCrash.setCrashCollectionEnabled(false);
-//            FirebaseCrash.report(new RuntimeException("test with new json file"));
         }
 
         if (!Utils.isEmulatorOrDebug(this) && IS_ALPHA)

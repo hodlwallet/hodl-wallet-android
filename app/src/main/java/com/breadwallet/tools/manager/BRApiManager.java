@@ -16,7 +16,6 @@ import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.wallet.BRWalletManager;
-import com.google.firebase.crash.FirebaseCrash;
 import com.platform.APIClient;
 
 import org.json.JSONArray;
@@ -227,27 +226,25 @@ public class BRApiManager {
             if (highFee != 0 && highFee < BRWalletManager.getInstance().maxFee()) {
                 BRSharedPrefs.putHighFeePerKb(app, highFee);
             } else {
-                FirebaseCrash.report(new NullPointerException("Fastest fee is weird:" + highFee));
+                Log.e(TAG, (new NullPointerException("Fastest fee is weird:" + highFee)).toString());
             }
             if (fee != 0 && fee < BRWalletManager.getInstance().maxFee()) {
                 BRSharedPrefs.putFeePerKb(app, fee);
                 BRWalletManager.getInstance().setFeePerKb(fee, isEconomyFee); //todo improve that logic
                 BRSharedPrefs.putFeeTime(app, System.currentTimeMillis()); //store the time of the last successful fee fetch
             } else {
-                FirebaseCrash.report(new NullPointerException("Fee is weird:" + fee));
+                Log.e(TAG, (new NullPointerException("Fee is weird:" + fee).toString()));
             }
             if (economyFee != 0 && economyFee < BRWalletManager.getInstance().maxFee()) {
                 BRSharedPrefs.putLowFeePerKb(app, economyFee);
             } else {
-                FirebaseCrash.report(new NullPointerException("Economy fee is weird:" + economyFee));
+                Log.e(TAG, (new NullPointerException("Economy fee is weird:" + economyFee).toString()));
             }
             BRSharedPrefs.putHighFeeTimeText(app, highFeeTime);
             BRSharedPrefs.putFeeTimeText(app, regularFeeTime);
             BRSharedPrefs.putEconomyFeeTimeText(app, economyFeeTime);
         } catch (JSONException e) {
             Log.e(TAG, "updateFeePerKb: FAILED: " + jsonString, e);
-            BRReportsManager.reportBug(e);
-            BRReportsManager.reportBug(new IllegalArgumentException("JSON ERR: " + jsonString));
         }
     }
 
