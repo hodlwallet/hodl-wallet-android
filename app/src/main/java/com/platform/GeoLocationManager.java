@@ -13,7 +13,6 @@ import android.util.Log;
 
 
 import com.breadwallet.BreadApp;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.util.Utils;
 
@@ -82,8 +81,7 @@ public class GeoLocationManager {
                 if (ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_FINE_LOCATION) !=
                         PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     RuntimeException ex = new RuntimeException("getOneTimeGeoLocation, can't happen");
-                    Log.e(TAG, "run: getOneTimeGeoLocation, can't happen");
-                    BRReportsManager.reportBug(ex);
+                    Log.e(TAG, ex.toString());
                     return;
                 }
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
@@ -106,8 +104,7 @@ public class GeoLocationManager {
             public void run() {
                 if (ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     RuntimeException ex = new RuntimeException("startGeoSocket, can't happen");
-                    Log.e(TAG, "run: startGeoSocket, can't happen");
-                    BRReportsManager.reportBug(ex);
+                    Log.e(TAG, ex.toString());
                     return;
                 }
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, socketLocationListener);
@@ -127,7 +124,6 @@ public class GeoLocationManager {
                 if (ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(app, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     Log.e(TAG, "stopGeoSocket, can't happen");
                     RuntimeException ex = new RuntimeException("stopGeoSocket, can't happen");
-                    BRReportsManager.reportBug(ex);
                     throw ex;
                 }
                 locationManager.removeUpdates(socketLocationListener);
@@ -206,7 +202,6 @@ public class GeoLocationManager {
                                     e.printStackTrace();
                                 }
                                 Log.e(TAG, "onLocationChanged: WARNING respStr is null or empty: " + jsonLocation);
-                                BRReportsManager.reportBug(new NullPointerException("onLocationChanged: " + jsonLocation));
 
                             }
                         } catch (Exception e) {

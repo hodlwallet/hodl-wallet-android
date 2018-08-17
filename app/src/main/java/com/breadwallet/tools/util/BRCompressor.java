@@ -1,6 +1,6 @@
 package com.breadwallet.tools.util;
 
-import com.breadwallet.tools.manager.BRReportsManager;
+import android.util.Log;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
@@ -46,7 +46,7 @@ public class BRCompressor {
             InputStream isr = new GZIPInputStream(new ByteArrayInputStream(compressed));
             return IOUtils.toByteArray(isr);
         } catch (IOException e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             e.printStackTrace();
         }
         return null;
@@ -79,7 +79,7 @@ public class BRCompressor {
             }
             compressedData = byteStream.toByteArray();
         } catch (Exception e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             e.printStackTrace();
         }
         return compressedData;

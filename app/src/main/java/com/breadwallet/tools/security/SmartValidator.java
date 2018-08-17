@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.util.Bip39Reader;
 import com.breadwallet.tools.util.TypesConverter;
@@ -66,7 +65,7 @@ public class SmartValidator {
         String[] words = list.toArray(new String[list.size()]);
         if (words.length % Bip39Reader.WORD_LIST_SIZE != 0) {
             Log.e(TAG, "isPaperKeyValid: " + "The list size should divide by " + Bip39Reader.WORD_LIST_SIZE);
-            BRReportsManager.reportBug(new IllegalArgumentException("words.length is not dividable by " + Bip39Reader.WORD_LIST_SIZE), true);
+            throw new IllegalArgumentException("words.length is not dividable by " + Bip39Reader.WORD_LIST_SIZE);
         }
         return BRWalletManager.getInstance().validateRecoveryPhrase(words, paperKey);
     }
@@ -84,7 +83,7 @@ public class SmartValidator {
             pubKeyFromKeyStore = BRKeyStore.getMasterPublicKey(activity);
         } catch (Exception e) {
             e.printStackTrace();
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
         }
         Arrays.fill(bytePhrase, (byte) 0);
         return Arrays.equals(pubKey, pubKeyFromKeyStore);
