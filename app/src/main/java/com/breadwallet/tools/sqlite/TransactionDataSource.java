@@ -34,7 +34,6 @@ import android.util.Log;
 
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.entities.BRTransactionEntity;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.util.BRConstants;
 
 import java.util.ArrayList;
@@ -109,7 +108,6 @@ public class TransactionDataSource implements BRDataSourceInterface {
             }
             return transactionEntity1;
         } catch (Exception ex) {
-            BRReportsManager.reportBug(ex);
             Log.e(TAG, "Error inserting into SQLite", ex);
             //Error in between database transaction
         } finally {

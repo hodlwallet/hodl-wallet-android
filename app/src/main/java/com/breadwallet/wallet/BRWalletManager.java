@@ -42,7 +42,6 @@ import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.animation.SpringAnimator;
 import com.breadwallet.tools.manager.BREventManager;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.qrcode.QRUtils;
 import com.breadwallet.tools.security.BRKeyStore;
@@ -155,20 +154,17 @@ public class BRWalletManager {
         words = list.toArray(new String[list.size()]);
         final byte[] randomSeed = sr.generateSeed(16);
         if (words.length != 2048) {
-            BRReportsManager.reportBug(new IllegalArgumentException("the list is wrong, size: " + words.length), true);
-            return false;
+            throw new IllegalArgumentException("the list is wrong, size: " + words.length);
         }
         if (randomSeed.length != 16)
             throw new NullPointerException("failed to create the seed, seed length is not 128: " + randomSeed.length);
         byte[] strPhrase = encodeSeed(randomSeed, words);
         if (strPhrase == null || strPhrase.length == 0) {
-            BRReportsManager.reportBug(new NullPointerException("failed to encodeSeed"), true);
-            return false;
+            throw new NullPointerException("failed to encodeSeed");
         }
         String[] splitPhrase = new String(strPhrase).split(" ");
         if (splitPhrase.length != 12) {
-            BRReportsManager.reportBug(new NullPointerException("phrase does not have 12 words:" + splitPhrase.length + ", lang: " + languageCode), true);
-            return false;
+            throw new NullPointerException("phrase does not have 12 words:" + splitPhrase.length + ", lang: " + languageCode);
         }
         boolean success = false;
         try {
@@ -191,7 +187,7 @@ public class BRWalletManager {
         if (seed == null || seed.length == 0) throw new RuntimeException("seed is null");
         byte[] authKey = getAuthPrivKeyForAPI(seed);
         if (authKey == null || authKey.length == 0) {
-            BRReportsManager.reportBug(new IllegalArgumentException("authKey is invalid"), true);
+            throw new IllegalArgumentException("authKey is invalid");
         }
         BRKeyStore.putAuthKey(authKey, ctx);
         int walletCreationTime = (int) (System.currentTimeMillis() / 1000);
