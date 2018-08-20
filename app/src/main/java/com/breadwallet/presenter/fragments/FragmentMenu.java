@@ -111,8 +111,6 @@ public class FragmentMenu extends Fragment {
                     BRTest brTest = new BRTest();
 
                     brTest.BRCoreTests();
-
-                    Log.d("BRCoreTest","Starting BRcore tests...");
                 }
             }));
 
