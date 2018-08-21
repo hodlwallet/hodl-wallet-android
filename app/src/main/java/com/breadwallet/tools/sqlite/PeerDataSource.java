@@ -35,7 +35,6 @@ import android.util.Log;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.entities.BRPeerEntity;
 import com.breadwallet.presenter.entities.PeerEntity;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.util.BRConstants;
 
 import java.util.ArrayList;
@@ -86,7 +85,6 @@ public class PeerDataSource implements BRDataSourceInterface {
 
             database.setTransactionSuccessful();
         } catch (Exception ex) {
-            BRReportsManager.reportBug(ex);
             Log.e(TAG, "Error inserting into SQLite", ex);
             //Error in between database transaction
         } finally {

@@ -15,7 +15,6 @@ import com.breadwallet.BuildConfig;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.tools.crypto.Base58;
 import com.breadwallet.tools.manager.BRApiManager;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.crypto.CryptoHelper;
 import com.breadwallet.tools.security.BRKeyStore;
@@ -451,7 +450,7 @@ public class APIClient {
         try {
             request = modifiedRequest.header("Authorization", authValue).build();
         } catch (Exception e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             return null;
         }
         return request;

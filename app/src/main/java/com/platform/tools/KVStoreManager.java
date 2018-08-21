@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.breadwallet.tools.crypto.CryptoHelper;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.util.BRCompressor;
 import com.breadwallet.tools.util.Utils;
 import com.platform.APIClient;
@@ -137,7 +136,7 @@ public class KVStoreManager {
         try {
             compressed = BRCompressor.bz2Compress(result);
         } catch (IOException e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             return;
         }
         RemoteKVStore remoteKVStore = RemoteKVStore.getInstance(APIClient.getInstance(app));
@@ -318,7 +317,7 @@ public class KVStoreManager {
         try {
             compressed = BRCompressor.bz2Compress(result);
         } catch (IOException e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             return;
         }
         RemoteKVStore remoteKVStore = RemoteKVStore.getInstance(APIClient.getInstance(app));

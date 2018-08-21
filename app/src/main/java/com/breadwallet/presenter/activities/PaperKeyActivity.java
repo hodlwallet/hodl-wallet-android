@@ -21,7 +21,6 @@ import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.presenter.fragments.FragmentPhraseWord;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.security.PostAuth;
 import com.breadwallet.tools.util.Utils;
 
@@ -114,10 +113,10 @@ public class PaperKeyActivity extends BRActivity {
                             brDialogView.dismissWithAnimation();
                         }
                     }, null, null, 0);
-            BRReportsManager.reportBug(new IllegalArgumentException("Paper Key error, please contact support at breadwallet.com: " + wordArray.length), true);
+            throw new IllegalArgumentException("Paper Key error, please contact support at breadwallet.com: " + wordArray.length);
         } else {
             if (wordArray.length != 12) {
-                BRReportsManager.reportBug(new IllegalArgumentException("Wrong number of paper keys: " + wordArray.length + ", lang: " + Locale.getDefault().getLanguage()), true);
+                throw new IllegalArgumentException("Wrong number of paper keys: " + wordArray.length + ", lang: " + Locale.getDefault().getLanguage());
             }
             WordPagerAdapter adapter = new WordPagerAdapter(getFragmentManager());
             adapter.setWords(wordArray);

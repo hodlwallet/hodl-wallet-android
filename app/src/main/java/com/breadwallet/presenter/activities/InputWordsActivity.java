@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.util.Log;
 
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.intro.IntroActivity;
@@ -19,7 +20,6 @@ import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.animation.SpringAnimator;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.security.AuthManager;
 import com.breadwallet.tools.security.PostAuth;
@@ -168,7 +168,7 @@ public class InputWordsActivity extends BRActivity {
                 }
                 String cleanPhrase = SmartValidator.cleanPaperKey(app, phraseToCheck);
                 if (Utils.isNullOrEmpty(cleanPhrase)) {
-                    BRReportsManager.reportBug(new NullPointerException("cleanPhrase is null or empty!"));
+                    Log.e(TAG, (new NullPointerException("cleanPhrase is null or empty!")).toString());
                     return;
                 }
                 if (SmartValidator.isPaperKeyValid(app, cleanPhrase)) {

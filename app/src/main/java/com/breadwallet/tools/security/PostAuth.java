@@ -29,7 +29,6 @@ import com.breadwallet.presenter.entities.PaymentItem;
 import com.breadwallet.presenter.entities.PaymentRequestWrapper;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.threads.PaymentProtocolPostPaymentTask;
@@ -118,8 +117,7 @@ public class PostAuth {
         try {
             byte[] raw = BRKeyStore.getPhrase(app, BRConstants.SHOW_PHRASE_REQUEST_CODE);
             if (raw == null) {
-                BRReportsManager.reportBug(new NullPointerException("onPhraseCheckAuth: getPhrase = null"), true);
-                return;
+                throw new NullPointerException("onPhraseCheckAuth: getPhrase = null");
             }
             cleanPhrase = new String(raw);
         } catch (UserNotAuthenticatedException e) {
@@ -161,7 +159,6 @@ public class PostAuth {
     public void onRecoverWalletAuth(Activity app, boolean authAsked) {
         if (Utils.isNullOrEmpty(phraseForKeyStore)) {
             Log.e(TAG, "onRecoverWalletAuth: phraseForKeyStore is null or empty");
-            BRReportsManager.reportBug(new NullPointerException("onRecoverWalletAuth: phraseForKeyStore is or empty"));
             return;
         }
         byte[] bytePhrase = new byte[0];
@@ -205,7 +202,7 @@ public class PostAuth {
 
         } catch (Exception e) {
             e.printStackTrace();
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
         } finally {
             Arrays.fill(bytePhrase, (byte) 0);
         }
@@ -272,7 +269,7 @@ public class PostAuth {
         }
         if (Utils.isNullOrEmpty(phrase)) {
             RuntimeException ex = new RuntimeException("phrase is malformed: " + (phrase == null ? null : phrase.length));
-            BRReportsManager.reportBug(ex);
+            Log.e(TAG, ex.toString());
             return;
         }
 
