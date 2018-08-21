@@ -29,9 +29,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.breadwallet.presenter.entities.CurrencyEntity;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.util.BRConstants;
 
 import java.util.ArrayList;
@@ -83,7 +83,7 @@ public class CurrencyDataSource implements BRDataSourceInterface {
 
             database.setTransactionSuccessful();
         } catch (Exception ex) {
-            BRReportsManager.reportBug(ex);
+            Log.e(TAG, ex.toString());
             //Error in between database transaction
         } finally {
             database.endTransaction();

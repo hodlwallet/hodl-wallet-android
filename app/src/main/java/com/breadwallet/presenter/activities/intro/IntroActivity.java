@@ -17,7 +17,6 @@ import com.breadwallet.presenter.activities.SetPinActivity;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.tools.animation.BRAnimator;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.security.BRKeyStore;
 import com.breadwallet.tools.security.PostAuth;
 import com.breadwallet.tools.security.SmartValidator;
@@ -25,7 +24,6 @@ import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.wallet.BRWalletManager;
-import com.google.firebase.crash.FirebaseCrash;
 import com.jniwrappers.BRKey;
 import com.platform.APIClient;
 
@@ -100,7 +98,7 @@ public class IntroActivity extends BRActivity implements Serializable {
 
         if (!BuildConfig.DEBUG && BRKeyStore.AUTH_DURATION_SEC != 300) {
             Log.e(TAG, "onCreate: BRKeyStore.AUTH_DURATION_SEC != 300");
-            BRReportsManager.reportBug(new RuntimeException("AUTH_DURATION_SEC should be 300"), true);
+            throw new RuntimeException("AUTH_DURATION_SEC should be 300");
         }
         introActivity = this;
 

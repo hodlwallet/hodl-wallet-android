@@ -23,7 +23,6 @@ import com.breadwallet.exceptions.BRKeystoreErrorException;
 import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.threads.BRExecutor;
 import com.breadwallet.tools.util.BRConstants;
@@ -207,7 +206,7 @@ public class BRKeyStore {
             //the key cannot still be null
             if (secretKey == null) {
                 BRKeystoreErrorException ex = new BRKeystoreErrorException("secret is null on _setData: " + alias);
-                BRReportsManager.reportBug(ex);
+                Log.e(TAG, ex.toString());
                 return false;
             }
 
@@ -231,10 +230,10 @@ public class BRKeyStore {
                 throw new UserNotAuthenticatedException(); //just to make the flow stop
             }
 
-            BRReportsManager.reportBug(ex);
+            Log.e(TAG, ex.toString());
             return false;
         } catch (Exception e) {
-            BRReportsManager.reportBug(e);
+            Log.e(TAG, e.toString());
             e.printStackTrace();
             return false;
         } finally {
@@ -301,7 +300,7 @@ public class BRKeyStore {
                     return null;/* file also not there, fine then */
                 }
                 BRKeystoreErrorException ex = new BRKeystoreErrorException("file is present but the key is gone: " + alias);
-                BRReportsManager.reportBug(ex);
+                Log.e(TAG, ex.toString());
                 return null;
             }
 
@@ -313,11 +312,11 @@ public class BRKeyStore {
                 //report it if one exists and not the other.
                 if (ivExists != aliasExists) {
                     BRKeystoreErrorException ex = new BRKeystoreErrorException("alias or iv isn't on the disk: " + alias + ", aliasExists:" + aliasExists);
-                    BRReportsManager.reportBug(ex);
+                    Log.e(TAG, ex.toString());
                     return null;
                 } else {
                     BRKeystoreErrorException ex = new BRKeystoreErrorException("!ivExists && !aliasExists: " + alias);
-                    BRReportsManager.reportBug(ex);
+                    Log.e(TAG, ex.toString());
                     return null;
                 }
             }
@@ -356,7 +355,6 @@ public class BRKeyStore {
                 throw (UserNotAuthenticatedException) e;
             } else {
                 Log.e(TAG, "_getData: InvalidKeyException", e);
-                BRReportsManager.reportBug(e);
                 if (e instanceof KeyPermanentlyInvalidatedException)
                     showKeyInvalidated(context);
                 throw new UserNotAuthenticatedException(); //just to not go any further
@@ -364,22 +362,20 @@ public class BRKeyStore {
         } catch (IOException | CertificateException | KeyStoreException e) {
             /** keyStore.load(null) threw the Exception, meaning the keystore is unavailable */
             Log.e(TAG, "_getData: keyStore.load(null) threw the Exception, meaning the keystore is unavailable", e);
-            BRReportsManager.reportBug(e);
             if (e instanceof FileNotFoundException) {
                 Log.e(TAG, "_getData: File not found exception", e);
 
                 RuntimeException ex = new RuntimeException("the key is present but the phrase on the disk no");
-                BRReportsManager.reportBug(ex);
+                Log.e(TAG, ex.toString());
                 throw new RuntimeException(e.getMessage());
             } else {
-                BRReportsManager.reportBug(e);
+                Log.e(TAG, e.toString());
                 throw new RuntimeException(e.getMessage());
             }
 
         } catch (UnrecoverableKeyException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException e) {
             /** if for any other reason the keystore fails, crash! */
             Log.e(TAG, "getData: error: " + e.getClass().getSuperclass().getName());
-            BRReportsManager.reportBug(e);
             throw new RuntimeException(e.getMessage());
         } catch (BadPaddingException | IllegalBlockSizeException | NoSuchProviderException e) {
             e.printStackTrace();
@@ -749,7 +745,7 @@ public class BRKeyStore {
                     count++;
                 }
             } else {
-                BRReportsManager.reportBug(new NullPointerException("keyStore.aliases() is null"));
+                Log.e(TAG, (new NullPointerException("keyStore.aliases() is null")).toString());
                 return false;
             }
             Log.e(TAG, "resetWalletKeyStore: removed:" + count);
@@ -809,16 +805,14 @@ public class BRKeyStore {
         // Create the Confirm Credentials screen. You can customize the title and description. Or
         // we will provide a generic one for you if you leave it null
         if (!alias.equalsIgnoreCase(PHRASE_ALIAS) && !alias.equalsIgnoreCase(CANARY_ALIAS)) {
-            BRReportsManager.reportBug(new IllegalArgumentException("requesting auth for: " + alias), true);
+            throw new IllegalArgumentException("requesting auth for: " + alias);
         }
 //        Log.e(TAG, "showAuthenticationScreen: " + alias);
         if (context instanceof Activity) {
             Activity app = (Activity) context;
             KeyguardManager mKeyguardManager = (KeyguardManager) app.getSystemService(Context.KEYGUARD_SERVICE);
             if (mKeyguardManager == null) {
-                NullPointerException ex = new NullPointerException("KeyguardManager is null in showAuthenticationScreen");
-                BRReportsManager.reportBug(ex, true);
-                return;
+                throw new NullPointerException("KeyguardManager is null in showAuthenticationScreen");
             }
             String message = context.getString(R.string.UnlockScreen_touchIdPrompt_android);
             if (Utils.isEmulatorOrDebug(app)) {
@@ -832,11 +826,9 @@ public class BRKeyStore {
                 app.startActivityForResult(intent, requestCode);
             } else {
                 Log.e(TAG, "showAuthenticationScreen: failed to create intent for auth");
-                BRReportsManager.reportBug(new RuntimeException("showAuthenticationScreen: failed to create intent for auth"));
                 app.finish();
             }
         } else {
-            BRReportsManager.reportBug(new RuntimeException("showAuthenticationScreen: context is not activity!"));
             Log.e(TAG, "showAuthenticationScreen: context is not activity!");
         }
     }

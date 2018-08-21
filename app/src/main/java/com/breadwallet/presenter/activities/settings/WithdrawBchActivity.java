@@ -22,7 +22,6 @@ import com.breadwallet.presenter.interfaces.BRAuthCompletion;
 import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.manager.BRClipboardManager;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
 import com.breadwallet.tools.security.AuthManager;
 import com.breadwallet.tools.security.BitcoinUrlHandler;
@@ -75,7 +74,7 @@ public class WithdrawBchActivity extends BRActivity {
         addressEdit = (EditText) findViewById(R.id.address_edit);
         byte[] pubkey = BRKeyStore.getMasterPublicKey(this);
         if (Utils.isNullOrEmpty(pubkey)) {
-            BRReportsManager.reportBug(new NullPointerException("WithdrawBchActivity: onCreate: pubkey is missing!"));
+            Log.e(TAG, (new NullPointerException("WithdrawBchActivity: onCreate: pubkey is missing!")).toString());
         }
         long satoshis = BRWalletManager.getBCashBalance(pubkey);
         BigDecimal amount = BRExchange.getBitcoinForSatoshis(this, new BigDecimal(satoshis));

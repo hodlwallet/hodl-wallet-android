@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.activities.intro.IntroActivity;
-import com.google.firebase.crash.FirebaseCrash;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;

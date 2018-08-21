@@ -9,7 +9,6 @@ import android.util.Log;
 import com.breadwallet.BreadApp;
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.settings.WebViewActivity;
-import com.breadwallet.tools.manager.BRReportsManager;
 import com.breadwallet.tools.util.Utils;
 import com.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
@@ -66,7 +65,6 @@ public class LinkPlugin implements Plugin {
                 app.startActivity(intent);
             } else {
                 Log.e(TAG, "handle: could not handle url: " + url);
-                BRReportsManager.reportBug(new RuntimeException("could not handle url: " + url));
             }
 
             return BRHTTPHelper.handleSuccess(204, null, baseRequest, response, null);
