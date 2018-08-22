@@ -343,8 +343,8 @@ JNIEXPORT jstring JNICALL Java_com_breadwallet_wallet_BRWalletManager_getReceive
 
     BRAddress receiveAddress = BRWalletReceiveAddress(_wallet);
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "receiveAddress: %s",
-                        receiveAddress.s);
-    return (*env)->NewStringUTF(env, receiveAddress.s);
+                        receiveAddress.str);
+    return (*env)->NewStringUTF(env, receiveAddress.str);
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_breadwallet_wallet_BRWalletManager_getTransactions(
@@ -660,8 +660,8 @@ Java_com_breadwallet_wallet_BRWalletManager_getFirstAddress(JNIEnv *env, jobject
 
     BRBIP32PubKey(pubKey, sizeof(pubKey), mpk, 0, 0);
     BRKeySetPubKey(&key, pubKey, sizeof(pubKey));
-    BRKeyAddress(&key, address.s, sizeof(address));
-    return (*env)->NewStringUTF(env, address.s);
+    BRKeyAddress(&key, address.str, sizeof(address));
+    return (*env)->NewStringUTF(env, address.str);
 }
 
 JNIEXPORT jbyteArray JNICALL
@@ -748,9 +748,9 @@ Java_com_breadwallet_wallet_BRWalletManager_getAddressFromPrivKey(JNIEnv *env, j
     BRAddress addr;
 
     BRKeySetPrivKey(&key, rawPrivKey);
-    BRKeyAddress(&key, addr.s, sizeof(addr));
+    BRKeyAddress(&key, addr.str, sizeof(addr));
 
-    jstring result = (*env)->NewStringUTF(env, addr.s);
+    jstring result = (*env)->NewStringUTF(env, addr.str);
     return result;
 }
 
@@ -813,8 +813,8 @@ JNIEXPORT jobject JNICALL Java_com_breadwallet_wallet_BRWalletManager_getPrivKey
     jclass importPrivKeyClass = (*env)->FindClass(env,
                                 "com/breadwallet/presenter/entities/ImportPrivKeyEntity");
     BRAddress address = BRWalletReceiveAddress(_wallet);
-    uint8_t script[BRAddressScriptPubKey(NULL, 0, address.s)];
-    size_t scriptLen = BRAddressScriptPubKey(script, sizeof(script), address.s);
+    uint8_t script[BRAddressScriptPubKey(NULL, 0, address.str)];
+    size_t scriptLen = BRAddressScriptPubKey(script, sizeof(script), address.str);
 
     BRTransactionAddOutput(_privKeyTx, 0, script, scriptLen);
 
