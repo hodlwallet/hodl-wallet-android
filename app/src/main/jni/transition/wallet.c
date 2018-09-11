@@ -32,6 +32,7 @@
 #include <BRBIP38Key.h>
 #include <BRInt.h>
 #include <BRTransaction.h>
+#include <BRTest.h>
 
 static JavaVM *_jvmW;
 BRWallet *_wallet;
@@ -313,15 +314,20 @@ Java_com_breadwallet_wallet_BRWalletManager_putTransaction(JNIEnv *env, jobject 
     assert(byteTx != NULL);
     if (!byteTx) return;
 
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "rawTx: %s",
+                        BRUInt8ToHex((uint8_t *) byteTx, txLength));
+
     BRTransaction *tmpTx = BRTransactionParse((uint8_t *) byteTx, (size_t) txLength);
 
-    assert(tmpTx != NULL);
     if (!tmpTx) return;
     tmpTx->blockHeight = (uint32_t) jBlockHeight;
     tmpTx->timestamp = (uint32_t) jTimeStamp;
-//    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "tmpTx->timestamp: %u",
-//                        tmpTx->timestamp);
-//    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "tmpTx: %s", u256_hex_encode(tmpTx->txHash));
+
+    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "tmpTx->timestamp: %u",
+                        tmpTx->timestamp);
+    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "tmpTx: %s",
+                        u256hex(tmpTx->txHash));
+
     _transactions[_transactionsCounter++] = tmpTx;
 
 }
