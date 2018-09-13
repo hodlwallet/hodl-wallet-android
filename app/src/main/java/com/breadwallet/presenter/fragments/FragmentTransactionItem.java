@@ -197,25 +197,24 @@ public class FragmentTransactionItem extends Fragment {
         String percentage = "";
         switch (level) {
             case 0:
-                percentage = "0%";
+                percentage = getString(R.string.Transaction_awaitingStatus);
                 break;
             case 1:
-                percentage = "20%";
+                percentage = getString(R.string.Transaction_awaitingStatus);
                 break;
             case 2:
-                percentage = "40%";
-                availableForSpend = true;
+                percentage = getString(R.string.Transaction_awaitingStatus);
                 break;
             case 3:
-                percentage = "60%";
+                percentage = getString(R.string.Transaction_firstConfirmation);
                 availableForSpend = true;
                 break;
             case 4:
-                percentage = "80%";
+                percentage = getString(R.string.Transaction_secondConfirmation);
                 availableForSpend = true;
                 break;
             case 5:
-                percentage = "100%";
+                percentage = getString(R.string.Transaction_thirdConfirmation);
                 availableForSpend = true;
                 break;
         }

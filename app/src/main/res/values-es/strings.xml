@@ -166,6 +166,16 @@
   <string name="FeeSelector.regular">Regular</string>
   <!-- E.g. [This transaction is predicted to complete in] 10-60 minutes -->
   <string name="FeeSelector.regularTime">10 a 60 minutos</string>
+  <!-- Transaction Fee title -->
+  <string name="FeeSelector.transactionFee">Tarifa</string>
+  <!-- Estimated Confirmation Title-->
+  <string name="FeeSelector.estConfirmation">Confirmado en:</string>
+  <!-- Normal title on fee slider -->
+  <string name="FeeSelector.normal">Normal</string>
+  <!-- High title on fee slider -->
+  <string name="FeeSelector.high">Alta</string>
+  <!-- Custom Fee title -->
+  <string name="FeeSelector.customFee">Tarifa Personalizada</string>
   <!-- Fee Selector title -->
   <string name="FeeSelector.title">Velocidad de procesamiento</string>
   <!-- Checking private key balance progress view text -->
@@ -577,7 +587,15 @@
   <!-- name of spending limit when using fingerprint authorization -->
   <string name="TouchIdSpendingLimit.title.android">Límite de gasto de autorización de huella digital</string>
   <!-- Availability status text -->
-  <string name="Transaction.available">Disponible para gastar</string>
+  <string name="Transaction.available">Fondos disponibles</string>
+  <!-- Displayed before 1 confirmation has been found -->
+  <string name="Transaction.awaitingStatus">Esperando confirmación</string>
+  <!-- For 1 confirmation -->
+  <string name="Transaction.firstConfirmation">1 confirmación</string>
+  <!-- For 2 confirmations -->
+  <string name="Transaction.secondConfirmation">2 confirmaciones</string>
+  <!-- For 3 confirmations -->
+  <string name="Transaction.thirdConfirmation">3 confirmaciones</string>
   <!-- Transaction complete label -->
   <string name="Transaction.complete">Completada</string>
   <!-- eg. Ending balance: $50.00 -->

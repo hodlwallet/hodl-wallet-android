@@ -594,6 +594,14 @@
   <string name="TouchIdSpendingLimit.title.android">Fingerprint Authorization Spending Limit</string>
   <!-- Availability status text -->
   <string name="Transaction.available">Available to Spend</string>
+  <!-- Displayed before 1 confirmation has been found -->
+  <string name="Transaction.awaitingStatus">Awaiting confirmation</string>
+  <!-- For 1 confirmation -->
+  <string name="Transaction.firstConfirmation">1 confirmation</string>
+  <!-- For 2 confirmations -->
+  <string name="Transaction.secondConfirmation">2 confirmations</string>
+  <!-- For 3 confirmations -->
+  <string name="Transaction.thirdConfirmation">3 confirmations</string>
   <!-- Transaction complete label -->
   <string name="Transaction.complete">Complete</string>
   <!-- eg. Ending balance: $50.00 -->
