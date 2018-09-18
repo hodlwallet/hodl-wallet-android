@@ -87,7 +87,7 @@ public class DisplayCurrencyActivity extends BRActivity {
         });
 
         int unit = BRSharedPrefs.getCurrencyUnit(this);
-        if (unit == BRConstants.CURRENT_UNIT_BITS) {
+        if (unit == BRConstants.CURRENT_UNIT_BITCOINS) {
             setButton(true);
         } else {
             setButton(false);
@@ -127,13 +127,13 @@ public class DisplayCurrencyActivity extends BRActivity {
 
     private void setButton(boolean left) {
         if (left) {
-            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITS);
+            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITCOINS);
             leftButton.setTextColor(getColor(R.color.almost_black));
             leftButton.setBackground(getDrawable(R.drawable.b_half_left_white_currency));
             rightButton.setTextColor(getColor(R.color.white));
             rightButton.setBackground(getDrawable(R.drawable.b_half_right_white_stroke));
         } else {
-            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITCOINS);
+            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITS);
             leftButton.setTextColor(getColor(R.color.white));
             leftButton.setBackground(getDrawable(R.drawable.b_half_left_white_stroke));
             rightButton.setTextColor(getColor(R.color.almost_black));
