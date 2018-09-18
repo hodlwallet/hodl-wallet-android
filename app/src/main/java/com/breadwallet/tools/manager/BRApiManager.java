@@ -180,8 +180,7 @@ public class BRApiManager {
         JSONArray jsonArray = null;
         if (jsonString == null) return null;
         try {
-            JSONObject obj = new JSONObject(jsonString);
-            jsonArray = obj.getJSONArray("body");
+            jsonArray = new JSONArray(jsonString);
 
         } catch (JSONException ignored) {
         }
