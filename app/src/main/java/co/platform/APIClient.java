@@ -330,8 +330,7 @@ public class APIClient {
 
         Request request = newBuilder.build();
         if (needsAuth) {
-            request = authenticateRequest(request);
-            if (request == null) return null;
+            return null;
         }
 
         Response response = null;
@@ -393,14 +392,7 @@ public class APIClient {
         }
 
         postReqBody = ResponseBody.create(null, data);
-        if (needsAuth && isBreadChallenge(response)) {
-            Log.d(TAG, "sendRequest: got authentication challenge from API - will attempt to get token");
-            getToken();
-            if (retryCount < 1) {
-                response.close();
-                sendRequest(request, true, retryCount + 1);
-            }
-        }
+
         return response.newBuilder().body(postReqBody).build();
     }
 
