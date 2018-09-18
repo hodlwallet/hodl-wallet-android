@@ -84,7 +84,6 @@ public class IntroActivity extends BRActivity implements Serializable {
         recoverWalletButton = (Button) findViewById(R.id.button_recover_wallet);
         splashScreen = findViewById(R.id.splash_screen);
         setListeners();
-        updateBundles();
 //        SyncManager.getInstance().updateAlarms(this);
         faq = (ImageButton) findViewById(R.id.faq_button);
 
@@ -124,20 +123,6 @@ public class IntroActivity extends BRActivity implements Serializable {
             }
         }, 1000);
 
-    }
-
-    private void updateBundles() {
-        BRExecutor.getInstance().forBackgroundTasks().execute(new Runnable() {
-            @Override
-            public void run() {
-                Thread.currentThread().setName("updateBundle");
-                final long startTime = System.currentTimeMillis();
-                APIClient apiClient = APIClient.getInstance(IntroActivity.this);
-                apiClient.updateBundle();
-                long endTime = System.currentTimeMillis();
-                Log.d(TAG, "updateBundle DONE in " + (endTime - startTime) + "ms");
-            }
-        });
     }
 
 

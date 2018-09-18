@@ -294,25 +294,24 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         String percentage = "";
         switch (level) {
             case 0:
-                percentage = "0%";
+                percentage = mContext.getString(R.string.Transaction_awaitingStatus);
                 break;
             case 1:
-                percentage = "20%";
+                percentage = mContext.getString(R.string.Transaction_awaitingStatus);
                 break;
             case 2:
-                percentage = "40%";
-                availableForSpend = true;
+                percentage = mContext.getString(R.string.Transaction_awaitingStatus);
                 break;
             case 3:
-                percentage = "60%";
+                percentage = mContext.getString(R.string.Transaction_firstConfirmation);
                 availableForSpend = true;
                 break;
             case 4:
-                percentage = "80%";
+                percentage = mContext.getString(R.string.Transaction_secondConfirmation);
                 availableForSpend = true;
                 break;
             case 5:
-                percentage = "100%";
+                percentage = mContext.getString(R.string.Transaction_thirdConfirmation);
                 availableForSpend = true;
                 break;
         }

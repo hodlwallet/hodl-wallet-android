@@ -133,26 +133,26 @@ public class BRConstants {
     /**
      * Support Center article ids.
      */
-    public static final String displayCurrency = "display-currency";
+    public static final String displayCurrency = "display-local-currency";
     public static final String recoverWallet = "recover-wallet";
-    public static final String reScan = "re-scan";
+    public static final String reScan = "sync-blockchain";
     public static final String securityCenter = "security-center";
-    public static final String paperKey = "paper-key";
-    public static final String enableFingerprint = "enable-fingerprint-authentication";
-    public static final String fingerprintSpendingLimit = "fingerprint-spending-limit";
+    public static final String paperKey = "backup-recovery-key";
+    public static final String enableFingerprint = "using-touch-id";
+    public static final String fingerprintSpendingLimit = "touch-id-spending-limit";
     public static final String transactionDetails = "transaction-details";
 //    public static final String manageWallet = "manage-wallet";
-    public static final String receive = "receive-bitcoin";
+    public static final String receive = "receiving-bitcoin";
     public static final String requestAmount = "request-amount";
-    public static final String send = "send-bitcoin";
+    public static final String send = "sending-bitcoin";
     public static final String walletDisabled = "wallet-disabled";
-    public static final String resetPinWithPaperKey = "reset-pin-paper-key";
-    public static final String setPin = "set-pin";
-    public static final String importWallet = "import-wallet";
-    public static final String writePhrase = "write-phrase";
+    public static final String resetPinWithPaperKey = "reset-pin";
+    public static final String setPin = "pin-setup";
+    public static final String importWallet = "import-bitcoin-private-key";
+    public static final String writePhrase = "write-backup-recovery-key";
 //    public static final String confirmPhrase = "confirm-phrase";
-    public static final String startView = "start-view";
-    public static final String wipeWallet = "wipe-wallet";
+    public static final String startView = "starting-a-new-wallet";
+    public static final String wipeWallet = "erasing-your-wallet";
     public static final String loopBug = "android-loop-bug";
 
     private BRConstants() {
