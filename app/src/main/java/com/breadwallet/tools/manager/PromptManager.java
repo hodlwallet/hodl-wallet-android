@@ -94,8 +94,9 @@ public class PromptManager {
             case RECOMMEND_RESCAN:
                 return BRSharedPrefs.getScanRecommended(app);
             case SHARE_DATA:
-                return !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);
+                boolean sharedDataEnabled = false;
 
+                return sharedDataEnabled && !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);
         }
         return false;
     }
