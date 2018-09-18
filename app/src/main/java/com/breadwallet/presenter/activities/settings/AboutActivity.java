@@ -96,7 +96,7 @@ public class AboutActivity extends BRActivity {
 //        termsText.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://breadapp.com/privacy-policy"));
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://HodlApp.com/privacy-policy"));
 //                startActivity(browserIntent);
 //                app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
 //            }

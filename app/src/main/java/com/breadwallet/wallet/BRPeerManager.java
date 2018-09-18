@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.entities.BlockEntity;
 import com.breadwallet.presenter.entities.PeerEntity;
@@ -80,7 +80,7 @@ public class BRPeerManager {
     public static void syncStarted() {
         Log.d(TAG, "syncStarted: " + Thread.currentThread().getName());
 //        BRPeerManager.getInstance().refreshConnection();
-        Context ctx = BreadApp.getBreadContext();
+        Context ctx = HodlApp.getBreadContext();
         int startHeight = BRSharedPrefs.getStartHeight(ctx);
         int lastHeight = BRSharedPrefs.getLastBlockHeight(ctx);
         if (startHeight > lastHeight) BRSharedPrefs.putStartHeight(ctx, lastHeight);
@@ -89,7 +89,7 @@ public class BRPeerManager {
 
     public static void syncSucceeded() {
         Log.d(TAG, "syncSucceeded");
-        final Context app = BreadApp.getBreadContext();
+        final Context app = HodlApp.getBreadContext();
         if (app == null) return;
         BRSharedPrefs.putLastSyncTime(app, System.currentTimeMillis());
         SyncManager.getInstance().updateAlarms(app);
@@ -108,7 +108,7 @@ public class BRPeerManager {
     public static void syncFailed() {
         Log.d(TAG, "syncFailed");
         SyncManager.getInstance().stopSyncingProgressThread();
-        Context ctx = BreadApp.getBreadContext();
+        Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
 
         SyncManager.getInstance().stopSyncingProgressThread();
@@ -133,7 +133,7 @@ public class BRPeerManager {
     public static void saveBlocks(final BlockEntity[] blockEntities, final boolean replace) {
         Log.d(TAG, "saveBlocks: " + blockEntities.length);
 
-        final Context ctx = BreadApp.getBreadContext();
+        final Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -147,7 +147,7 @@ public class BRPeerManager {
 
     public static void savePeers(final PeerEntity[] peerEntities, final boolean replace) {
         Log.d(TAG, "savePeers: " + peerEntities.length);
-        final Context ctx = BreadApp.getBreadContext();
+        final Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -161,12 +161,12 @@ public class BRPeerManager {
 
     public static boolean networkIsReachable() {
         Log.d(TAG, "networkIsReachable");
-        return BRWalletManager.getInstance().isNetworkAvailable(BreadApp.getBreadContext());
+        return BRWalletManager.getInstance().isNetworkAvailable(HodlApp.getBreadContext());
     }
 
     public static void deleteBlocks() {
         Log.d(TAG, "deleteBlocks");
-        final Context ctx = BreadApp.getBreadContext();
+        final Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -179,7 +179,7 @@ public class BRPeerManager {
 
     public static void deletePeers() {
         Log.d(TAG, "deletePeers");
-        final Context ctx = BreadApp.getBreadContext();
+        final Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
             @Override
@@ -246,7 +246,7 @@ public class BRPeerManager {
     }
 
     public static void updateLastBlockHeight(int blockHeight) {
-        final Context ctx = BreadApp.getBreadContext();
+        final Context ctx = HodlApp.getBreadContext();
         if (ctx == null) return;
         BRSharedPrefs.putLastBlockHeight(ctx, blockHeight);
     }

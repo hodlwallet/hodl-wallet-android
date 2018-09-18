@@ -50,8 +50,8 @@ import static com.platform.APIClient.BREAD_POINT;
  * THE SOFTWARE.
  */
 
-public class BreadApp extends Application {
-    private static final String TAG = BreadApp.class.getName();
+public class HodlApp extends Application {
+    private static final String TAG = HodlApp.class.getName();
     public static int DISPLAY_HEIGHT_PX;
     FingerprintManager mFingerprintManager;
     // host is the server(s) on which the API is hosted

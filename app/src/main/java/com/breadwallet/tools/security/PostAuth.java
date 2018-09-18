@@ -15,7 +15,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.R;
 import com.breadwallet.exceptions.BRKeystoreErrorException;
 import com.breadwallet.presenter.activities.SetPinActivity;
@@ -292,7 +292,7 @@ public class PostAuth {
                 public void run() {
                     String title = "Failed";
                     String message = "";
-                    String strUtl = "https://" + BreadApp.HOST + "/bch/publish-transaction";
+                    String strUtl = "https://" + HodlApp.HOST + "/bch/publish-transaction";
                     Log.e(TAG, "url: " + strUtl);
                     final MediaType type
                             = MediaType.parse("application/bchdata");

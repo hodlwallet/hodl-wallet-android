@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
@@ -201,7 +201,7 @@ public class WithdrawBchActivity extends BRActivity {
             BRSharedPrefs.putBCHTxId(app, txId);
             updateUi(app);
         } else {
-            Context activity = BreadApp.getBreadContext();
+            Context activity = HodlApp.getBreadContext();
             BRSharedPrefs.putBCHTxId(activity, txId);
             Log.e(TAG, "updateUi: app is null");
         }

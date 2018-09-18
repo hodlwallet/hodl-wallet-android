@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.webkit.WebChromeClient;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.presenter.activities.DisabledActivity;
 import com.breadwallet.presenter.activities.intro.IntroActivity;
 import com.breadwallet.presenter.activities.intro.RecoverActivity;
@@ -63,9 +63,9 @@ public class BRActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        BreadApp.activityCounter.decrementAndGet();
-        BreadApp.onStop(this);
-        BreadApp.backgroundedTime = System.currentTimeMillis();
+        HodlApp.activityCounter.decrementAndGet();
+        HodlApp.onStop(this);
+        HodlApp.backgroundedTime = System.currentTimeMillis();
     }
 
     @Override
@@ -233,11 +233,11 @@ public class BRActivity extends Activity {
             if (AuthManager.getInstance().isWalletDisabled(app))
                 AuthManager.getInstance().setWalletDisabled(app);
 
-        BreadApp.activityCounter.incrementAndGet();
-        BreadApp.setBreadContext(app);
+        HodlApp.activityCounter.incrementAndGet();
+        HodlApp.setBreadContext(app);
         //lock wallet if 3 minutes passed
-        if (BreadApp.backgroundedTime != 0 && (System.currentTimeMillis()
-                - BreadApp.backgroundedTime >= 180 * 1000) && !(app instanceof DisabledActivity)) {
+        if (HodlApp.backgroundedTime != 0 && (System.currentTimeMillis()
+                - HodlApp.backgroundedTime >= 180 * 1000) && !(app instanceof DisabledActivity)) {
             if (!BRKeyStore.getPinCode(app).isEmpty()) {
                 BRAnimator.startBreadActivity(app, true);
             }
@@ -248,6 +248,6 @@ public class BRActivity extends Activity {
                 HTTPServer.startServer();
             }
         });
-        BreadApp.backgroundedTime = System.currentTimeMillis();
+        HodlApp.backgroundedTime = System.currentTimeMillis();
     }
 }

@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.BuildConfig;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.entities.CurrencyEntity;
@@ -139,7 +139,7 @@ public class BRApiManager {
                         BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
                             @Override
                             public void run() {
-                                if (!BreadApp.isAppInBackground(context)) {
+                                if (!HodlApp.isAppInBackground(context)) {
                                     Log.e(TAG, "doInBackground: Stopping timer, no activity on.");
                                     BRApiManager.getInstance().stopTimerTask();
                                 }
@@ -175,8 +175,8 @@ public class BRApiManager {
 
 
     public static JSONArray fetchRates(Activity activity) {
-        String jsonString = BuildConfig.BITCOIN_TESTNET ? urlGET(activity, "https://" + BreadApp.HOST + "/hodl.staging/rates.json") :
-                urlGET(activity, "https://" + BreadApp.HOST + "/hodl/rates.json");
+        String jsonString = BuildConfig.BITCOIN_TESTNET ? urlGET(activity, "https://" + HodlApp.HOST + "/hodl.staging/rates.json") :
+                urlGET(activity, "https://" + HodlApp.HOST + "/hodl/rates.json");
         JSONArray jsonArray = null;
         if (jsonString == null) return null;
         try {
@@ -203,7 +203,7 @@ public class BRApiManager {
     }
 
     public static void updateFeePerKb(Context app) {
-        String jsonString = urlGET(app, "https://" + BreadApp.HOST + "/hodl/fee-estimator.json");
+        String jsonString = urlGET(app, "https://" + HodlApp.HOST + "/hodl/fee-estimator.json");
         if (jsonString == null || jsonString.isEmpty()) {
             Log.e(TAG, "updateFeePerKb: failed to update fee, response string: " + jsonString);
             return;
@@ -253,7 +253,7 @@ public class BRApiManager {
             Log.e(TAG, "urlGET: network on main thread");
             throw new RuntimeException("network on main thread");
         }
-        Map<String, String> headers = BreadApp.getBreadHeaders();
+        Map<String, String> headers = HodlApp.getBreadHeaders();
 
         Request.Builder builder = new Request.Builder()
                 .url(myURL)

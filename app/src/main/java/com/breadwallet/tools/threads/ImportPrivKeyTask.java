@@ -3,7 +3,7 @@ package com.breadwallet.tools.threads;
 import android.app.Activity;
 import android.os.AsyncTask;
 
-import com.breadwallet.BreadApp;
+import com.breadwallet.HodlApp;
 import com.breadwallet.BuildConfig;
 import com.breadwallet.R;
 import com.breadwallet.presenter.customviews.BRDialogView;
