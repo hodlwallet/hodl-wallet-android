@@ -5,7 +5,7 @@
                 android:filterTouchesWhenObscured="true"
                 android:orientation="horizontal">
 
-    <com.breadwallet.presenter.customviews.BRText
+    <co.hodlwallet.presenter.customviews.BRText
         android:id="@+id/word_button"
         android:layout_width="272dp"
         android:layout_height="64dp"

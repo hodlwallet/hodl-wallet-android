@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_background"
-    tools:context="com.breadwallet.presenter.activities.intro.WriteDownActivity">
+    tools:context="co.hodlwallet.presenter.activities.intro.WriteDownActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/gradient_layout"
@@ -22,7 +22,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gradient_layout">
 
 
-        <com.breadwallet.presenter.customviews.BRButton
+        <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/button_submit"
             android:layout_width="272dp"
             android:layout_height="64dp"
@@ -116,7 +116,7 @@
             app:layout_constraintLeft_toRightOf="@+id/word_edittext_second"
             app:layout_constraintTop_toTopOf="@+id/word_edittext_second"/>
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/word_number_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.breadwallet.presenter.customviews.BREdit
+        <co.hodlwallet.presenter.customviews.BREdit
             android:id="@+id/word_edittext_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/word_edittext_first"/>
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/word_number_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line1"/>
 
-        <com.breadwallet.presenter.customviews.BREdit
+        <co.hodlwallet.presenter.customviews.BREdit
             android:id="@+id/word_edittext_second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

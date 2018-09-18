@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_background"
-    tools:context="com.breadwallet.presenter.activities.intro.WriteDownActivity">
+    tools:context="co.hodlwallet.presenter.activities.intro.WriteDownActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/gradient_layout"
@@ -16,7 +16,7 @@
         android:background="@color/gray_background"
         android:orientation="vertical">
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/title"/>
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
         android:layout_alignParentBottom="true"
         android:weightSum="2.0">
 
-        <com.breadwallet.presenter.customviews.BRButton
+        <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/button_previous"
             android:layout_width="0dp"
             android:layout_height="@dimen/big_button_height"
@@ -110,7 +110,7 @@
             android:layout_weight="0.02">
         </View>
 
-        <com.breadwallet.presenter.customviews.BRButton
+        <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/send_button"
             android:layout_width="0dp"
             android:layout_height="@dimen/big_button_height"
@@ -124,7 +124,7 @@
 
     </LinearLayout>
 
-    <com.breadwallet.presenter.customviews.BRText
+    <co.hodlwallet.presenter.customviews.BRText
         android:id="@+id/item_index_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

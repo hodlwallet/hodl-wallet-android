@@ -1,9 +1,9 @@
-package com.breadwallet.wallet;
+package co.hodlwallet.wallet;
 
-import com.breadwallet.presenter.entities.RequestObject;
-import com.breadwallet.tools.security.BitcoinUrlHandler;
-import com.breadwallet.tools.util.BRConstants;
-import com.breadwallet.tools.util.Utils;
+import co.hodlwallet.presenter.entities.RequestObject;
+import co.hodlwallet.tools.security.BitcoinUrlHandler;
+import co.hodlwallet.tools.util.BRConstants;
+import co.hodlwallet.tools.util.Utils;
 
 
 import org.junit.Assert;

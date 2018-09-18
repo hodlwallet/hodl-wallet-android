@@ -1,4 +1,4 @@
-<com.breadwallet.presenter.customviews.BRRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<co.hodlwallet.presenter.customviews.BRRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                         xmlns:app="http://schemas.android.com/apk/res-auto"
                                                         xmlns:tools="http://schemas.android.com/tools"
                                                         android:id="@+id/layout"
@@ -46,7 +46,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/title_layout"
                 app:layout_constraintTop_toTopOf="@+id/title" />
 
-            <com.breadwallet.presenter.customviews.BRText
+            <co.hodlwallet.presenter.customviews.BRText
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,4 +98,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-</com.breadwallet.presenter.customviews.BRRelativeLayout>
+</co.hodlwallet.presenter.customviews.BRRelativeLayout>

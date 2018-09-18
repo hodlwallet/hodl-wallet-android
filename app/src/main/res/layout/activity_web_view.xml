@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/webview_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.breadwallet.presenter.activities.settings.WebViewActivity">
+    tools:context="co.hodlwallet.presenter.activities.settings.WebViewActivity">
 
     <WebView
         android:id="@+id/web_view"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content">
 
 
-            <com.breadwallet.presenter.customviews.BRText
+            <co.hodlwallet.presenter.customviews.BRText
                 android:id="@+id/webview_title"
                 android:textColor="@color/black"
                 app:customTFont="Electrolize-Regular.ttf"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content" />
 
 
-            <com.breadwallet.presenter.customviews.BRText
+            <co.hodlwallet.presenter.customviews.BRText
                 android:id="@+id/close"
                 android:text="Close"
                 android:textColor="@color/button_primary_normal"
