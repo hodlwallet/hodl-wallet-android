@@ -194,14 +194,18 @@ public class SettingsActivity extends BRActivity {
 
         items.add(new BRSettingsItem("", "", null, true));
 
-        items.add(new BRSettingsItem(getString(R.string.Settings_shareData), "", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingsActivity.this, ShareDataActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-            }
-        }, false));
+        boolean shareDataEnabled = false;
+        if (shareDataEnabled) {
+            items.add(new BRSettingsItem(getString(R.string.Settings_shareData), "", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(SettingsActivity.this, ShareDataActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                }
+            }, false));
+        }
+
         boolean eaEnabled = APIClient.getInstance(this).isFeatureEnabled(APIClient.FeatureFlags.EARLY_ACCESS.toString());
         eaEnabled = false;
         if (eaEnabled)
