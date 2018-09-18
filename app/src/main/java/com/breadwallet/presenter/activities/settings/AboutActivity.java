@@ -63,7 +63,7 @@ public class AboutActivity extends BRActivity {
         redditShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://reddit.com/r/breadwallet/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.reddit.com/r/hodlwallet"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -72,7 +72,7 @@ public class AboutActivity extends BRActivity {
         twitterShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/breadapp"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/hodlwallet"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -80,7 +80,7 @@ public class AboutActivity extends BRActivity {
         blogShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://breadapp.com/blog/"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hodlwallet.co"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
@@ -88,7 +88,7 @@ public class AboutActivity extends BRActivity {
         policyText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://breadapp.com/privacy-policy"));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hodlwallet.co/privacy-policy"));
                 startActivity(browserIntent);
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
             }
