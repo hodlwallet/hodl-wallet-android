@@ -1,13 +1,13 @@
-package com.breadwallet.platform;
+package co.hodlwallet.platform;
 
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.breadwallet.presenter.activities.intro.WriteDownActivity;
-import com.breadwallet.tools.threads.BRExecutor;
-import com.breadwallet.tools.util.BRConstants;
+import co.hodlwallet.presenter.activities.intro.WriteDownActivity;
+import co.hodlwallet.tools.threads.BRExecutor;
+import co.hodlwallet.tools.util.BRConstants;
 import com.platform.entities.TxMetaData;
 import com.platform.interfaces.KVStoreAdaptor;
 import com.platform.kvstore.CompletionObject;

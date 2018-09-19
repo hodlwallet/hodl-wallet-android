@@ -1,4 +1,4 @@
-package com.breadwallet.security;
+package co.hodlwallet.security;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,11 +6,11 @@ import android.security.keystore.UserNotAuthenticatedException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.breadwallet.presenter.activities.BreadActivity;
-import com.breadwallet.presenter.activities.settings.AboutActivity;
-import com.breadwallet.presenter.activities.settings.TestActivity;
-import com.breadwallet.tools.security.BRKeyStore;
-import com.breadwallet.tools.threads.BRExecutor;
+import co.hodlwallet.presenter.activities.BreadActivity;
+import co.hodlwallet.presenter.activities.settings.AboutActivity;
+import co.hodlwallet.presenter.activities.settings.TestActivity;
+import co.hodlwallet.tools.security.BRKeyStore;
+import co.hodlwallet.tools.threads.BRExecutor;
 import com.jniwrappers.BRKey;
 
 import org.junit.Assert;
@@ -23,8 +23,8 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.breadwallet.tools.security.BRKeyStore.PHRASE_ALIAS;
-import static com.breadwallet.tools.security.BRKeyStore.aliasObjectMap;
+import static co.hodlwallet.tools.security.BRKeyStore.PHRASE_ALIAS;
+import static co.hodlwallet.tools.security.BRKeyStore.aliasObjectMap;
 
 
 /**

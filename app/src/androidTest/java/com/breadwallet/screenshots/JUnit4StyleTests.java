@@ -1,13 +1,13 @@
-package com.breadwallet.screenshots;
+package co.hodlwallet.screenshots;
 
 import android.os.Build;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.IdlingPolicies;
 import android.support.test.rule.ActivityTestRule;
 
-import com.breadwallet.R;
-import com.breadwallet.presenter.activities.BreadActivity;
-import com.breadwallet.tools.animation.BRAnimator;
+import co.hodlwallet.R;
+import co.hodlwallet.presenter.activities.BreadActivity;
+import co.hodlwallet.tools.animation.BRAnimator;
 
 import org.junit.After;
 import org.junit.Before;
