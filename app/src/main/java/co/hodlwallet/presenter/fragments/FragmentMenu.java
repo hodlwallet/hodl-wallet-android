@@ -99,7 +99,7 @@ public class FragmentMenu extends Fragment {
         itemList = new ArrayList<>();
 
         // Show test in menu for DEBUG builds only!
-        boolean testEnabled = BuildConfig.DEBUG;
+        boolean testEnabled = co.hodlwallet.BuildConfig.DEBUG;
 
         if (testEnabled)
             // Adds the button that calls the tests for BRCore. I suppose we can share an icon with settings for test ;-)
