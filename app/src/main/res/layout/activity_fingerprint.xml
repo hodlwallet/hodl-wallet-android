@@ -57,7 +57,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginTop="40dp"
             android:elevation="8dp"
-            android:src="@drawable/ic_fingerprint_large"/>
+            android:src="@drawable/ic_fingerprint_large_gray"/>
 
     </LinearLayout>
 
