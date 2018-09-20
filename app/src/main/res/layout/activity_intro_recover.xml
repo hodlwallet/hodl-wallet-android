@@ -7,9 +7,9 @@
     android:background="@color/gray_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.breadwallet.presenter.activities.intro.RecoverActivity">
+    tools:context="co.hodlwallet.presenter.activities.intro.RecoverActivity">
 
-    <com.breadwallet.presenter.customviews.BRButton
+    <co.hodlwallet.presenter.customviews.BRButton
         android:id="@+id/send_button"
         android:layout_width="0dp"
         android:layout_height="@dimen/big_button_height"
@@ -36,7 +36,7 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1">
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView4"/>
 
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
     </android.support.constraint.ConstraintLayout>
 
 
-    <com.breadwallet.presenter.customviews.BRText
+    <co.hodlwallet.presenter.customviews.BRText
         android:id="@+id/textView8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

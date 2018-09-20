@@ -68,6 +68,6 @@ crash.txt
 /app/google-services.json
 /.idea/markdown-navigator/
 /.idea/codeStyles/codeStyleConfig.xml
-/app/src/main/java/com/breadwallet/presenter/fragments/FragmentBreadSignal.java
+/app/src/main/java/co/hodlwallet/presenter/fragments/FragmentBreadSignal.java
 /fastlane/
 fastlane/

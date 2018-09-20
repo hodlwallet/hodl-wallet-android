@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_trans"
-    tools:context="com.breadwallet.presenter.activities.LoginActivity">
+    tools:context="co.hodlwallet.presenter.activities.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/pin_dialog"
@@ -19,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:textSize="22sp"
             app:customTFont="Electrolize-Regular.ttf" />
 
-        <com.breadwallet.presenter.customviews.BRText
+        <co.hodlwallet.presenter.customviews.BRText
             android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -90,7 +90,7 @@
 
     </RelativeLayout>
 
-    <com.breadwallet.presenter.customviews.BRKeyboard
+    <co.hodlwallet.presenter.customviews.BRKeyboard
         android:id="@+id/brkeyboard"
         android:layout_width="0dp"
         android:paddingTop="8dp"

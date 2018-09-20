@@ -51,7 +51,7 @@ android {
     flavorDimensions "mode"
 
     productFlavors {
-        brd {
+        hodl {
             applicationId "co.hodlwallet"
             dimension "mode"
             resValue "string", "app_name", "HODL"
@@ -69,8 +69,8 @@ android {
             }
         }
 
-        brdTestnet {
-            applicationId "com.breadtestnet"
+        hodlTestnet {
+            applicationId "com.hodlwallettestnet"
             dimension "mode"
             resValue "string", "app_name", "HODL-testnet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
