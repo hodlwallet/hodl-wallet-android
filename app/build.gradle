@@ -87,8 +87,8 @@ android {
             }
         }
 
-        brdRegtest {
-            applicationId "co.hodlregtest"
+        hodlRegtest {
+            applicationId "co.hodlwalletregtest"
             dimension "mode"
             resValue "string", "app_name", "HODL-regtest"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
