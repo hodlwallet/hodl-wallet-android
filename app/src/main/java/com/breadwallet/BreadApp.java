@@ -81,11 +81,13 @@ public class BreadApp extends Application {
 
         boolean isTestVersion = BREAD_POINT.contains("staging") || BREAD_POINT.contains("stage");
         boolean isTestNet = BuildConfig.BITCOIN_TESTNET;
+        boolean isRegTest = BuildConfig.BITCOIN_REGTEST;
         String lang = getCurrentLocale(this);
 
         mHeaders.put("X-Is-Internal", IS_ALPHA ? "true" : "false");
         mHeaders.put("X-Testflight", isTestVersion ? "true" : "false");
         mHeaders.put("X-Bitcoin-Testnet", isTestNet ? "true" : "false");
+        mHeaders.put("X-Bitcoin-Regtest", isRegTest ? "true" : "false");
         mHeaders.put("Accept-Language", lang);
 
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);

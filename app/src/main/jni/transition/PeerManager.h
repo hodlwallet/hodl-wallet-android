@@ -30,7 +30,11 @@
 #if BITCOIN_TESTNET
 #define BR_CHAIN_PARAMS BRTestNetParams
 #else
+#if BITCOIN_REGTEST
+#define BR_CHAIN_PARAMS BRRegTestParams
+#else
 #define BR_CHAIN_PARAMS BRMainNetParams
+#endif
 #endif
 
 #ifndef BREADWALLET_PEERMANAGER_H

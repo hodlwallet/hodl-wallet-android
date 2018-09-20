@@ -175,7 +175,7 @@ public class BRApiManager {
 
 
     public static JSONArray fetchRates(Activity activity) {
-        String jsonString = BuildConfig.BITCOIN_TESTNET ? urlGET(activity, "https://" + BreadApp.HOST + "/hodl.staging/rates.json") :
+        String jsonString = (BuildConfig.BITCOIN_TESTNET || BuildConfig.BITCOIN_REGTEST) ? urlGET(activity, "https://" + BreadApp.HOST + "/hodl.staging/rates.json") :
                 urlGET(activity, "https://" + BreadApp.HOST + "/hodl/rates.json");
         JSONArray jsonArray = null;
         if (jsonString == null) return null;

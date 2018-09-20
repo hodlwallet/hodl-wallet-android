@@ -59,7 +59,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public ImportPrivKeyTask(Activity activity) {
         app = activity;
-        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://test-insight.bitpay.com/api/addrs/" : "https://insight.bitpay.com/api/addrs/";
+        UNSPENT_URL = (BuildConfig.BITCOIN_TESTNET || BuildConfig.BITCOIN_REGTEST) ? "https://test-insight.bitpay.com/api/addrs/" : "https://insight.bitpay.com/api/addrs/";
     }
 
     @Override
