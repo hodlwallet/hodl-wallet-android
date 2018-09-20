@@ -122,6 +122,7 @@ public class FingerprintActivity extends BRActivity {
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
                 ds.setUnderlineText(false);
+                ds.setColor(getColor(R.color.logo_gradient_start));
             }
         };
         // make the whole text clickable if failed to select the last word
