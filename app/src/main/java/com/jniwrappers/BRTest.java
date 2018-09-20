@@ -2,7 +2,7 @@ package com.jniwrappers;
 
 import android.util.Log;
 
-import com.breadwallet.tools.util.Utils;
+import co.hodlwallet.tools.util.Utils;
 
 import java.util.Arrays;
 
