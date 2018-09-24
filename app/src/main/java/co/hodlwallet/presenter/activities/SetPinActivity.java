@@ -127,17 +127,17 @@ public class SetPinActivity extends BRActivity {
 
     private void updateDots() {
         int selectedDots = pin.length();
-        dot1.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot1.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
         selectedDots--;
-        dot2.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot2.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
         selectedDots--;
-        dot3.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot3.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
         selectedDots--;
-        dot4.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot4.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
         selectedDots--;
-        dot5.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot5.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
         selectedDots--;
-        dot6.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_dot_gray : R.drawable.ic_pin_dot_black));
+        dot6.setBackground(getDrawable(selectedDots <= 0 ? R.drawable.ic_pin_square_gray : R.drawable.ic_pin_square_yellow));
 
         if (pin.length() == 6) {
             if (startingNextActivity) return;

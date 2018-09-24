@@ -138,7 +138,7 @@ public class UpdatePinActivity extends BRActivity {
 
     private void updateDots() {
 
-        AuthManager.getInstance().updateDots(this, pinLimit, pin.toString(), dot1, dot2, dot3, dot4, dot5, dot6, R.drawable.ic_pin_dot_gray, new AuthManager.OnPinSuccess() {
+        AuthManager.getInstance().updateDots(this, pinLimit, pin.toString(), dot1, dot2, dot3, dot4, dot5, dot6, R.drawable.ic_pin_square_gray, new AuthManager.OnPinSuccess() {
             @Override
             public void onSuccess() {
                 new Handler().postDelayed(new Runnable() {
