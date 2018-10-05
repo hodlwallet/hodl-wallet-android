@@ -381,7 +381,7 @@ JNIEXPORT jobjectArray JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getTran
                                        : JNI_FALSE);
         jlong JtimeStamp = tempTx->timestamp;
         jint JblockHeight = tempTx->blockHeight;
-        jint JtxSize = (jint) BRTransactionSize(tempTx);
+        jint JtxSize = (jint) BRTransactionVSize(tempTx);
         UInt256 txid = tempTx->txHash;
         jbyteArray JtxHash = (*env)->NewByteArray(env, sizeof(txid));
         (*env)->SetByteArrayRegion(env, JtxHash, 0, (jsize) sizeof(txid), (jbyte *) txid.u8);
@@ -824,7 +824,7 @@ JNIEXPORT jobject JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getPrivKeyOb
 
     BRTransactionAddOutput(_privKeyTx, 0, script, scriptLen);
 
-    uint64_t fee = BRWalletFeeForTxSize(_wallet, BRTransactionSize(_privKeyTx));
+    uint64_t fee = BRWalletFeeForTxSize(_wallet, BRTransactionVSize(_privKeyTx));
 
     _privKeyTx->outputs[0].amount = _privKeyBalance - fee;
 
@@ -1028,7 +1028,7 @@ JNIEXPORT jint JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getTxSize(
     jbyte *byteTx = (*env)->GetByteArrayElements(env, serializedTransaction, 0);
     BRTransaction *tmpTx = BRTransactionParse((uint8_t *) byteTx, (size_t) txLength);
 
-    return (jint) (jlong) BRTransactionSize(tmpTx);
+    return (jint) (jlong) BRTransactionVSize(tmpTx);
 }
 
 JNIEXPORT jlong JNICALL Java_co_hodlwallet_wallet_BRWalletManager_nativeBalance(
