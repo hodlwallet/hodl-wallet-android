@@ -96,7 +96,7 @@ public class FragmentMenu extends Fragment {
 
         itemList = new ArrayList<>();
 
-        itemList.add(new BRMenuItem(getString(R.string.MenuButton_security), R.drawable.ic_shield, new View.OnClickListener() {
+        itemList.add(new BRMenuItem(getString(R.string.MenuButton_security), R.drawable.ic_shield_yellow, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Activity app = getActivity();
