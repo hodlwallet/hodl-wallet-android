@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -58,6 +59,7 @@ public class LoginActivity extends BRActivity {
     private int pinLimit = 6;
     private static LoginActivity app;
 
+    private ImageView title;
     private ImageView unlockedImage;
     private TextView unlockedText;
     private TextView enterPinLabel;
@@ -94,6 +96,7 @@ public class LoginActivity extends BRActivity {
         pinLayout = (LinearLayout) findViewById(R.id.pinLayout);
         fingerPrint = (ImageButton) findViewById(R.id.fingerprint_icon);
 
+        title = (ImageView) findViewById(R.id.title);
         unlockedImage = (ImageView) findViewById(R.id.unlocked_image);
         unlockedText = (TextView) findViewById(R.id.unlocked_text);
         enterPinLabel = (TextView) findViewById(R.id.enter_pin_label);
@@ -272,6 +275,7 @@ public class LoginActivity extends BRActivity {
 
     private void unlockWallet() {
         pin = new StringBuilder("");
+        title.animate().alpha(0f).setDuration(100);
         offlineButtonsLayout.animate().translationY(-600).setInterpolator(new AccelerateInterpolator());
         pinLayout.animate().translationY(-2000).setInterpolator(new AccelerateInterpolator());
         enterPinLabel.animate().translationY(-1800).setInterpolator(new AccelerateInterpolator());
