@@ -90,6 +90,7 @@ public class FragmentRequestAmount extends Fragment {
     private boolean shareButtonsShown = true;
     private String selectedIso;
     private Button isoButton;
+    private TextView isoButtonText;
     private Handler copyCloseHandler = new Handler();
     private LinearLayout keyboardLayout;
     private RelativeLayout amountLayout;
@@ -122,6 +123,7 @@ public class FragmentRequestAmount extends Fragment {
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         amountBuilder = new StringBuilder(0);
         isoButton = (Button) rootView.findViewById(R.id.iso_button);
+        isoButtonText = (TextView) rootView.findViewById(R.id.iso_button_text);
         mTitle = (TextView) rootView.findViewById(R.id.title);
         mAddress = (TextView) rootView.findViewById(R.id.address_text);
         mQrImage = (ImageView) rootView.findViewById(R.id.qr_image);
@@ -424,8 +426,7 @@ public class FragmentRequestAmount extends Fragment {
         String tmpAmount = amountBuilder.toString();
         amountEdit.setText(tmpAmount);
         isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
-        isoButton.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
-
+        isoButtonText.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
     }
 
     private void showKeyboard(boolean b) {
