@@ -68,7 +68,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginLeft="@dimen/bread_margin"
                 android:layout_marginRight="@dimen/bread_margin"
-                android:background="@drawable/faq_question_white"
+                android:background="@drawable/ic_faq"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="81dp"/>
 
@@ -106,26 +106,33 @@
                 android:singleLine="true"
                 />
 
-            <co.hodlwallet.presenter.customviews.BRButton
-                android:id="@+id/paste_button"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="@dimen/bread_margin"
-                android:layout_marginTop="8dp"
-                android:layout_weight="0.7"
-                android:background="@android:color/transparent"
-                android:minHeight="50dp"
-                android:paddingBottom="12dp"
-                android:paddingEnd="8dp"
-                android:paddingStart="8dp"
-                android:paddingTop="12dp"
-                android:text="@string/Send.pasteLabel"
-                android:textColor="@color/light_gray"
-                android:textSize="16sp"
-                app:buttonType="2"
-                app:isBreadButton="true"
-                />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7">
+
+                <TextView
+                    android:id="@+id/paste_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Send.pasteLabel"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/paste_button"
+                    />
+
+                <co.hodlwallet.presenter.customviews.BRButton
+                    android:id="@+id/paste_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/bread_margin"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/ic_paste"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:buttonType="2"
+                    app:isBreadButton="false"
+                    />
+
+            </android.support.constraint.ConstraintLayout>
 
             <co.hodlwallet.presenter.customviews.BRButton
                 android:id="@+id/scan"
