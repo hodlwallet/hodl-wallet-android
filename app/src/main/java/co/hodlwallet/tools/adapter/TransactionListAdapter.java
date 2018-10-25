@@ -259,7 +259,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         boolean received = item.getSent() == 0;
-        convertView.arrowIcon.setImageResource(received ? R.drawable.arrow_down_bold_circle : R.drawable.arrow_up_bold_circle);
+        convertView.arrowIcon.setImageResource(received ? R.drawable.ic_receive_tab_icon : R.drawable.ic_send_tab_icon);
         convertView.mainLayout.setBackgroundResource(getResourceByPos(position));
         convertView.sentReceived.setText(received ? mContext.getString(R.string.TransactionDetails_received, "") : mContext.getString(R.string.TransactionDetails_sent, ""));
         convertView.sentReceived.setTextColor(received ? mContext.getColor(R.color.logo_gradient_start) : mContext.getColor(R.color.gray_text_tint));
