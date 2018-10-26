@@ -745,7 +745,7 @@
   <!-- Enter phrase to wipe wallet instruction. -->
   <string name="WipeWallet.instruction">To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet\'s Backup Recovery Key.</string>
   <!-- Start wipe wallet view message -->
-  <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different wallets on this device.</string>
+  <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different Hodl wallet on this device.</string>
   <!-- Start wipe wallet view warning -->
   <string name="WipeWallet.startWarning">Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Backup Recovery Key.</string>
   <!-- Wipe wallet navigation item title. -->

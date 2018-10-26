@@ -103,7 +103,7 @@
             android:layout_height="160dp"
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/restore_image"/>
+            android:src="@drawable/ic_recover_wallet_illustration"/>
 
         <ImageButton
             android:id="@+id/faq_button"
