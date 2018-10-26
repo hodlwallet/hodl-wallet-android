@@ -101,8 +101,8 @@ public class FragmentSend extends Fragment {
     public LinearLayout signalLayout;
     private BRKeyboard keyboard;
     private EditText addressEdit;
-    private Button scan;
-    private Button paste;
+    private ImageButton scan;
+    private ImageButton paste;
     private Button send;
     private EditText commentEdit;
     private StringBuilder amountBuilder;
@@ -111,7 +111,8 @@ public class FragmentSend extends Fragment {
     private TextView balanceText;
     private long curBalance;
     private String selectedIso;
-    private Button isoButton;
+    private ImageButton isoButton;
+    private TextView isoButtonText;
     private int keyboardIndex;
     private LinearLayout keyboardLayout;
     private ImageButton close;
@@ -145,13 +146,14 @@ public class FragmentSend extends Fragment {
         keyboard.setBRKeyboardColor(R.color.gray_background);
         isoText = (TextView) rootView.findViewById(R.id.iso_text);
         addressEdit = (EditText) rootView.findViewById(R.id.address_edit);
-        scan = (Button) rootView.findViewById(R.id.scan);
-        paste = (Button) rootView.findViewById(R.id.paste_button);
+        scan = (ImageButton) rootView.findViewById(R.id.scan);
+        paste = (ImageButton) rootView.findViewById(R.id.paste_button);
         send = (Button) rootView.findViewById(R.id.send_button);
         commentEdit = (EditText) rootView.findViewById(R.id.comment_edit);
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         balanceText = (TextView) rootView.findViewById(R.id.balance_text);
-        isoButton = (Button) rootView.findViewById(R.id.iso_button);
+        isoButton = (ImageButton) rootView.findViewById(R.id.iso_button);
+        isoButtonText = (TextView) rootView.findViewById(R.id.iso_button_text);
         keyboardLayout = (LinearLayout) rootView.findViewById(R.id.keyboard_layout);
         amountLayout = (ConstraintLayout) rootView.findViewById(R.id.amount_layout);
         feeLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.fee_buttons_layout);
@@ -672,7 +674,7 @@ public class FragmentSend extends Fragment {
         curBalance = BRWalletManager.getInstance().getBalance(getActivity());
         if (!amountLabelOn)
             isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
-        isoButton.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
+        isoButtonText.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
         //Balance depending on ISO
         long satoshis = (Utils.isNullOrEmpty(tmpAmount) || tmpAmount.equalsIgnoreCase(".")) ? 0 :
                 (selectedIso.equalsIgnoreCase("btc") ? BRExchange.getSatoshisForBitcoin(getActivity(), new BigDecimal(tmpAmount)).longValue() : BRExchange.getSatoshisFromAmount(getActivity(), selectedIso, new BigDecimal(tmpAmount)).longValue());
