@@ -117,7 +117,7 @@
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/bread_margin"
-            android:src="@drawable/import_symbol"/>
+            android:src="@drawable/ic_import_illustration"/>
 
     </RelativeLayout>
 
