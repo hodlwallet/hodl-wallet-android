@@ -89,7 +89,7 @@ public class FragmentRequestAmount extends Fragment {
     private Button shareTextMessage;
     private boolean shareButtonsShown = true;
     private String selectedIso;
-    private Button isoButton;
+    private ImageButton isoButton;
     private TextView isoButtonText;
     private Handler copyCloseHandler = new Handler();
     private LinearLayout keyboardLayout;
@@ -122,7 +122,7 @@ public class FragmentRequestAmount extends Fragment {
         isoText = (TextView) rootView.findViewById(R.id.iso_text);
         amountEdit = (EditText) rootView.findViewById(R.id.amount_edit);
         amountBuilder = new StringBuilder(0);
-        isoButton = (Button) rootView.findViewById(R.id.iso_button);
+        isoButton = (ImageButton) rootView.findViewById(R.id.iso_button);
         isoButtonText = (TextView) rootView.findViewById(R.id.iso_button_text);
         mTitle = (TextView) rootView.findViewById(R.id.title);
         mAddress = (TextView) rootView.findViewById(R.id.address_text);
