@@ -10,6 +10,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -63,7 +64,7 @@ public class LoginActivity extends BRActivity {
     private ImageView unlockedImage;
     private TextView unlockedText;
     private TextView enterPinLabel;
-    private LinearLayout offlineButtonsLayout;
+    private ConstraintLayout offlineButtonsLayout;
 
     private ImageButton fingerPrint;
     public static boolean appVisible = false;
@@ -100,7 +101,7 @@ public class LoginActivity extends BRActivity {
         unlockedImage = (ImageView) findViewById(R.id.unlocked_image);
         unlockedText = (TextView) findViewById(R.id.unlocked_text);
         enterPinLabel = (TextView) findViewById(R.id.enter_pin_label);
-        offlineButtonsLayout = (LinearLayout) findViewById(R.id.buttons_layout);
+        offlineButtonsLayout = (ConstraintLayout) findViewById(R.id.buttons_layout);
 
         dot1 = findViewById(R.id.dot1);
         dot2 = findViewById(R.id.dot2);
@@ -125,7 +126,7 @@ public class LoginActivity extends BRActivity {
         leftButton = (Button) findViewById(R.id.left_button);
         rightButton = (Button) findViewById(R.id.right_button);
 
-        setUpOfflineButtons();
+        // setUpOfflineButtons();
 
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -342,8 +343,8 @@ public class LoginActivity extends BRActivity {
 
         leftDrawable.setStroke(stoke, activeColor, 0, 0);
         rightDrawable.setStroke(stoke, activeColor, 0, 0);
-        leftButton.setTextColor(activeColor);
-        rightButton.setTextColor(activeColor);
+        // leftButton.setTextColor(activeColor);
+        // rightButton.setTextColor(activeColor);
     }
 
     @Override
