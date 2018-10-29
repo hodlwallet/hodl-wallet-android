@@ -109,15 +109,16 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7">
+                android:layout_weight="0.9">
 
                 <TextView
                     android:id="@+id/paste_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:text="@string/Send.pasteLabel"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@id/paste_button"
+                    android:gravity="center_vertical"
                     app:layout_constraintRight_toLeftOf="@id/scan_text"
                     />
 
@@ -139,8 +140,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Send.scanLabel"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@id/scan"
-                    app:layout_constraintLeft_toRightOf="@id/paste_text"
+                    android:gravity="center_vertical"
+                    app:layout_constraintLeft_toLeftOf="@id/scan"
                     />
 
                 <ImageButton
@@ -148,14 +149,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/bread_margin"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0.7"
+                    android:layout_marginTop="4dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_scan"
-                    android:minHeight="50dp"
-                    app:layout_constraintLeft_toRightOf="@id/paste_button"
+                    app:layout_constraintTop_toBottomOf="@id/scan_text"
                     app:layout_constraintRight_toLeftOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     />
             </android.support.constraint.ConstraintLayout>
 
