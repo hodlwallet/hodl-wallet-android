@@ -130,8 +130,8 @@
                     android:layout_marginTop="4dp"
                     android:src="@drawable/ic_paste"
                     android:background="@android:color/transparent"
-                    app:layout_constraintRight_toLeftOf="@id/scan"
                     app:layout_constraintBottom_toBottomOf="@id/scan"
+                    app:layout_constraintLeft_toLeftOf="@id/paste_text"
                     />
 
                 <TextView
@@ -141,7 +141,7 @@
                     android:text="@string/Send.scanLabel"
                     android:textColor="@color/white"
                     android:gravity="center_vertical"
-                    app:layout_constraintLeft_toLeftOf="@id/scan"
+                    app:layout_constraintRight_toLeftOf="parent"
                     />
 
                 <ImageButton
@@ -153,7 +153,7 @@
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_scan"
                     app:layout_constraintTop_toBottomOf="@id/scan_text"
-                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@id/scan_text"
                     />
             </android.support.constraint.ConstraintLayout>
 
