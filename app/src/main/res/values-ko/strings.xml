@@ -155,7 +155,7 @@
   <!-- Fingerprint was not recognized by the scanner, please try scanning again -->
   <string name="ErrorMessages.touchIdFailed.android">지문 인식되지 않음. 다시 시도해 주세요.</string>
   <!-- Economy fee -->
-  <string name="FeeSelector.economy">경제</string>
+  <string name="FeeSelector.economy">Economy</string>
   <!-- E.g. [This transaction is predicted to complete in] 1-24 hours -->
   <string name="FeeSelector.economyTime">1~24시간</string>
   <!-- Warning message for economy fee -->
@@ -166,6 +166,14 @@
   <string name="FeeSelector.regular">일반</string>
   <!-- E.g. [This transaction is predicted to complete in] 10-60 minutes -->
   <string name="FeeSelector.regularTime">10~60분</string>
+  <!-- Transaction Fee title -->
+  <string name="FeeSelector.transactionFee">수수료</string>
+  <!-- Estimated Confirmation Title-->
+  <string name="FeeSelector.estConfirmation">예상 컨펌 시간</string>
+  <!-- Custom Fee title -->
+  <string name="FeeSelector.customFee">수수료 지정</string>
+  <!-- Custom Fee warning -->
+  <string name="FeeSelector.customBody">수수료가 낮으면 거래가 영원히 컨컴되지 않을 수 있어 사용자 지정 수수료는 추천하지 않습니다.</string>
   <!-- Fee Selector title -->
   <string name="FeeSelector.title">처리 속도</string>
   <!-- Checking private key balance progress view text -->
@@ -578,6 +586,14 @@
   <string name="TouchIdSpendingLimit.title.android">지문 본인확인 사용 한계</string>
   <!-- Availability status text -->
   <string name="Transaction.available">지출 가능</string>
+  <!-- Displayed before 1 confirmation has been found -->
+  <string name="Transaction.awaitingStatus">컨펌 대기중</string>
+  <!-- For 1 confirmation -->
+  <string name="Transaction.firstConfirmation">1 컨펌</string>
+  <!-- For 2 confirmations -->
+  <string name="Transaction.secondConfirmation">2 컨펌</string>
+  <!-- For 3 confirmations -->
+  <string name="Transaction.thirdConfirmation">3 컨펌</string>
   <!-- Transaction complete label -->
   <string name="Transaction.complete">완료</string>
   <!-- eg. Ending balance: $50.00 -->
