@@ -205,7 +205,7 @@
   <!-- Caption for graphics -->
   <string name="Import.leftCaption">Wallet to be imported</string>
   <!-- Import wallet intro screen message -->
-  <string name="Import.message">Importing a wallet transfers all the money from your other wallet into your wallet using a single transaction.</string>
+  <string name="Import.message">Sweeping a private key transfers all the bitcoin from your private key into your Hodl wallet using a single transaction.</string>
   <!-- Enter password alert view title -->
   <string name="Import.password">This private key is password protected.</string>
   <!-- password textfield placeholder -->
@@ -219,11 +219,11 @@
   <!-- Successfully imported wallet message body -->
   <string name="Import.SuccessBody">Successfully imported wallet.</string>
   <!-- Import Wallet screen title -->
-  <string name="Import.title">Import Wallet</string>
+  <string name="Import.title">Sweep Private Key</string>
   <!-- Unlocking Private key activity view message. -->
   <string name="Import.unlockingActivity">Unlocking Key</string>
   <!-- Import wallet intro warning message -->
-  <string name="Import.warning">Importing a wallet does not include transaction history or other details.</string>
+  <string name="Import.warning">Sweeping a private key does not include transaction history or other details.</string>
   <!-- Wrong password alert message -->
   <string name="Import.wrongPassword">Wrong password, please try again.</string>
   <!-- Close app button -->
@@ -505,7 +505,7 @@
   <!-- Are you enjoying brd alert message body -->
   <string name="Settings.enjoying">Are you enjoying HODL Wallet?</string>
   <!-- Import wallet label -->
-  <string name="Settings.importTitle">Import Wallet</string>
+  <string name="Settings.importTitle">Sweep Private Key</string>
   <!-- Manage settings section header -->
   <string name="Settings.manage">Manage</string>
   <!-- Notifications label -->
@@ -745,7 +745,7 @@
   <!-- Enter phrase to wipe wallet instruction. -->
   <string name="WipeWallet.instruction">To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet\'s Backup Recovery Key.</string>
   <!-- Start wipe wallet view message -->
-  <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different wallets on this device.</string>
+  <string name="WipeWallet.startMessage">Starting or recovering another wallet allows you to access and manage a different Hodl wallet on this device.</string>
   <!-- Start wipe wallet view warning -->
   <string name="WipeWallet.startWarning">Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Backup Recovery Key.</string>
   <!-- Wipe wallet navigation item title. -->

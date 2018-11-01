@@ -100,14 +100,14 @@
         app:layout_constraintLeft_toLeftOf="@+id/pinLayout"
         app:layout_constraintRight_toRightOf="@+id/pinLayout"/>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/buttons_layout"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
         android:weightSum="2.0"
@@ -118,33 +118,31 @@
 
         <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/left_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:background="@drawable/b_half_left_white"
+            android:drawableTop="@drawable/ic_receive_tab_icon"
+            android:gravity="center"
+            android:background="@android:color/transparent"
             android:paddingBottom="0dp"
             android:paddingTop="8dp"
-            android:text="@string/UnlockScreen.myAddress"
-            android:textColor="@color/white"
-            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:customBFont="Electrolize-Regular.ttf"
             app:isBreadButton="false"
             />
 
         <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/right_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:background="@drawable/b_half_right_white"
+            android:drawableTop="@drawable/ic_send_tab_icon"
+            android:background="@android:color/transparent"
             android:paddingBottom="0dp"
             android:paddingTop="8dp"
-            android:text="@string/UnlockScreen.scan"
-            android:textColor="@color/white"
-            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
             app:customBFont="Electrolize-Regular.ttf"
+            app:isBreadButton="false"
             />
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/unlocked_image"
@@ -155,7 +153,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
         android:alpha="0"
-        android:src="@drawable/ic_unlocked"
+        android:src="@drawable/ic_unlock"
         app:layout_constraintBottom_toBottomOf="@+id/brkeyboard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

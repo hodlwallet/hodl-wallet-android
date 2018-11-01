@@ -63,7 +63,7 @@
                     android:layout_width="@dimen/faq_dimen"
                     android:layout_height="@dimen/faq_dimen"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/faq_question_white"
+                    android:background="@drawable/ic_faq"
                     app:layout_constraintBottom_toBottomOf="@+id/title"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/title"/>
@@ -101,10 +101,10 @@
 
                 <co.hodlwallet.presenter.customviews.BREdit
                     android:id="@+id/amount_edit"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
                     android:layout_toEndOf="@id/iso_text"
                     android:background="@android:color/transparent"
@@ -119,20 +119,27 @@
                     android:textSize="24sp"
                     />
 
-                <co.hodlwallet.presenter.customviews.BRButton
-                    android:id="@+id/iso_button"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/bread_margin"
-                    android:layout_marginTop="16dp"
-                    android:drawablePadding="4dp"
-                    android:minHeight="40dp"
+                <co.hodlwallet.presenter.customviews.BRText
+                    android:id="@+id/iso_button_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/amount_edit"
                     android:text="iso"
-                    android:textColor="@color/light_gray"
-                    android:textSize="18sp"
-                    app:buttonType="2"
-                    app:isBreadButton="true"
+                    android:textColor="@color/logo_gradient_start"
+                    app:customTFont="Electrolize-Regular.ttf"/>
+
+                <ImageButton
+                    android:id="@+id/iso_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="@dimen/bread_margin"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/iso_button_text"
+                    android:src="@drawable/ic_currencyswitch"
+                    android:background="@android:color/transparent"
                     />
 
             </RelativeLayout>
@@ -238,7 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/big_button_height"
                 android:orientation="horizontal"
-                android:drawableStart="@drawable/ic_share_vertical_gray"
+                android:drawableStart="@drawable/ic_share_yellow"
                 android:text="@string/Receive.share"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -267,14 +274,15 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
                     android:layout_weight="1.0"
+                    android:background="@color/gray_background"
+                    android:drawableStart="@drawable/ic_email"
                     android:paddingBottom="12dp"
                     android:paddingTop="12dp"
                     android:text="@string/Receive.emailButton"
-                    android:textColor="@color/light_gray"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:buttonType="2"
-                    app:isBreadButton="true"
-                    />
+                    app:buttonType="1"
+                    app:isBreadButton="false" />
 
                 <co.hodlwallet.presenter.customviews.BRButton
                     android:id="@+id/share_text"
@@ -287,11 +295,13 @@
                     android:layout_weight="1.0"
                     android:paddingBottom="12dp"
                     android:paddingTop="12dp"
+                    android:drawableStart="@drawable/ic_text"
                     android:text="@string/Receive.textButton"
-                    android:textColor="@color/light_gray"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:buttonType="2"
-                    app:isBreadButton="true"
+                    android:background="@color/gray_background"
+                    app:buttonType="1"
+                    app:isBreadButton="false"
                     />
 
             </co.hodlwallet.presenter.customviews.BRLinearLayoutWithCaret>

@@ -92,7 +92,7 @@
         android:id="@+id/faq_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/faq_question_black"
+        android:background="@drawable/ic_faq"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintRight_toRightOf="parent"

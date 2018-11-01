@@ -311,17 +311,18 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_send" />
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_send_tab_icon" />
 
             <co.hodlwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:text="@string/Send.sendLabel"
                 android:textAllCaps="true"
-                android:textColor="@color/pin_pad_text"
+                android:textColor="@color/gray_text_tint"
                 app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 
@@ -337,18 +338,19 @@
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_receive" />
+                android:src="@drawable/ic_receive_tab_icon" />
 
             <co.hodlwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:text="@string/Button.receive"
                 android:textAllCaps="true"
-                android:textColor="@color/pin_pad_text"
+                android:textColor="@color/logo_gradient_start"
                 app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 
@@ -364,18 +366,19 @@
                 android:id="@+id/imageView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_menu_tab_icon" />
 
             <co.hodlwallet.presenter.customviews.BRText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="15dp"
                 android:layout_weight="1"
                 android:text="@string/Button.menu"
                 android:textAllCaps="true"
-                android:textColor="@color/pin_pad_text"
+                android:textColor="@color/white"
                 app:customTFont="Electrolize-Regular.ttf" />
         </LinearLayout>
 

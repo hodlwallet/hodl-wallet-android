@@ -103,7 +103,7 @@
             android:layout_height="160dp"
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/restore_image"/>
+            android:src="@drawable/ic_recover_wallet_illustration"/>
 
         <ImageButton
             android:id="@+id/faq_button"
@@ -112,19 +112,19 @@
             android:layout_alignBottom="@+id/textView2"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/faq_question_white"
+            android:background="@drawable/ic_faq"
             android:scaleType="centerCrop"/>
 
         <ImageButton
             android:id="@+id/close_button"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_alignBottom="@+id/textView2"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/textView2"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_close_white_24dp"/>
+            android:src="@drawable/ic_close_yellow_24dp"/>
 
     </RelativeLayout>
 

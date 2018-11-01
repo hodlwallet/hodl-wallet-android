@@ -31,7 +31,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="@dimen/bread_margin"
-                android:background="@drawable/ic_close_white_24dp"
+                android:background="@drawable/ic_close_yellow_24dp"
                 />
 
             <co.hodlwallet.presenter.customviews.BRText
@@ -54,7 +54,7 @@
                 android:layout_height="@dimen/faq_dimen"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="@dimen/bread_margin"
-                android:background="@drawable/faq_question_white"
+                android:background="@drawable/ic_faq"
                 />
 
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:src="@drawable/ic_shield_white"/>
+            android:src="@drawable/ic_shield_yellow"/>
 
     </LinearLayout>
 

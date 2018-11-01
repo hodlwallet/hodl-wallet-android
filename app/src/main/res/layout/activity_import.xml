@@ -95,7 +95,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="@dimen/bread_margin"
-            android:background="@drawable/ic_close_white_24dp"
+            android:background="@drawable/ic_close_yellow_24dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="81dp"/>
 
@@ -106,7 +106,7 @@
             android:layout_height="@dimen/faq_dimen"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/bread_margin"
-            android:background="@drawable/faq_question_white"
+            android:background="@drawable/ic_faq"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="81dp"/>
 
@@ -117,7 +117,7 @@
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/bread_margin"
-            android:src="@drawable/import_symbol"/>
+            android:src="@drawable/ic_import_illustration"/>
 
     </RelativeLayout>
 

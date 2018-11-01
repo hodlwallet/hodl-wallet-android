@@ -20,6 +20,7 @@
         android:layout_marginTop="16dp"
         android:textAlignment="center"
         android:textSize="22sp"
+        android:textColor="@color/white"
         app:customTFont="Electrolize-Regular.ttf"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -35,6 +36,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal|center_vertical"
         android:textSize="18sp"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_title"/>
@@ -65,7 +67,7 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1.0"
             android:background="@android:color/transparent"
-            android:textColor="@color/dark_blue"/>
+            android:textColor="@color/logo_gradient_start"/>
 
         <co.hodlwallet.presenter.customviews.BRButton
             android:id="@+id/neg_button"
@@ -75,7 +77,7 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1.0"
             android:background="@android:color/transparent"
-            android:textColor="@color/dark_blue"/>
+            android:textColor="@color/logo_gradient_start"/>
 
     </LinearLayout>
 

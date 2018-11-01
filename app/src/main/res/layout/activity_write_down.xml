@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/bread_margin"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_close_white_24dp"/>
+            android:src="@drawable/ic_close_yellow_24dp"/>
 
         <ImageButton
             android:id="@+id/faq_button"
@@ -59,7 +59,7 @@
             android:layout_height="@dimen/faq_dimen"
             android:layout_gravity="end"
             android:layout_margin="@dimen/bread_margin"
-            android:background="@drawable/faq_question_white"/>
+            android:background="@drawable/ic_faq"/>
 
     </FrameLayout>
 

@@ -96,7 +96,7 @@ public class FragmentMenu extends Fragment {
 
         itemList = new ArrayList<>();
 
-        itemList.add(new BRMenuItem(getString(R.string.MenuButton_security), R.drawable.ic_shield, new View.OnClickListener() {
+        itemList.add(new BRMenuItem(getString(R.string.MenuButton_security), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Activity app = getActivity();
@@ -105,14 +105,14 @@ public class FragmentMenu extends Fragment {
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.fade_down);
             }
         }));
-        itemList.add(new BRMenuItem(getString(R.string.MenuButton_support), R.drawable.ic_question_mark, new View.OnClickListener() {
+        itemList.add(new BRMenuItem(getString(R.string.MenuButton_support), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!BRAnimator.isClickAllowed()) return;
                 BRAnimator.showSupportFragment(getActivity(), null);
             }
         }));
-        itemList.add(new BRMenuItem(getString(R.string.MenuButton_settings), R.drawable.ic_settings, new View.OnClickListener() {
+        itemList.add(new BRMenuItem(getString(R.string.MenuButton_settings), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SettingsActivity.class);
@@ -121,7 +121,7 @@ public class FragmentMenu extends Fragment {
                 app.overridePendingTransition(R.anim.enter_from_bottom, R.anim.fade_down);
             }
         }));
-        itemList.add(new BRMenuItem(getString(R.string.MenuButton_lock), R.drawable.ic_lock, new View.OnClickListener() {
+        itemList.add(new BRMenuItem(getString(R.string.MenuButton_lock), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Activity from = getActivity();
@@ -181,10 +181,8 @@ public class FragmentMenu extends Fragment {
                 convertView = inflater.inflate(defaultLayoutResource, parent, false);
             }
             TextView text = (TextView) convertView.findViewById(R.id.item_text);
-            ImageView icon = (ImageView) convertView.findViewById(R.id.item_icon);
 
             text.setText(getItem(position).text);
-            icon.setImageResource(getItem(position).resId);
             convertView.setOnClickListener(getItem(position).listener);
 //            applyBlur();
             return convertView;
