@@ -800,7 +800,7 @@ Java_co_hodlwallet_wallet_BRWalletManager_addInputToPrivKeyTx(JNIEnv *env, jobje
 
     BRTransactionAddInput(_privKeyTx, reversedHash, (uint32_t) vout, (uint64_t) amount,
                           (const uint8_t *) rawScript,
-                          (size_t) scriptLength, NULL, 0, TXIN_SEQUENCE);
+                          (size_t) scriptLength, NULL, 0, NULL, 0, TXIN_SEQUENCE);
 }
 
 JNIEXPORT jobject JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getPrivKeyObject(JNIEnv *env,
