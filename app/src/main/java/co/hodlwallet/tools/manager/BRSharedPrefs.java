@@ -142,6 +142,17 @@ public class BRSharedPrefs {
         editor.apply();
     }
 
+    public static String getLegacyAddress(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(BRConstants.LEGACY_ADDRESS, "");
+    }
+
+    public static void putLegacyAddress(Context ctx, String tmpAddr) {
+        SharedPreferences.Editor editor = ctx.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString(BRConstants.LEGACY_ADDRESS, tmpAddr);
+        editor.apply();
+    }
+
     public static String getWalletName(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString(BRConstants.WALLET_NAME, "My Bread");

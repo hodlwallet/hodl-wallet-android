@@ -30,6 +30,7 @@ import co.hodlwallet.presenter.activities.camera.ScanQRActivity;
 import co.hodlwallet.presenter.customviews.BRDialogView;
 import co.hodlwallet.presenter.entities.TxItem;
 import co.hodlwallet.presenter.fragments.FragmentGreetings;
+import co.hodlwallet.presenter.fragments.FragmentLegacyAddress;
 import co.hodlwallet.presenter.fragments.FragmentMenu;
 import co.hodlwallet.presenter.fragments.FragmentSignal;
 import co.hodlwallet.presenter.fragments.FragmentReceive;
@@ -330,6 +331,27 @@ public class BRAnimator {
                 .setCustomAnimations(0, 0, 0, R.animator.plain_300)
                 .add(android.R.id.content, fragmentReceive, FragmentReceive.class.getName())
                 .addToBackStack(FragmentReceive.class.getName()).commit();
+
+    }
+
+    //isReceive tells the Animator that the Receive fragment is requested, not My Address
+    public static void showLegacyFragment(Activity app, boolean isLegacy) {
+        if (app == null) {
+            Log.e(TAG, "showLegacyFragment: app is null");
+            return;
+        }
+        FragmentLegacyAddress fragmentLegacyAddress = (FragmentLegacyAddress) app.getFragmentManager().findFragmentByTag(FragmentLegacyAddress.class.getName());
+        if (fragmentLegacyAddress != null && fragmentLegacyAddress.isAdded())
+            return;
+        fragmentLegacyAddress = new FragmentLegacyAddress();
+        Bundle args = new Bundle();
+        args.putBoolean("legacy", isLegacy);
+        fragmentLegacyAddress.setArguments(args);
+
+        app.getFragmentManager().beginTransaction()
+                .setCustomAnimations(0, 0, 0, R.animator.plain_300)
+                .add(android.R.id.content, fragmentLegacyAddress, FragmentLegacyAddress.class.getName())
+                .addToBackStack(FragmentLegacyAddress.class.getName()).commit();
 
     }
 

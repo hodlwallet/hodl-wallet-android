@@ -345,6 +345,17 @@ JNIEXPORT jstring JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getReceiveAd
     return (*env)->NewStringUTF(env, receiveAddress.s);
 }
 
+JNIEXPORT jstring JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getLegacyAddress(JNIEnv *env,
+                                                                                      jobject thiz) {
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getLegacyAddress");
+    if (!_wallet) return NULL;
+
+    BRAddress legacyAddress = BRWalletLegacyAddress(_wallet);
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "legacyAddress: %s",
+                        legacyAddress.s);
+    return (*env)->NewStringUTF(env, legacyAddress.s);
+}
+
 JNIEXPORT jobjectArray JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getTransactions(
     JNIEnv *env, jobject thiz) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getTransactions");

@@ -259,11 +259,18 @@ public class BRWalletManager {
 
     public static boolean refreshAddress(Context ctx) {
         String address = getReceiveAddress();
-        if (Utils.isNullOrEmpty(address)) {
+        String legacyAddress = getLegacyAddress();
+
+        if (Utils.isNullOrEmpty(address) || Utils.isNullOrEmpty(legacyAddress)) {
             Log.e(TAG, "refreshAddress: WARNING, retrieved address:" + address);
+            Log.e(TAG, "refreshAddress: WARNING, retrieved legacy address address:" + legacyAddress);
+
             return false;
         }
+
         BRSharedPrefs.putReceiveAddress(ctx, address);
+        BRSharedPrefs.putLegacyAddress(ctx, legacyAddress);
+
         return true;
 
     }
@@ -612,6 +619,8 @@ public class BRWalletManager {
     public native byte[] getMasterPubKey(byte[] normalizedString);
 
     public static native String getReceiveAddress();
+
+    public static native String getLegacyAddress();
 
     public native TxItem[] getTransactions();
 

@@ -526,6 +526,8 @@
   <string name="Settings.wallet">Wallet</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Start/Recover Another Wallet</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddress">Show Legacy Address</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Help improve HODL Wallet by sharing your anonymous data with us. This does not include any financial information. We respect your financial privacy.</string>
   <!-- Share data header -->
