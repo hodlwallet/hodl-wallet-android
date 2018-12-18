@@ -510,6 +510,8 @@
   <string name="Settings.wallet">钱包</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">开始/恢复另一钱包</string>
+  <!-- Show Legacy Address. -->
+  <string name="Settings.legacyAddress">显示旧地址</string>
   <!-- Share data view body -->
   <string name="ShareData.body">同我们分享您的匿名数据来帮助改善 Bread。这不包括任何财务信息。我们尊重您的财务隐私。</string>
   <!-- Share data header -->

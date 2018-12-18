@@ -510,6 +510,8 @@
   <string name="Settings.wallet">Plånbok</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Starta/Återställ en annan plånbok</string>
+  <!-- Show Legacy Address. -->
+  <string name="Settings.legacyAddress">Visa Legacy adress</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Hjälp till att förbättra Bread genom att dela dina anonyma uppgifter med oss. Detta inbegriper inga ekonomiska uppgifter. Vi respekterar din ekonomiska sekretess.</string>
   <!-- Share data header -->

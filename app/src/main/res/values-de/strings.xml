@@ -510,6 +510,8 @@
     <string name="Settings.wallet">Wallet</string>
     <!-- Start or recover another wallet menu label. -->
     <string name="Settings.wipe">Ein anderes Wallet starten/wiederherstellen</string>
+    <!-- Show Legacy Address. -->
+    <string name="Settings.legacyAddress">Legacy-Adresse anzeigen</string>
     <!-- Share data view body -->
     <string name="ShareData.body">Hilf dabei, Bread zu verbessern, indem du uns deine Nutzungsdaten anonym übermittelst. Hiervon sind sämtliche Finanzinformationen ausgeschlossen. Wir respektieren deine finanzielle Privatsphäre.</string>
     <!-- Share data header -->

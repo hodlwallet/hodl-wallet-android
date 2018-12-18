@@ -510,6 +510,8 @@
   <string name="Settings.wallet">Carteira</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Iniciar/recuperar outra carteira</string>
+  <!-- Show Legacy Address. -->
+  <string name="Settings.legacyAddress">Mostrar o legado endereço</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Ajude a melhorar a Bread partilhando os seus dados anónimos connosco. Isto não inclui quaisquer informações financeiras. Respeitamos a sua privacidade financeira.</string>
   <!-- Share data header -->

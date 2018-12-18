@@ -510,6 +510,8 @@
   <string name="Settings.wallet">Кошелек</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Запустить / восстановить другой кошелек</string>
+  <!-- Show Legacy Address. -->
+  <string name="Settings.legacyAddress">показать прежний адрес</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Помогите нам улучшить Bread, поделившись своими анонимными данными. Такие данные не включают какую-либо финансовую информацию. Мы уважаем вашу финансовую конфиденциальность.</string>
   <!-- Share data header -->

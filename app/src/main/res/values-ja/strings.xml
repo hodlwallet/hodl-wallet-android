@@ -510,6 +510,8 @@
   <string name="Settings.wallet">ウォレット</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">別のウォレットを作成、または復元する</string>
+  <!-- Show Legacy Address. -->
+  <string name="Settings.legacyAddress">従来のアドレスを表示します。</string>
   <!-- Share data view body -->
   <string name="ShareData.body">匿名データをシェアして、ブレッドの改善にご協力ください。これにはいかなる財務情報も含まれません。私たちはあなたの財務プライバシーを尊重しています。</string>
   <!-- Share data header -->
