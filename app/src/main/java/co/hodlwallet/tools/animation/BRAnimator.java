@@ -31,6 +31,7 @@ import co.hodlwallet.presenter.customviews.BRDialogView;
 import co.hodlwallet.presenter.entities.TxItem;
 import co.hodlwallet.presenter.fragments.FragmentGreetings;
 import co.hodlwallet.presenter.fragments.FragmentLegacyAddress;
+import co.hodlwallet.presenter.fragments.FragmentSegwit;
 import co.hodlwallet.presenter.fragments.FragmentMenu;
 import co.hodlwallet.presenter.fragments.FragmentSignal;
 import co.hodlwallet.presenter.fragments.FragmentReceive;
@@ -379,6 +380,19 @@ public class BRAnimator {
         transaction.addToBackStack(FragmentGreetings.class.getName());
         transaction.commit();
 
+    }
+
+    public static void showSegwitMessage(Activity app) {
+        if (app == null) {
+            Log.e(TAG, "showSegwitMessage: app is null");
+            return;
+        }
+
+        FragmentTransaction transaction = app.getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(0, 0, 0, R.animator.plain_300);
+        transaction.add(android.R.id.content, new FragmentSegwit(), FragmentSegwit.class.getName());
+        transaction.addToBackStack(FragmentSegwit.class.getName());
+        transaction.commit();
     }
 
     public static boolean isClickAllowed() {

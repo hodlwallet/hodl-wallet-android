@@ -222,6 +222,7 @@ public class InputWordsActivity extends BRActivity {
                         BRSharedPrefs.putAllowSpend(app, false);
                         //if this screen is shown then we did not upgrade to the new app, we installed it
                         BRSharedPrefs.putGreetingsShown(app, true);
+                        BRSharedPrefs.putSegwitShown(app, true);
                         PostAuth.getInstance().onRecoverWalletAuth(app, false);
                     }
 

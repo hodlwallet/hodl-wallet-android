@@ -169,6 +169,14 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
                 }
             }, 1000);
 
+        if (!BRSharedPrefs.getSegwitShown(BreadActivity.this))
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    BRAnimator.showSegwitMessage(BreadActivity.this);
+                    BRSharedPrefs.putSegwitShown(BreadActivity.this, true);
+                }
+            }, 1000);
 
         onConnectionChanged(InternetManager.getInstance().isConnected(this));
 

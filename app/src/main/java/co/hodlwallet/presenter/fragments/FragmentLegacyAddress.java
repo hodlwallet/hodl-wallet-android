@@ -110,6 +110,9 @@ public class FragmentLegacyAddress extends Fragment {
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         separator2 = rootView.findViewById(R.id.separator2);
         separator2.setVisibility(View.GONE);
+
+        mTitle.setText(R.string.Settings_legacyAddressTitle);
+
         setListeners();
         BRWalletManager.getInstance().addBalanceChangedListener(new BRWalletManager.OnBalanceChanged() {
             @Override

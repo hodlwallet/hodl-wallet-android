@@ -112,10 +112,22 @@ public class BRSharedPrefs {
 
     }
 
+    public static boolean getSegwitShown(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean("segwitShown", false);
+    }
+
     public static void putGreetingsShown(Context context, boolean shown) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("greetingsShown", shown);
+        editor.apply();
+    }
+
+    public static void putSegwitShown(Context context, boolean shown) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("segwitShown", shown);
         editor.apply();
     }
 
