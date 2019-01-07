@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import co.hodlwallet.presenter.customviews.BRButton;
 import co.hodlwallet.R;
+import co.hodlwallet.presenter.customviews.BRText;
 import co.hodlwallet.tools.animation.BRAnimator;
 
 /**
@@ -43,6 +45,7 @@ public class FragmentSegwit extends Fragment {
     private static final String TAG = FragmentSegwit.class.getName();
 
     private BRButton ok;
+    private BRText message;
     private ConstraintLayout mainLayout;
     private RelativeLayout background;
 
@@ -51,6 +54,7 @@ public class FragmentSegwit extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_segwit, container, false);
         ok = (BRButton) rootView.findViewById(R.id.ok);
+        message = (BRText) rootView.findViewById(R.id.BRText4);
         mainLayout = (ConstraintLayout) rootView.findViewById(R.id.signal_layout);
         background = (RelativeLayout) rootView.findViewById(R.id.layout);
 
@@ -60,6 +64,7 @@ public class FragmentSegwit extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+        message.setMovementMethod(new ScrollingMovementMethod());
 
         return rootView;
     }

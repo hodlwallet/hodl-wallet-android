@@ -739,9 +739,9 @@
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Welcome to HODL Wallet!</string>
   <!-- Top title of segwit popup -->
-  <string name="Segwit.title">HODL Wallet has Segwit!</string>
+  <string name="Segwit.title">HODL Wallet has Upgraded!</string>
   <!-- Message of segwit popup -->
-  <string name="Segwit.message">Your HODL Wallet has been upgraded to Segwit using the standard address format Bech32.\nSince some services might require the old address format you can get a legacy address via Settings / Wallet / Show Legacy Address.</string>
+  <string name="Segwit.message">HODL Wallet has upgraded to the newest Bitcoin address standard. This gives you the added benefit of saving on transaction fees and being compatible with the latest standards of the Bitcoin Network. You don\'t have to do anything different and the only thing you\'ll notice is your addresses have changed and now begin with "btc".\n\nYour money is safe and still stored on your Backup Recovery Key.\n\nSince this change is still taking effect across the Bitcoin Network, some services may not be ready to send to this new address type. If you encounter this you can still access the old addresses that begin with \"1\" via: Settings/ Wallet/ Show Legacy Address</string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Are you sure you want to delete this wallet?</string>
   <!-- Wipe wallet alert title -->
