@@ -512,6 +512,8 @@
   <string name="Settings.wipe">다른 월렛을 시작/복원</string>
   <!-- Show Legacy Address. -->
   <string name="Settings.legacyAddress">레거시 주소 표시</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">레거시 주소</string>
   <!-- Share data view body -->
   <string name="ShareData.body">브레드 기능 향상을 위해 여러분의 익명 데이터를 공유해 주세요. 금융 정보는 포함되지 않습니다. 여러분의 금융 관련 개인정보는 안전하게 보호됩니다.</string>
   <!-- Share data header -->

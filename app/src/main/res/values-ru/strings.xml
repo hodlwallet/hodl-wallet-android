@@ -512,6 +512,8 @@
   <string name="Settings.wipe">Запустить / восстановить другой кошелек</string>
   <!-- Show Legacy Address. -->
   <string name="Settings.legacyAddress">показать прежний адрес</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">прежний адрес</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Помогите нам улучшить Bread, поделившись своими анонимными данными. Такие данные не включают какую-либо финансовую информацию. Мы уважаем вашу финансовую конфиденциальность.</string>
   <!-- Share data header -->
@@ -712,6 +714,10 @@
   <string name="Welcome.body">Breadwallet сменил свое название на Bread и обзавелся новым дизайном и функциями.\n\nЕсли вам нужна помощь, то ищите иконку (?) в правом верхнем углу большинства экранов.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Добро пожаловать в Bread!</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title"></string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message"></string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Вы действительно хотите удалить этот кошелек?</string>
   <!-- Wipe wallet alert title -->

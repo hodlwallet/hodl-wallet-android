@@ -512,6 +512,8 @@
   <string name="Settings.wipe">Iniciar/recuperar outra carteira</string>
   <!-- Show Legacy Address. -->
   <string name="Settings.legacyAddress">Mostrar o legado endereço</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">Endereço Herdado</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Ajude a melhorar a Bread partilhando os seus dados anónimos connosco. Isto não inclui quaisquer informações financeiras. Respeitamos a sua privacidade financeira.</string>
   <!-- Share data header -->
@@ -712,6 +714,10 @@
   <string name="Welcome.body">As Breadwallets mudaram de nome para Bread, com um visual completamente novo e algumas características novas. \n\nSe precisar de ajuda, procure o (?) no canto superior direito da maioria das telas.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Bem-vindo ao Bread!</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title"></string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message"></string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Tem a certeza de que quer eliminar esta carteira?</string>
   <!-- Wipe wallet alert title -->

@@ -511,7 +511,9 @@
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Start/gendan en anden wallet</string>
   <!-- Show Legacy Address. -->
-  <string name="Settings.legacyAddress">Vis Legacy adresse</string>
+  <string name="Settings.legacyAddress">Vis Legacy Adresse</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">Legacy Adresse</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Hjælp med at forbedre Bread ved at dele dine anonyme data med os. Dette inkluderer ikke finansielle oplysninger. Vi respekterer dit finansielle privatliv.</string>
   <!-- Share data header -->
@@ -712,6 +714,10 @@
   <string name="Welcome.body">Breadwallet har skiftet navn til Bread med et helt nyt look og nogle nye funktioner.\n\nHvis du har brug for hjælp, led efter (?) øverst til højre på de fleste skærme.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Velkommen til Bread!</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title"></string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message"></string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Er du sikker på at du vil slette denne wallet?</string>
   <!-- Wipe wallet alert title -->

@@ -512,6 +512,8 @@
   <string name="Settings.wipe">Starta/Återställ en annan plånbok</string>
   <!-- Show Legacy Address. -->
   <string name="Settings.legacyAddress">Visa Legacy adress</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">äldre adress</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Hjälp till att förbättra Bread genom att dela dina anonyma uppgifter med oss. Detta inbegriper inga ekonomiska uppgifter. Vi respekterar din ekonomiska sekretess.</string>
   <!-- Share data header -->
@@ -712,6 +714,10 @@
   <string name="Welcome.body">Breadplånboken har bytt namn till Bread, med ett splitter nytt utseende och några nya funktioner.\n\nOm du behöver hjälp, leta efter (?)-tecknet i det övre högra hörnet på de flesta skärmar.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Välkommen till Bread!</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title"></string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message"></string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Är du säker på att du vill ta bort den här plånboken.</string>
   <!-- Wipe wallet alert title -->

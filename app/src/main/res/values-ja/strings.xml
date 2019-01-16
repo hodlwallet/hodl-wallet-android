@@ -512,6 +512,8 @@
   <string name="Settings.wipe">別のウォレットを作成、または復元する</string>
   <!-- Show Legacy Address. -->
   <string name="Settings.legacyAddress">従来のアドレスを表示します。</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">レガシーアドレス</string>
   <!-- Share data view body -->
   <string name="ShareData.body">匿名データをシェアして、ブレッドの改善にご協力ください。これにはいかなる財務情報も含まれません。私たちはあなたの財務プライバシーを尊重しています。</string>
   <!-- Share data header -->
@@ -712,6 +714,10 @@
   <string name="Welcome.body">Breadwalletは新しい見た目と新機能を備えて、Breadという名前に生まれ変わりました。\n\nヘルプをご覧になるには、ほとんどの画面の右上にある(?)をお探しください。</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Breadへようこそ！</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title"></string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message"></string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">本当にこのウォレットを削除しますか？</string>
   <!-- Wipe wallet alert title -->

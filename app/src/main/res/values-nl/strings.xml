@@ -511,7 +511,9 @@
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Begin of herstel een andere portomonnee</string>
   <!-- Show Legacy Address. -->
-  <string name="Settings.legacyAddress">Toon Legacy adres</string>
+  <string name="Settings.legacyAddress">Toon Oud adres</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">Oud adres</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Help om Bread te verbeteren door je anonieme data met ons te delen. Dit bevat geen financiële informatie. We respecteren je financiële privacy.</string>
   <!-- Share data header -->
