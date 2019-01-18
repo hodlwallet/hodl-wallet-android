@@ -33,7 +33,7 @@
   <!-- Error alert title -->
   <string name="Alert.error">Error</string>
   <!-- Keystore error -->
-  <string name="Alert.keystore.generic.android">Hay un problema con el almacén de claves de tu sistema operativo Android. Ponte en contacto con support@breadwallet.com.</string>
+  <string name="Alert.keystore.generic.android">Hay un problema con el almacén de claves de tu sistema operativo Android. Ponte en contacto con support@hodlwallet.co.</string>
   <!-- KeyStore error, keys are invalidated -->
   <string name="Alert.keystore.invalidated.android">Tus datos codificados en HODL fueron anulados recientemente debido a que no estaba habilitada tu pantalla de bloqueo de Android.</string>
   <!-- Keystore error title -->

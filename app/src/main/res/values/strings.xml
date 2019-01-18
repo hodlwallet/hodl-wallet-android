@@ -29,7 +29,7 @@
   <!-- Error alert title -->
   <string name="Alert.error">Error</string>
   <!-- Keystore error -->
-  <string name="Alert.keystore.generic.android">There is a problem with your Android OS keystore, please contact support@breadwallet.com</string>
+  <string name="Alert.keystore.generic.android">There is a problem with your Android OS keystore, please contact support@hodlwallet.co</string>
   <!-- KeyStore error, keys are invalidated -->
   <string name="Alert.keystore.invalidated.android">Your wallet encrypted data was recently invalidated because your Android lock screen was disabled.</string>
   <!-- Keystore error title -->
@@ -578,7 +578,7 @@
   <string name="TouchIdSettings.spendingLimit">Spending limit: %1$s (%2$s)</string>
   <!-- Touch id switch label. -->
   <string name="TouchIdSettings.switchLabel">Enable Touch ID for HODL</string>
-  <!-- Enable fingerprint for this wallet called BRD -->
+  <!-- Enable fingerprint for this wallet called HODL -->
   <string name="TouchIdSettings.switchLabel.android">Enable Fingerprint Authentication</string>
   <!-- Touch ID settings view title -->
   <string name="TouchIdSettings.title">Touch ID</string>
@@ -735,7 +735,7 @@
   <!-- Updating webview message -->
   <string name="Webview.updating">Updating...</string>
   <!-- Welcome screen text. (?) will be replaced with the help icon users should look for. -->
-  <string name="Welcome.body">Breadwallet has changed its name to BRD, with a brand new look and some new features.\n\nIf you need help, look for the (?) in the top right of most screens.</string>
+  <string name="Welcome.body">HODLwallet has changed its name to HODL, with a brand new look and some new features.\n\nIf you need help, look for the (?) in the top right of most screens.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Welcome to HODL Wallet!</string>
   <!-- Top title of segwit popup -->
