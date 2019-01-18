@@ -470,10 +470,11 @@ public class FragmentSend extends Fragment {
         });
 
         feeSlider.setMax(500);
+        feeSlider.setProgress(250);
         final int divisor = feeSlider.getMax() / 4;
-        long economy = BRSharedPrefs.getLowFeePerKb(getContext()) / 1000L;
-        feeText.setText(String.format(getString(R.string.FeeSelector_satByte), economy));
-        currentTime.setText(BRSharedPrefs.getEconomyFeeTimeText(getContext()));
+        long normal = BRSharedPrefs.getFeePerKb(getContext()) / 1000L;
+        feeText.setText(String.format(getString(R.string.FeeSelector_satByte), normal));
+        currentTime.setText(BRSharedPrefs.getFeeTimeText(getContext()));
 
         feeSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int currentFee = 0;
