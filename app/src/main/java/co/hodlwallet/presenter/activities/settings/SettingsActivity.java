@@ -15,10 +15,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import co.hodlwallet.R;
+import co.hodlwallet.presenter.activities.BreadActivity;
 import co.hodlwallet.presenter.activities.util.ActivityUTILS;
 import co.hodlwallet.presenter.activities.util.BRActivity;
 import co.hodlwallet.presenter.entities.BRSettingsItem;
 import co.hodlwallet.presenter.interfaces.BRAuthCompletion;
+import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.security.AuthManager;
 import com.platform.APIClient;
@@ -136,6 +138,13 @@ public class SettingsActivity extends BRActivity {
                 Intent intent = new Intent(SettingsActivity.this, WipeActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter_from_bottom, R.anim.empty_300);
+            }
+        }, false));
+
+        items.add(new BRSettingsItem(getString(R.string.Settings_legacyAddress), "", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BRAnimator.showLegacyFragment(SettingsActivity.this, true);
             }
         }, false));
 

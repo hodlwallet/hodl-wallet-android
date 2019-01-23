@@ -112,10 +112,22 @@ public class BRSharedPrefs {
 
     }
 
+    public static boolean getSegwitShown(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean("segwitShown", false);
+    }
+
     public static void putGreetingsShown(Context context, boolean shown) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("greetingsShown", shown);
+        editor.apply();
+    }
+
+    public static void putSegwitShown(Context context, boolean shown) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("segwitShown", shown);
         editor.apply();
     }
 
@@ -139,6 +151,17 @@ public class BRSharedPrefs {
     public static void putReceiveAddress(Context ctx, String tmpAddr) {
         SharedPreferences.Editor editor = ctx.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE).edit();
         editor.putString(BRConstants.RECEIVE_ADDRESS, tmpAddr);
+        editor.apply();
+    }
+
+    public static String getLegacyAddress(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getString(BRConstants.LEGACY_ADDRESS, "");
+    }
+
+    public static void putLegacyAddress(Context ctx, String tmpAddr) {
+        SharedPreferences.Editor editor = ctx.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString(BRConstants.LEGACY_ADDRESS, tmpAddr);
         editor.apply();
     }
 

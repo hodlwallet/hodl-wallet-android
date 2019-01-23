@@ -29,7 +29,7 @@
   <!-- Error alert title -->
   <string name="Alert.error">Error</string>
   <!-- Keystore error -->
-  <string name="Alert.keystore.generic.android">There is a problem with your Android OS keystore, please contact support@breadwallet.com</string>
+  <string name="Alert.keystore.generic.android">There is a problem with your Android OS keystore, please contact support@hodlwallet.co</string>
   <!-- KeyStore error, keys are invalidated -->
   <string name="Alert.keystore.invalidated.android">Your wallet encrypted data was recently invalidated because your Android lock screen was disabled.</string>
   <!-- Keystore error title -->
@@ -526,6 +526,10 @@
   <string name="Settings.wallet">Wallet</string>
   <!-- Start or recover another wallet menu label. -->
   <string name="Settings.wipe">Start/Recover Another Wallet</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddress">Show Legacy Address</string>
+  <!-- Get a legacy address menu label. -->
+  <string name="Settings.legacyAddressTitle">Legacy Address</string>
   <!-- Share data view body -->
   <string name="ShareData.body">Help improve HODL Wallet by sharing your anonymous data with us. This does not include any financial information. We respect your financial privacy.</string>
   <!-- Share data header -->
@@ -574,7 +578,7 @@
   <string name="TouchIdSettings.spendingLimit">Spending limit: %1$s (%2$s)</string>
   <!-- Touch id switch label. -->
   <string name="TouchIdSettings.switchLabel">Enable Touch ID for HODL</string>
-  <!-- Enable fingerprint for this wallet called BRD -->
+  <!-- Enable fingerprint for this wallet called HODL -->
   <string name="TouchIdSettings.switchLabel.android">Enable Fingerprint Authentication</string>
   <!-- Touch ID settings view title -->
   <string name="TouchIdSettings.title">Touch ID</string>
@@ -731,9 +735,13 @@
   <!-- Updating webview message -->
   <string name="Webview.updating">Updating...</string>
   <!-- Welcome screen text. (?) will be replaced with the help icon users should look for. -->
-  <string name="Welcome.body">Breadwallet has changed its name to BRD, with a brand new look and some new features.\n\nIf you need help, look for the (?) in the top right of most screens.</string>
+  <string name="Welcome.body">HODLwallet has changed its name to HODL, with a brand new look and some new features.\n\nIf you need help, look for the (?) in the top right of most screens.</string>
   <!-- Top title of welcome screen -->
   <string name="Welcome.title">Welcome to HODL Wallet!</string>
+  <!-- Top title of segwit popup -->
+  <string name="Segwit.title">HODL Wallet has Upgraded!</string>
+  <!-- Message of segwit popup -->
+  <string name="Segwit.message">HODL Wallet has upgraded to the newest Bitcoin address standard. This gives you the added benefit of saving on transaction fees and being compatible with the latest standards of the Bitcoin Network. You don\'t have to do anything different and the only thing you\'ll notice is your addresses have changed and now begin with "btc".\n\nYour money is safe and still stored on your Backup Recovery Key.\n\nSince this change is still taking effect across the Bitcoin Network, some services may not be ready to send to this new address type. If you encounter this you can still access the old addresses that begin with \"1\" via: Settings/ Wallet/ Show Legacy Address</string>
   <!-- Wipe wallet alert message -->
   <string name="WipeWallet.alertMessage">Are you sure you want to delete this wallet?</string>
   <!-- Wipe wallet alert title -->
