@@ -10,7 +10,7 @@ import co.hodlwallet.HodlApp;
 import co.hodlwallet.R;
 import co.hodlwallet.presenter.activities.settings.WebViewActivity;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 
 import org.eclipse.jetty.server.Request;

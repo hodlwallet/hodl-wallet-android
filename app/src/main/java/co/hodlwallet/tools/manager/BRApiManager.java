@@ -16,7 +16,7 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.APIClient;
+import co.platform.APIClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;

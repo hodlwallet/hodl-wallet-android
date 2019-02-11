@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.util.Log;
 
 import co.hodlwallet.HodlApp;
 import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 import com.platform.kvstore.CompletionObject;
 import com.platform.kvstore.RemoteKVStore;

@@ -12,7 +12,7 @@ import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
 import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.HTTPServer;
 import com.platform.interfaces.Middleware;
 

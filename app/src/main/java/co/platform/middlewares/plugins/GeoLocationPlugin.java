@@ -13,7 +13,7 @@ import co.hodlwallet.HodlApp;
 import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.GeoLocationManager;
 import com.platform.interfaces.Plugin;
 

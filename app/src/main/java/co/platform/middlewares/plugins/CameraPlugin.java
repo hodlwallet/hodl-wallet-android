@@ -20,7 +20,7 @@ import co.hodlwallet.tools.animation.BRDialog;
 import co.hodlwallet.tools.crypto.CryptoHelper;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 
 import org.apache.commons.compress.utils.IOUtils;

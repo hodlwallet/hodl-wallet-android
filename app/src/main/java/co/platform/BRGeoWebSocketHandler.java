@@ -1,4 +1,4 @@
-package com.platform;
+package co.platform;
 
 import android.util.Log;
 

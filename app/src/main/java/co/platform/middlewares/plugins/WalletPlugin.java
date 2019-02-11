@@ -10,7 +10,7 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.interfaces.Plugin;
 import com.platform.tools.BRBitId;
 

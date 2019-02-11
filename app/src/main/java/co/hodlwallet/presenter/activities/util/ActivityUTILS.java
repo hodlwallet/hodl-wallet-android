@@ -19,7 +19,7 @@ import co.hodlwallet.tools.manager.InternetManager;
 import co.hodlwallet.tools.manager.BRApiManager;
 import co.hodlwallet.tools.security.AuthManager;
 import co.hodlwallet.tools.threads.BRExecutor;
-import com.platform.HTTPServer;
+import co.platform.HTTPServer;
 
 import java.util.List;
 

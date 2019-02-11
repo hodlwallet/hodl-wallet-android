@@ -25,13 +25,13 @@ import co.hodlwallet.R;
 import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.animation.SlideDetector;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.HTTPServer;
+import co.platform.HTTPServer;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Locale;
 
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static co.platform.HTTPServer.URL_SUPPORT;
 
 
 /**

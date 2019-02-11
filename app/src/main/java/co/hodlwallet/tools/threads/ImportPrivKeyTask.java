@@ -59,6 +59,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public ImportPrivKeyTask(Activity activity) {
         app = activity;
+
         UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.hodlwallet.com/api/BTC/testnet/wallet/" : "https://bitcore.hodlwallet.com/api/BTC/mainnet/wallet/";
     }
 
@@ -68,7 +69,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         key = params[0];
         if (key == null || key.isEmpty() || app == null) return null;
         String tmpAddrs = BRWalletManager.getInstance().getAddressFromPrivKey(key);
-        String url = UNSPENT_URL + tmpAddrs + "/utxo";
+        String url = UNSPENT_URL + tmpAddrs + "/transactions";
         importPrivKeyEntity = createTx(url);
         if (importPrivKeyEntity == null) {
             app.runOnUiThread(new Runnable() {
@@ -155,13 +156,32 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
             for (int i = 0; i < length; i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
+
+                // Parsing according to: https://github.com/bitpay/bitcore/blob/master/packages/bitcore-node/docs/api-documentation.md#get-wallet-transactions
+                // We should get an array with these attributes:
+                //
+                // [
+                //  {
+                //      "id":"5c34b35d69d5562c2fc43e8c",
+                //      "txid":"0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098",
+                //      "fee":0,"size":134,
+                //      "category":"receive",
+                //      "satoshis":5000000000,
+                //      "height":1,
+                //      "address":"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX",
+                //      "outputIndex":0,
+                //      "blockTime":"2009-01-09T02:54:25.000Z"
+                //  }
+                //]
                 String txid = obj.getString("txid");
-                int vout = obj.getInt("vout");
-                String scriptPubKey = obj.getString("scriptPubKey");
+                int vout = obj.getInt("outputIndex");
+                // FIXME Breadwallet core API should have been renamed from the C project now this is complicated to use hodlwallet namespace.
+                // FIXME cont... For example the namespace cannot be imported at the top of this file.
+                //com.breadwallet.core.BRCoreAddress address = new com.breadwallet.core.BRCoreAddress(obj.getString("address"));
+                //byte[] scriptPubKey = address.getPubKeyScript();
                 long amount = obj.getLong("satoshis");
                 byte[] txidBytes = hexStringToByteArray(txid);
-                byte[] scriptPubKeyBytes = hexStringToByteArray(scriptPubKey);
-                BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, scriptPubKeyBytes, amount);
+                BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, null, amount);
             }
 
             result = BRWalletManager.getInstance().getPrivKeyObject();

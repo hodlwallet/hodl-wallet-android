@@ -36,7 +36,7 @@ import co.hodlwallet.wallet.BRWalletManager;
 
 import static co.hodlwallet.tools.animation.BRAnimator.animateBackgroundDim;
 import static co.hodlwallet.tools.animation.BRAnimator.animateSignalSlide;
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static co.platform.HTTPServer.URL_SUPPORT;
 
 /**
  * BreadWallet

@@ -1,4 +1,4 @@
-package com.platform.tools;
+package co.platform.tools;
 
 import android.app.Activity;
 import android.net.Uri;

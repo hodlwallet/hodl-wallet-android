@@ -31,8 +31,8 @@ import co.hodlwallet.presenter.entities.BRMenuItem;
 import co.hodlwallet.presenter.interfaces.BROnSignalCompletion;
 import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.animation.SlideDetector;
-import com.platform.APIClient;
-import com.platform.HTTPServer;
+import co.platform.APIClient;
+import co.platform.HTTPServer;
 
 import java.util.ArrayList;
 import java.util.List;

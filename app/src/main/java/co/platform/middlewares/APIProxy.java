@@ -7,7 +7,7 @@ import android.util.Log;
 import co.hodlwallet.HodlApp;
 import co.hodlwallet.tools.util.Utils;
 import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
+import co.platform.BRHTTPHelper;
 import com.platform.interfaces.Middleware;
 
 import org.apache.commons.io.IOUtils;
