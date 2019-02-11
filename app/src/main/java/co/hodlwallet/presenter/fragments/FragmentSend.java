@@ -368,8 +368,33 @@ public class FragmentSend extends Fragment {
             @Override
             public void onClick(View v) {
                 if (selectedIso.equalsIgnoreCase(BRSharedPrefs.getIso(getContext()))) {
+                    if (amountBuilder.length() > 0) {
+                        BigDecimal tmpAmount = BRExchange.getSatoshisFromAmount(getContext(), selectedIso, new BigDecimal(amountBuilder.toString()));
+
+                        if (BRSharedPrefs.getCurrencyUnit(getContext()) == BRConstants.CURRENT_UNIT_BITCOINS)
+                            tmpAmount = BRExchange.getBitcoinForSatoshis(getContext(), tmpAmount);
+
+                        amountBuilder = new StringBuilder(tmpAmount.toString());
+                        amountEdit.setText(amountBuilder.toString());
+                    }
+
                     selectedIso = "BTC";
                 } else {
+                    if (amountBuilder.length() > 0) {
+                        BigDecimal currentAmountInSatoshi = null;
+
+                        if (BRSharedPrefs.getCurrencyUnit(getContext()) == BRConstants.CURRENT_UNIT_BITCOINS) {
+                            currentAmountInSatoshi = new BigDecimal(amountBuilder.toString()).multiply(new BigDecimal(100000000));
+                        } else {
+                            currentAmountInSatoshi = new BigDecimal(amountBuilder.toString());
+                        }
+
+                        BigDecimal tmpAmount = BRExchange.getAmountFromSatoshis(getContext(), BRSharedPrefs.getIso(getContext()), currentAmountInSatoshi);
+
+                        amountBuilder = new StringBuilder(tmpAmount.toString());
+                        amountEdit.setText(amountBuilder.toString());
+                    }
+
                     selectedIso = BRSharedPrefs.getIso(getContext());
                 }
                 updateText();
