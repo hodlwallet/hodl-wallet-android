@@ -160,6 +160,13 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
         TxManager.getInstance().init(this);
 
+        // This code resets just once the unit back to Bitcoin from bits,
+        // or mbits needed to include the satoshi currency unit
+        if (!BRSharedPrefs.getCurrencyReset(BreadActivity.this)) {
+            BRSharedPrefs.putCurrencyUnit(BreadActivity.this, BRConstants.CURRENT_UNIT_BITCOINS);
+            BRSharedPrefs.putCurrencyReset(BreadActivity.this, true);
+        };
+
         if (!BRSharedPrefs.getGreetingsShown(BreadActivity.this))
             new Handler().postDelayed(new Runnable() {
                 @Override

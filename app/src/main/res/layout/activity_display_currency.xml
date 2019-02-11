@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:background="@drawable/b_half_right_white_stroke"
-            android:text="Bits (&#384;)"
+            android:text="Satoshi (SAT)"
             android:padding="0dp"
             android:textColor="@color/white"
             android:textSize="14sp"
