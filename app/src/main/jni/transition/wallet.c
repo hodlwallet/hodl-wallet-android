@@ -31,6 +31,7 @@
 #include <BRBIP38Key.h>
 #include <BRInt.h>
 #include <BRTransaction.h>
+#include <malloc.h>
 
 static JavaVM *_jvmW;
 BRWallet *_wallet;
@@ -252,7 +253,7 @@ Java_co_hodlwallet_wallet_BRWalletManager_createWallet(JNIEnv *env, jobject thiz
     if (txCount > 0) {
         __android_log_print(ANDROID_LOG_ERROR, "Message from C: ",
                             "BRWalletNew with tx nr: %zu", sizeof(_transactions));
-        w = BRWalletNew(_transactions, txCount, pubKey);
+        w = BRWalletNew(_transactions, txCount, pubKey, 0);
         _transactionsCounter = 0;
 
         if (_transactions) {
@@ -260,7 +261,7 @@ Java_co_hodlwallet_wallet_BRWalletManager_createWallet(JNIEnv *env, jobject thiz
             _transactions = NULL;
         }
     } else {
-        w = BRWalletNew(NULL, 0, pubKey);
+        w = BRWalletNew(NULL, 0, pubKey, 0);
     }
 
     BRWalletSetCallbacks(w, NULL, balanceChanged, txAdded, txUpdated, txDeleted);
@@ -693,7 +694,7 @@ Java_co_hodlwallet_wallet_BRWalletManager_publishSerializedTransaction(JNIEnv *e
 
     size_t seedSize = sizeof(key);
 
-    BRWalletSignTransaction(_wallet, tmpTx, 0, key.u8, seedSize);
+    BRWalletSignTransaction(_wallet, tmpTx, key.u8, seedSize);
     assert(BRTransactionIsSigned(tmpTx));
     if (!tmpTx) return NULL;
     BRPeerManagerPublishTx(_peerManager, tmpTx, tmpTx, callback);
@@ -992,7 +993,7 @@ BRWalletBCashSweepTx(BRWallet *wallet, BRMasterPubKey mpk, const char *addr, uin
     BRWallet *w;
 
     txCount = BRWalletTransactions(wallet, transactions, txCount);
-    w = BRWalletNew(transactions, txCount, mpk);
+    w = BRWalletNew(transactions, txCount, mpk, 0x40);
     BRWalletSetFeePerKb(w, feePerKb);
     tx = BRWalletCreateTransaction(w, BRWalletMaxOutputAmount(w), addr);
     BRWalletFree(w);
@@ -1014,7 +1015,7 @@ JNIEXPORT jlong JNICALL Java_co_hodlwallet_wallet_BRWalletManager_getBCashBalanc
     BRWallet *w;
 
     txCount = BRWalletTransactions(_wallet, transactions, txCount);
-    w = BRWalletNew(transactions, txCount, pubKey);
+    w = BRWalletNew(transactions, txCount, pubKey, 0x40);
     jlong balance = (jlong) BRWalletBalance(w);
 //    BRWalletFree(w);
 //
@@ -1083,7 +1084,7 @@ JNIEXPORT jbyteArray JNICALL Java_co_hodlwallet_wallet_BRWalletManager_sweepBCas
 
     BRTransaction *tx = BRWalletBCashSweepTx(_wallet, pubKey, rawAddress, MIN_FEE_PER_KB);
 
-    BRWalletSignTransaction(_wallet, tx, 0x40, key.u8, seedSize);
+    BRWalletSignTransaction(_wallet, tx, key.u8, seedSize);
     assert(BRTransactionIsSigned(tx));
     if (!tx) return NULL;
 
