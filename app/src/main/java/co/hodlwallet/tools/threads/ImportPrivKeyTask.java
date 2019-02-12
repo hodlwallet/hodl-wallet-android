@@ -59,7 +59,8 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public ImportPrivKeyTask(Activity activity) {
         app = activity;
-        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.hodlwallet.com/api/BTC/testnet/wallet/" : "https://bitcore.hodlwallet.com/api/BTC/mainnet/wallet/";
+        //UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/testnet/wallet/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/wallet/";
+        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/mainnet/wallet/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/wallet/"; // FIXME
     }
 
     @Override
