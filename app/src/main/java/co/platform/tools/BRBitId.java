@@ -16,8 +16,8 @@ import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.jniwrappers.BRBIP32Sequence;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRBIP32Sequence;
+import co.jniwrappers.BRKey;
 import com.platform.APIClient;
 import com.platform.middlewares.plugins.WalletPlugin;
 

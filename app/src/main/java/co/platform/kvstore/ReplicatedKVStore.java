@@ -37,7 +37,7 @@ import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 import com.platform.interfaces.KVStoreAdaptor;
 import com.platform.sqlite.KVItem;
 import com.platform.sqlite.PlatformSqliteHelper;

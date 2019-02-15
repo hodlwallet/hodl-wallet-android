@@ -21,7 +21,7 @@ import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 import com.platform.kvstore.RemoteKVStore;
 import com.platform.kvstore.ReplicatedKVStore;
 

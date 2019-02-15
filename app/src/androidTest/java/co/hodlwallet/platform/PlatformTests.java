@@ -9,7 +9,7 @@ import co.hodlwallet.presenter.activities.BreadActivity;
 import co.hodlwallet.tools.util.BRCompressor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 import com.platform.APIClient;
 import com.platform.tools.BRBitId;
 

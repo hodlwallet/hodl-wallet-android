@@ -1,4 +1,4 @@
-package com.jniwrappers;
+package co.jniwrappers;
 
 /**
  * BreadWallet
