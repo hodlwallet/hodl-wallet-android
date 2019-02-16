@@ -10,8 +10,8 @@ import co.hodlwallet.tools.util.BRCompressor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.jniwrappers.BRKey;
-import com.platform.APIClient;
-import com.platform.tools.BRBitId;
+import co.platform.APIClient;
+import co.platform.tools.BRBitId;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static com.platform.APIClient.BREAD_POINT;
+import static co.platform.APIClient.BREAD_POINT;
 import okhttp3.Request;
 import okhttp3.Response;
 

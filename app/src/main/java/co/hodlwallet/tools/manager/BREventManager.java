@@ -7,7 +7,7 @@ import android.util.Log;
 
 import co.hodlwallet.HodlApp;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.APIClient;
+import co.platform.APIClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.platform.APIClient.BASE_URL;
+import static co.platform.APIClient.BASE_URL;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;

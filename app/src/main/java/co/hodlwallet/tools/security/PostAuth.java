@@ -37,10 +37,10 @@ import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
 import co.jniwrappers.BRKey;
-import com.platform.APIClient;
-import com.platform.entities.TxMetaData;
-import com.platform.tools.BRBitId;
-import com.platform.tools.KVStoreManager;
+import co.platform.APIClient;
+import co.platform.entities.TxMetaData;
+import co.platform.tools.BRBitId;
+import co.platform.tools.KVStoreManager;
 
 import java.io.IOException;
 import java.util.Arrays;

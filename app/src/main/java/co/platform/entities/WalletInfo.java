@@ -1,4 +1,4 @@
-package com.platform.entities;
+package co.platform.entities;
 
 import static android.R.attr.name;
 

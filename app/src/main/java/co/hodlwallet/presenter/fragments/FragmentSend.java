@@ -67,7 +67,7 @@ import co.hodlwallet.wallet.BRWalletManager;
 import java.math.BigDecimal;
 
 import static co.hodlwallet.tools.security.BitcoinUrlHandler.getRequestFromString;
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static co.platform.HTTPServer.URL_SUPPORT;
 
 
 /**

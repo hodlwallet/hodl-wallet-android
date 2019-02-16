@@ -53,7 +53,7 @@ import co.hodlwallet.presenter.activities.BreadActivity;
 import co.hodlwallet.presenter.activities.util.ActivityUTILS;
 import co.hodlwallet.presenter.activities.util.BRActivity;
 import co.hodlwallet.tools.threads.BRExecutor;
-import com.platform.middlewares.plugins.CameraPlugin;
+import co.platform.middlewares.plugins.CameraPlugin;
 
 import java.io.File;
 import java.nio.ByteBuffer;

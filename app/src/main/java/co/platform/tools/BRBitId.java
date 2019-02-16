@@ -1,4 +1,4 @@
-package com.platform.tools;
+package co.platform.tools;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -18,8 +18,8 @@ import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
 import co.jniwrappers.BRBIP32Sequence;
 import co.jniwrappers.BRKey;
-import com.platform.APIClient;
-import com.platform.middlewares.plugins.WalletPlugin;
+import co.platform.APIClient;
+import co.platform.middlewares.plugins.WalletPlugin;
 
 import junit.framework.Assert;
 

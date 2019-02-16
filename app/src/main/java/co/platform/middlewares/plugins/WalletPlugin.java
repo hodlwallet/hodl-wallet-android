@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.app.Activity;
 import android.util.Log;
@@ -10,9 +10,9 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.BRHTTPHelper;
-import com.platform.interfaces.Plugin;
-import com.platform.tools.BRBitId;
+import co.platform.BRHTTPHelper;
+import co.platform.interfaces.Plugin;
+import co.platform.tools.BRBitId;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.eclipse.jetty.continuation.Continuation;

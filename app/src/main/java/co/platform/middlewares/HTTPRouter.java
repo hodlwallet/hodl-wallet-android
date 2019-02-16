@@ -1,9 +1,9 @@
-package com.platform.middlewares;
+package co.platform.middlewares;
 
 import android.util.Log;
 
-import com.platform.interfaces.Middleware;
-import com.platform.interfaces.Plugin;
+import co.platform.interfaces.Middleware;
+import co.platform.interfaces.Plugin;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

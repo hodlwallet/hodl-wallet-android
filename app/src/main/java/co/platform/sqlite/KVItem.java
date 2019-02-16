@@ -1,9 +1,9 @@
-package com.platform.sqlite;
+package co.platform.sqlite;
 
 
 import android.util.Log;
 
-import com.platform.kvstore.CompletionObject;
+import co.platform.kvstore.CompletionObject;
 
 /**
  * BreadWallet

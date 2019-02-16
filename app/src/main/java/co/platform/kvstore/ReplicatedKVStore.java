@@ -1,4 +1,4 @@
-package com.platform.kvstore;
+package co.platform.kvstore;
 
 /**
  * BreadWallet
@@ -38,9 +38,9 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.jniwrappers.BRKey;
-import com.platform.interfaces.KVStoreAdaptor;
-import com.platform.sqlite.KVItem;
-import com.platform.sqlite.PlatformSqliteHelper;
+import co.platform.interfaces.KVStoreAdaptor;
+import co.platform.sqlite.KVItem;
+import co.platform.sqlite.PlatformSqliteHelper;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.platform.sqlite.PlatformSqliteHelper.KV_STORE_TABLE_NAME;
+import static co.platform.sqlite.PlatformSqliteHelper.KV_STORE_TABLE_NAME;
 
 public class ReplicatedKVStore {
     private static final String TAG = ReplicatedKVStore.class.getName();

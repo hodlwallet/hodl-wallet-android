@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,8 +20,8 @@ import co.hodlwallet.tools.animation.BRDialog;
 import co.hodlwallet.tools.crypto.CryptoHelper;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.BRHTTPHelper;
-import com.platform.interfaces.Plugin;
+import co.platform.BRHTTPHelper;
+import co.platform.interfaces.Plugin;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.io.FileUtils;

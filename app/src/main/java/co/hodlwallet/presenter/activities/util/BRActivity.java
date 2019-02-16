@@ -21,8 +21,8 @@ import co.hodlwallet.tools.security.PostAuth;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.HTTPServer;
-import com.platform.tools.BRBitId;
+import co.platform.HTTPServer;
+import co.platform.tools.BRBitId;
 
 /**
  * BreadWallet

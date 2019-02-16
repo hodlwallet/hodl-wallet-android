@@ -21,7 +21,7 @@ import co.hodlwallet.tools.security.AuthManager;
 import co.hodlwallet.tools.security.PostAuth;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.HTTPServer;
+import co.platform.HTTPServer;
 
 public class ReEnterPinActivity extends BRActivity {
     private static final String TAG = ReEnterPinActivity.class.getName();

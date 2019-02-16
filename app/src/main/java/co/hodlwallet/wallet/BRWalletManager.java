@@ -57,8 +57,8 @@ import co.hodlwallet.tools.util.BRExchange;
 import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.tools.util.Bip39Reader;
-import com.platform.entities.WalletInfo;
-import com.platform.tools.KVStoreManager;
+import co.platform.entities.WalletInfo;
+import co.platform.tools.KVStoreManager;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;

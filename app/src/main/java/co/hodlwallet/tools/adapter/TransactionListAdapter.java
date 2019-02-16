@@ -37,12 +37,12 @@ import co.hodlwallet.tools.util.BRExchange;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRPeerManager;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.APIClient;
-import com.platform.entities.TxMetaData;
-import com.platform.kvstore.RemoteKVStore;
-import com.platform.kvstore.ReplicatedKVStore;
-import com.platform.sqlite.KVItem;
-import com.platform.tools.KVStoreManager;
+import co.platform.APIClient;
+import co.platform.entities.TxMetaData;
+import co.platform.kvstore.RemoteKVStore;
+import co.platform.kvstore.ReplicatedKVStore;
+import co.platform.sqlite.KVItem;
+import co.platform.tools.KVStoreManager;
 
 import org.eclipse.jetty.webapp.MetaData;
 

@@ -24,7 +24,7 @@ import co.hodlwallet.presenter.activities.util.BRActivity;
 import co.hodlwallet.tools.animation.SpringAnimator;
 import co.hodlwallet.tools.qrcode.QRCodeReaderView;
 import co.hodlwallet.tools.security.BitcoinUrlHandler;
-import com.platform.tools.BRBitId;
+import co.platform.tools.BRBitId;
 
 
 /**

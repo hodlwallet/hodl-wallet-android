@@ -1,4 +1,4 @@
-package com.platform;
+package co.platform;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,17 +9,17 @@ import android.util.Log;
 import co.hodlwallet.HodlApp;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.interfaces.Middleware;
-import com.platform.interfaces.Plugin;
-import com.platform.middlewares.APIProxy;
-import com.platform.middlewares.HTTPFileMiddleware;
-import com.platform.middlewares.HTTPIndexMiddleware;
-import com.platform.middlewares.HTTPRouter;
-import com.platform.middlewares.plugins.CameraPlugin;
-import com.platform.middlewares.plugins.GeoLocationPlugin;
-import com.platform.middlewares.plugins.KVStorePlugin;
-import com.platform.middlewares.plugins.LinkPlugin;
-import com.platform.middlewares.plugins.WalletPlugin;
+import co.platform.interfaces.Middleware;
+import co.platform.interfaces.Plugin;
+import co.platform.middlewares.APIProxy;
+import co.platform.middlewares.HTTPFileMiddleware;
+import co.platform.middlewares.HTTPIndexMiddleware;
+import co.platform.middlewares.HTTPRouter;
+import co.platform.middlewares.plugins.CameraPlugin;
+import co.platform.middlewares.plugins.GeoLocationPlugin;
+import co.platform.middlewares.plugins.KVStorePlugin;
+import co.platform.middlewares.plugins.LinkPlugin;
+import co.platform.middlewares.plugins.WalletPlugin;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;

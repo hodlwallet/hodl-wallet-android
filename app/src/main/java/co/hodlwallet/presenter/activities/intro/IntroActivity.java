@@ -25,7 +25,7 @@ import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
 import co.jniwrappers.BRKey;
-import com.platform.APIClient;
+import co.platform.APIClient;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.platform.sqlite;
+package co.platform.sqlite;
 
 /**
  * BreadWallet

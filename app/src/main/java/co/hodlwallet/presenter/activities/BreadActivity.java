@@ -44,7 +44,7 @@ import co.hodlwallet.tools.util.BRExchange;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRPeerManager;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.APIClient;
+import co.platform.APIClient;
 
 import java.math.BigDecimal;
 
