@@ -749,6 +749,22 @@ Java_co_hodlwallet_wallet_BRWalletManager_isValidBitcoinBIP38Key(JNIEnv *env, jo
 }
 
 JNIEXPORT jstring JNICALL
+Java_co_hodlwallet_wallet_BRWalletManager_getLegacyAddressFromPrivKey(JNIEnv *env, jobject instance,
+                                                                jstring privKey) {
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getLegacyAddressFromPrivKey");
+
+    const char *rawPrivKey = (*env)->GetStringUTFChars(env, privKey, NULL);
+    BRKey key;
+    BRAddress addr;
+
+    BRKeySetPrivKey(&key, rawPrivKey);
+    BRKeyLegacyAddr(&key, addr.s, sizeof(addr));
+
+    jstring result = (*env)->NewStringUTF(env, addr.s);
+    return result;
+}
+
+JNIEXPORT jstring JNICALL
 Java_co_hodlwallet_wallet_BRWalletManager_getAddressFromPrivKey(JNIEnv *env, jobject instance,
         jstring privKey) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getAddressFromPrivKey");

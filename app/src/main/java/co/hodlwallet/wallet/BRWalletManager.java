@@ -668,6 +668,8 @@ public class BRWalletManager {
 
     public native String getAddressFromPrivKey(String key);
 
+    public native String getLegacyAddressFromPrivKey(String key);
+
     public native void createInputArray();
 
     public native void addInputToPrivKeyTx(byte[] hash, int vout, byte[] script, long amount);
