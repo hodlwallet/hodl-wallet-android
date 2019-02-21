@@ -85,9 +85,6 @@ public class FragmentRequestAmount extends Fragment {
     public LinearLayout signalLayout;
     private String receiveAddress;
     private BRButton shareButton;
-    private Button shareEmail;
-    private Button shareTextMessage;
-    private boolean shareButtonsShown = true;
     private String selectedIso;
     private ImageButton isoButton;
     private TextView isoButtonText;
@@ -95,22 +92,16 @@ public class FragmentRequestAmount extends Fragment {
     private LinearLayout keyboardLayout;
     private RelativeLayout amountLayout;
     private Button request;
-    private BRLinearLayoutWithCaret shareButtonsLayout;
     private BRLinearLayoutWithCaret copiedLayout;
     private int keyboardIndex;
-    //    private int currListIndex;
     private ImageButton close;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_receive, container, false);
         backgroundLayout = (LinearLayout) rootView.findViewById(R.id.background_layout);
         signalLayout = (LinearLayout) rootView.findViewById(R.id.signal_layout);
-        shareButtonsLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.share_buttons_layout);
         copiedLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.copied_layout);
-//        currencyListLayout = (LinearLayout) rootView.findViewById(R.id.cur_spinner_layout);
-//        currencyListLayout.setVisibility(View.VISIBLE);
         request = (Button) rootView.findViewById(R.id.request_button);
         keyboardLayout = (LinearLayout) rootView.findViewById(R.id.keyboard_layout);
         keyboardLayout.setVisibility(View.VISIBLE);
@@ -128,11 +119,9 @@ public class FragmentRequestAmount extends Fragment {
         mAddress = (TextView) rootView.findViewById(R.id.address_text);
         mQrImage = (ImageView) rootView.findViewById(R.id.qr_image);
         shareButton = (BRButton) rootView.findViewById(R.id.share_button);
-        shareEmail = (Button) rootView.findViewById(R.id.share_email);
-        shareTextMessage = (Button) rootView.findViewById(R.id.share_text);
-        shareButtonsLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.share_buttons_layout);
         close = (ImageButton) rootView.findViewById(R.id.close_button);
         keyboardIndex = signalLayout.indexOfChild(keyboardLayout);
+        receiveAddress = getArguments().getString("address");
 
         ImageButton faq = (ImageButton) rootView.findViewById(R.id.faq_button);
 
@@ -157,14 +146,11 @@ public class FragmentRequestAmount extends Fragment {
         amountEdit.setHintTextColor(getContext().getColor(R.color.logo_gradient_start));
         isoText.setTextColor(getContext().getColor(R.color.logo_gradient_start));
 
-        signalLayout.removeView(shareButtonsLayout);
         signalLayout.removeView(copiedLayout);
         signalLayout.removeView(request);
 
-        shareButtonsLayout.setBackgroundColor(getContext().getColor(R.color.dark_gray));
         copiedLayout.setBackgroundColor(getContext().getColor(R.color.gray_background));
 
-        showCurrencyList(false);
         selectedIso = BRSharedPrefs.getPreferredBTC(getContext()) ? "BTC" : BRSharedPrefs.getIso(getContext());
 
         signalLayout.setOnClickListener(new View.OnClickListener() {
@@ -184,9 +170,7 @@ public class FragmentRequestAmount extends Fragment {
         amountEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeCurrencySelector();
                 showKeyboard(true);
-                showShareButtons(false);
             }
         });
 
@@ -202,7 +186,6 @@ public class FragmentRequestAmount extends Fragment {
         mQrImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeCurrencySelector();
                 showKeyboard(false);
             }
         });
@@ -210,54 +193,28 @@ public class FragmentRequestAmount extends Fragment {
         keyboard.addOnInsertListener(new BRKeyboard.OnInsertListener() {
             @Override
             public void onClick(String key) {
-                removeCurrencySelector();
                 handleClick(key);
             }
         });
 
-
-        shareEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeCurrencySelector();
-                if (!BRAnimator.isClickAllowed()) return;
-                showKeyboard(false);
-                String iso = selectedIso;
-                String strAmount = amountEdit.getText().toString();
-                BigDecimal bigAmount = new BigDecimal((Utils.isNullOrEmpty(strAmount) || strAmount.equalsIgnoreCase(".")) ? "0" : strAmount);
-                long amount = BRExchange.getSatoshisFromAmount(getActivity(), iso, bigAmount).longValue();
-                String bitcoinUri = Utils.createBitcoinUrl(receiveAddress, amount, null, null, null);
-                QRUtils.share("mailto:", getActivity(), bitcoinUri);
-
-            }
-        });
-        shareTextMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeCurrencySelector();
-                if (!BRAnimator.isClickAllowed()) return;
-                showKeyboard(false);
-                String iso = selectedIso;
-                String strAmount = amountEdit.getText().toString();
-                BigDecimal bigAmount = new BigDecimal((Utils.isNullOrEmpty(strAmount) || strAmount.equalsIgnoreCase(".")) ? "0" : strAmount);
-                long amount = BRExchange.getSatoshisFromAmount(getActivity(), iso, bigAmount).longValue();
-                String bitcoinUri = Utils.createBitcoinUrl(receiveAddress, amount, null, null, null);
-                QRUtils.share("sms:", getActivity(), bitcoinUri);
-            }
-        });
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!BRAnimator.isClickAllowed()) return;
-                shareButtonsShown = !shareButtonsShown;
-                showShareButtons(shareButtonsShown);
+
+                String iso = selectedIso;
+                String strAmount = amountEdit.getText().toString();
+                BigDecimal bigAmount = new BigDecimal((Utils.isNullOrEmpty(strAmount) || strAmount.equalsIgnoreCase(".")) ? "0" : strAmount);
+                long amount = BRExchange.getSatoshisFromAmount(getActivity(), iso, bigAmount).longValue();
+                String bitcoinUri = Utils.createBitcoinUrl(receiveAddress, amount, null, null, null);
+
+                QRUtils.share(getActivity(), bitcoinUri);
                 showKeyboard(false);
             }
         });
         mAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeCurrencySelector();
                 copyText();
                 showKeyboard(false);
             }
@@ -266,7 +223,6 @@ public class FragmentRequestAmount extends Fragment {
         backgroundLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeCurrencySelector();
                 if (!BRAnimator.isClickAllowed()) return;
                 getActivity().onBackPressed();
             }
@@ -294,18 +250,6 @@ public class FragmentRequestAmount extends Fragment {
         showCopiedLayout(true);
     }
 
-    private void toggleShareButtonsVisibility() {
-
-        if (shareButtonsShown) {
-            signalLayout.removeView(shareButtonsLayout);
-            shareButtonsShown = false;
-        } else {
-            signalLayout.addView(shareButtonsLayout, signalLayout.getChildCount());
-            shareButtonsShown = true;
-        }
-
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -317,7 +261,6 @@ public class FragmentRequestAmount extends Fragment {
                 observer.removeGlobalOnLayoutListener(this);
                 BRAnimator.animateBackgroundDim(backgroundLayout, false);
                 BRAnimator.animateSignalSlide(signalLayout, false, null);
-                toggleShareButtonsVisibility();
             }
         });
 
@@ -326,8 +269,6 @@ public class FragmentRequestAmount extends Fragment {
             public void run() {
                 boolean success = BRWalletManager.refreshAddress(getActivity());
                 if (!success) throw new RuntimeException("failed to retrieve address");
-
-                receiveAddress = BRSharedPrefs.getReceiveAddress(getActivity());
 
                 BRExecutor.getInstance().forMainThreadTasks().execute(new Runnable() {
                     @Override
@@ -461,21 +402,6 @@ public class FragmentRequestAmount extends Fragment {
         return QRUtils.generateQR(getActivity(), "bitcoin:" + address + amountArg, mQrImage);
     }
 
-
-    private void removeCurrencySelector() {
-//        showCurrencyList(false);
-    }
-
-    private void showShareButtons(boolean b) {
-        if (!b) {
-            signalLayout.removeView(shareButtonsLayout);
-        } else {
-            signalLayout.addView(shareButtonsLayout, signalLayout.getChildCount() - 1);
-            showCopiedLayout(false);
-        }
-    }
-
-
     private void showCopiedLayout(boolean b) {
         if (!b) {
             signalLayout.removeView(copiedLayout);
@@ -483,8 +409,6 @@ public class FragmentRequestAmount extends Fragment {
         } else {
             if (signalLayout.indexOfChild(copiedLayout) == -1) {
                 signalLayout.addView(copiedLayout, signalLayout.indexOfChild(shareButton));
-                showShareButtons(false);
-                shareButtonsShown = false;
                 copyCloseHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -497,9 +421,4 @@ public class FragmentRequestAmount extends Fragment {
             }
         }
     }
-
-    private void showCurrencyList(boolean b) {
-    }
-
-
 }
