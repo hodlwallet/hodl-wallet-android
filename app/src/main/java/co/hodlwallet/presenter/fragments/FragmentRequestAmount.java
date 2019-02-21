@@ -367,7 +367,12 @@ public class FragmentRequestAmount extends Fragment {
         String tmpAmount = amountBuilder.toString();
         amountEdit.setText(tmpAmount);
         isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
-        isoButtonText.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
+
+        if (BRCurrency.getCurrencyName(getActivity(), selectedIso) == "SAT") {
+            isoButtonText.setText("S");
+        } else {
+            isoButtonText.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
+        }
     }
 
     private void showKeyboard(boolean b) {
