@@ -1,12 +1,18 @@
 package co.hodlwallet.tools.qrcode;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.Display;
@@ -31,6 +37,7 @@ import java.io.OutputStream;
 import java.util.EnumMap;
 import java.util.Map;
 
+import static android.R.attr.grantUriPermissions;
 import static android.R.attr.path;
 import static android.R.attr.width;
 import static android.graphics.Color.BLACK;
@@ -62,6 +69,12 @@ import static android.graphics.Color.WHITE;
  */
 public class QRUtils {
     private static final String TAG = QRUtils.class.getName();
+    private static final String SHARE_IMAGE_TYPE = "image/jpeg";
+    private static final String INTENT_TYPE = "image/*";
+    private static final String SHARE_TITLE = "QrCodeTitle";
+    private static final int BITMAP_SIZE = 500;
+    private static final int BITMAP_QUALITY = 100;
+    public static final int WRITE_EXTERNAL_STORAGE_PERMISSION_REQUEST_ID = 1133;
 
     public static Bitmap encodeAsBitmap(String content, int dimension) {
 
@@ -130,33 +143,44 @@ public class QRUtils {
         return null;
     }
 
-    public static void share(String via, Activity app, String bitcoinUri) {
+    public static void share(Activity app, String bitcoinUri) {
         if (app == null) {
             Log.e(TAG, "share: app is null");
             return;
         }
 
-//        File file = saveToExternalStorage(QRUtils.encodeAsBitmap(bitcoinUri, 500), app);
-//        Uri uri = Uri.fromFile(file);
-
-        Intent intent = new Intent();
-        if (via.equalsIgnoreCase("sms:")) {
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("sms:"));
-            intent.putExtra("sms_body", bitcoinUri);
-            intent.putExtra("exit_on_sent", true);
-            app.startActivity(intent);
-
+        if (ContextCompat.checkSelfPermission(app, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(app, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_PERMISSION_REQUEST_ID);
         } else {
-            intent.setAction(android.content.Intent.ACTION_SEND);
-            intent.setType("plain/text");
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Bitcoin Address");
-            intent.putExtra(Intent.EXTRA_TEXT, bitcoinUri);
-            app.startActivity(Intent.createChooser(intent, "Open mail app"));
-        }
-//        if (uri != null)
-//            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            Bitmap qrImage = QRUtils.encodeAsBitmap(bitcoinUri, BITMAP_SIZE);
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            ContentValues values = new ContentValues();
 
+            shareIntent.setType(SHARE_IMAGE_TYPE);
+
+            values.put(MediaStore.Images.Media.TITLE, SHARE_TITLE);
+            values.put(MediaStore.Images.Media.MIME_TYPE, SHARE_IMAGE_TYPE);
+
+            Uri fileUri = app.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            if (fileUri != null) {
+                try (OutputStream outputStream = app.getContentResolver().openOutputStream(fileUri)) {
+                    qrImage.compress(Bitmap.CompressFormat.JPEG, BITMAP_QUALITY, outputStream);
+                } catch (IOException e) {
+                    Log.e(TAG, "share: ", e);
+                }
+
+                shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+                shareIntent.setType(INTENT_TYPE);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, bitcoinUri);
+
+                String emailSubject = "Bitcoin Address";
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
+
+                shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                app.startActivity(Intent.createChooser(shareIntent, app.getString(R.string.Receive_share)));
+            }
+        }
     }
 
     private static File saveToExternalStorage(Bitmap bitmapImage, Activity app) {

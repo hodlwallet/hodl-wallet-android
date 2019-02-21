@@ -74,12 +74,8 @@ public class FragmentLegacyAddress extends Fragment {
     private String legacyAddress;
     private View separator;
     private BRButton shareButton;
-    private Button shareEmail;
-    private Button shareTextMessage;
     private Button requestButton;
-    private BRLinearLayoutWithCaret shareButtonsLayout;
     private BRLinearLayoutWithCaret copiedLayout;
-    private boolean shareButtonsShown = false;
     private boolean isLegacy;
     private ImageButton close;
     private Handler copyCloseHandler = new Handler();
@@ -98,9 +94,6 @@ public class FragmentLegacyAddress extends Fragment {
         backgroundLayout = (LinearLayout) rootView.findViewById(R.id.background_layout);
         signalLayout = (LinearLayout) rootView.findViewById(R.id.signal_layout);
         shareButton = (BRButton) rootView.findViewById(R.id.share_button);
-        shareEmail = (Button) rootView.findViewById(R.id.share_email);
-        shareTextMessage = (Button) rootView.findViewById(R.id.share_text);
-        shareButtonsLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.share_buttons_layout);
         copiedLayout = (BRLinearLayoutWithCaret) rootView.findViewById(R.id.copied_layout);
         requestButton = (Button) rootView.findViewById(R.id.request_button);
         keyboard = (BRKeyboard) rootView.findViewById(R.id.keyboard);
@@ -137,10 +130,8 @@ public class FragmentLegacyAddress extends Fragment {
             }
         });
 
-        signalLayout.removeView(shareButtonsLayout);
         signalLayout.removeView(copiedLayout);
 
-        shareButtonsLayout.setBackgroundColor(getContext().getColor(R.color.dark_gray));
         copiedLayout.setBackgroundColor(getContext().getColor(R.color.gray_background));
 
         signalLayout.setLayoutTransition(BRAnimator.getDefaultTransition());
@@ -150,29 +141,12 @@ public class FragmentLegacyAddress extends Fragment {
 
 
     private void setListeners() {
-        shareEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!BRAnimator.isClickAllowed()) return;
-                String bitcoinUri = Utils.createBitcoinUrl(legacyAddress, 0, null, null, null);
-                QRUtils.share("mailto:", getActivity(), bitcoinUri);
-
-            }
-        });
-        shareTextMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!BRAnimator.isClickAllowed()) return;
-                String bitcoinUri = Utils.createBitcoinUrl(legacyAddress, 0, null, null, null);
-                QRUtils.share("sms:", getActivity(), bitcoinUri);
-            }
-        });
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!BRAnimator.isClickAllowed()) return;
-                shareButtonsShown = !shareButtonsShown;
-                showShareButtons(shareButtonsShown);
+                String bitcoinUri = Utils.createBitcoinUrl(legacyAddress, 0, null, null, null);
+                QRUtils.share(getActivity(), bitcoinUri);
             }
         });
         mAddress.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +163,6 @@ public class FragmentLegacyAddress extends Fragment {
                 Activity app = getActivity();
                 app.onBackPressed();
                 BRAnimator.showRequestFragment(app, legacyAddress);
-
             }
         });
 
@@ -218,15 +191,6 @@ public class FragmentLegacyAddress extends Fragment {
         });
     }
 
-    private void showShareButtons(boolean b) {
-        if (!b) {
-            signalLayout.removeView(shareButtonsLayout);
-        } else {
-            signalLayout.addView(shareButtonsLayout, isLegacy ? signalLayout.getChildCount() - 2 : signalLayout.getChildCount());
-            showCopiedLayout(false);
-        }
-    }
-
     private void showCopiedLayout(boolean b) {
         if (!b) {
             signalLayout.removeView(copiedLayout);
@@ -234,8 +198,6 @@ public class FragmentLegacyAddress extends Fragment {
         } else {
             if (signalLayout.indexOfChild(copiedLayout) == -1) {
                 signalLayout.addView(copiedLayout, signalLayout.indexOfChild(shareButton));
-                showShareButtons(false);
-                shareButtonsShown = false;
                 copyCloseHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
