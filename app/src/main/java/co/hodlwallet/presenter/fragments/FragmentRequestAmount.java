@@ -338,7 +338,7 @@ public class FragmentRequestAmount extends Fragment {
                 <= BRExchange.getMaxAmount(getActivity(), iso).doubleValue()) {
             //do not insert 0 if the balance is 0 now
             if (currAmount.equalsIgnoreCase("0")) amountBuilder = new StringBuilder("");
-            if ((currAmount.contains(".") && (currAmount.length() - currAmount.indexOf(".") > BRCurrency.getMaxDecimalPlaces(iso))))
+            if ((currAmount.contains(".") && (currAmount.length() - currAmount.indexOf(".") > BRCurrency.getMaxDecimalPlaces(getContext(), iso))))
                 return;
             amountBuilder.append(dig);
             updateText();
@@ -347,7 +347,7 @@ public class FragmentRequestAmount extends Fragment {
 
     private void handleSeparatorClick() {
         String currAmount = amountBuilder.toString();
-        if (currAmount.contains(".") || BRCurrency.getMaxDecimalPlaces(selectedIso) == 0)
+        if (currAmount.contains(".") || BRCurrency.getMaxDecimalPlaces(getContext(), selectedIso) == 0)
             return;
         amountBuilder.append(".");
         updateText();

@@ -132,11 +132,21 @@ public class BRCurrency {
         return iso;
     }
 
-    public static int getMaxDecimalPlaces(String iso) {
-        if (Utils.isNullOrEmpty(iso)) return 8;
+    public static int getMaxDecimalPlaces(Context app, String iso) {
+        if (Utils.isNullOrEmpty(iso)) {
+            if (BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_SATOSHI) {
+                return 0;
+            } else {
+                return 8;
+            }
+        }
 
         if (iso.equalsIgnoreCase("BTC")) {
-            return 8;
+            if (BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_SATOSHI) {
+                return 0;
+            } else {
+                return 8;
+            }
         } else {
             Currency currency = Currency.getInstance(iso);
             return currency.getDefaultFractionDigits();
