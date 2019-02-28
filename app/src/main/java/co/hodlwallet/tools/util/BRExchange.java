@@ -42,8 +42,14 @@ public class BRExchange {
 
     public static BigDecimal getMaxAmount(Context context, String iso) {
         final long MAX_BTC = 21000000;
-        if (iso.equalsIgnoreCase("BTC"))
-            return getBitcoinForSatoshis(context, new BigDecimal(MAX_BTC * 100000000));
+        if (iso.equalsIgnoreCase("BTC")) {
+            if (BRSharedPrefs.getCurrencyUnit(context) == BRConstants.CURRENT_UNIT_SATOSHI) {
+                return new BigDecimal(MAX_BTC * 100000000);
+            } else {
+                return getBitcoinForSatoshis(context, new BigDecimal(MAX_BTC * 100000000));
+            }
+        }
+
         CurrencyEntity ent = CurrencyDataSource.getInstance(context).getCurrencyByIso(iso);
         if (ent == null) return new BigDecimal(Integer.MAX_VALUE);
         return new BigDecimal(ent.rate * MAX_BTC);
