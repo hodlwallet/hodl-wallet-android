@@ -3,14 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion = 27
     buildToolsVersion = '28.0.2'
-
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         applicationId = 'co.hodlwallet'
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 5
-        versionName "3.2.1"
+        versionCode 9
+        versionName "3.3.1"
         multiDexEnabled true
 
         // Similar to other properties in the defaultConfig block,
@@ -28,15 +27,12 @@ android {
         }
 
     }
-
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
     packagingOptions {
         pickFirst 'protobuf.meta'
     }
-
     externalNativeBuild {
         cmake {
             // When you specify a version of CMake, as shown below,
@@ -46,10 +42,8 @@ android {
 
         }
     }
-
     // Specifies two flavor dimensions.
     flavorDimensions "mode"
-
     productFlavors {
         hodl {
             applicationId "co.hodlwallet"
@@ -87,7 +81,6 @@ android {
         }
 
     }
-
     lintOptions {
         // set to true to turn off analysis progress reporting by lint
         quiet false
@@ -101,7 +94,6 @@ android {
 
         disable 'MissingTranslation'
     }
-
     buildTypes {
         gitUpdateModules()
 //        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
