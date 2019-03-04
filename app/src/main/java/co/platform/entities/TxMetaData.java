@@ -1,4 +1,4 @@
-package com.platform.entities;
+package co.platform.entities;
 
 /**
  * BreadWallet

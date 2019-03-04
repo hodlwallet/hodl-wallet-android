@@ -23,8 +23,8 @@ import co.hodlwallet.presenter.interfaces.BRAuthCompletion;
 import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.security.AuthManager;
-import com.platform.APIClient;
-import com.platform.HTTPServer;
+import co.platform.APIClient;
+import co.platform.HTTPServer;
 
 import java.util.ArrayList;
 import java.util.List;

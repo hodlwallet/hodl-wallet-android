@@ -26,7 +26,7 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRPeerManager;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.tools.KVStoreManager;
+import co.platform.tools.KVStoreManager;
 
 import java.util.Arrays;
 import java.util.LinkedList;

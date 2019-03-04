@@ -1,14 +1,14 @@
-package com.platform.middlewares;
+package co.platform.middlewares;
 
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
 import co.hodlwallet.HodlApp;
-import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
-import com.platform.HTTPServer;
-import com.platform.interfaces.Middleware;
+import co.platform.APIClient;
+import co.platform.BRHTTPHelper;
+import co.platform.HTTPServer;
+import co.platform.interfaces.Middleware;
 
 import junit.framework.Assert;
 

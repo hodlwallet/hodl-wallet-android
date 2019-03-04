@@ -11,7 +11,7 @@ import java.util.Currency;
 import java.util.Locale;
 import java.util.Objects;
 
-import static co.hodlwallet.tools.util.BRConstants.CURRENT_UNIT_BITS;
+import static co.hodlwallet.tools.util.BRConstants.CURRENT_UNIT_SATOSHI;
 
 /**
  * BreadWallet
@@ -42,9 +42,8 @@ public class BRCurrency {
     public static final String TAG = BRCurrency.class.getName();
 
 
-    // amount is in currency or BTC (bits, mBTC or BTC)
+    // amount is in currency or BTC (BTC or SAT)
     public static String getFormattedCurrencyString(Context app, String isoCurrencyCode, BigDecimal amount) {
-//        Log.e(TAG, "amount: " + amount);
         DecimalFormat currencyFormat;
 
         // This formats currency values as the user expects to read them (default locale).
@@ -55,7 +54,6 @@ public class BRCurrency {
         Currency currency;
         String symbol = null;
         decimalFormatSymbols = currencyFormat.getDecimalFormatSymbols();
-//        int decimalPoints = 0;
         if (Objects.equals(isoCurrencyCode, "BTC")) {
             symbol = BRExchange.getBitcoinSymbol(app);
         } else {
@@ -65,16 +63,29 @@ public class BRCurrency {
                 currency = Currency.getInstance(Locale.getDefault());
             }
             symbol = currency.getSymbol();
-//            decimalPoints = currency.getDefaultFractionDigits();
         }
-        decimalFormatSymbols.setCurrencySymbol(symbol);
-//        currencyFormat.setMaximumFractionDigits(decimalPoints);
-        currencyFormat.setGroupingUsed(true);
-        currencyFormat.setMaximumFractionDigits(BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS ? 8 : 2);
-        currencyFormat.setDecimalFormatSymbols(decimalFormatSymbols);
-        currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol() + "-");
-        currencyFormat.setNegativeSuffix("");
-        return currencyFormat.format(amount.doubleValue());
+
+        if (isoCurrencyCode != "BTC" || (isoCurrencyCode == "BTC" && BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS)) {
+            decimalFormatSymbols.setCurrencySymbol(symbol);
+            currencyFormat.setGroupingUsed(true);
+            currencyFormat.setMaximumFractionDigits(BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS ? 8 : 2);
+            currencyFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+            currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol() + "-");
+            currencyFormat.setNegativeSuffix("");
+            return currencyFormat.format(amount.doubleValue());
+        } else {
+            // In order for satoshi to look good we cannot put SAT at the beginning of the number.
+            // instead, we put it at the end.
+            decimalFormatSymbols.setCurrencySymbol("");
+            currencyFormat.setDecimalFormatSymbols(decimalFormatSymbols);
+
+            currencyFormat.setMaximumFractionDigits(0);
+
+            currencyFormat.setNegativePrefix("-");
+            currencyFormat.setNegativeSuffix("");
+
+            return String.format("%s %s", currencyFormat.format(amount.intValue()), BRConstants.bitcoinLowercase);
+        }
     }
 
     public static String getSymbolByIso(Context app, String iso) {
@@ -84,11 +95,8 @@ public class BRCurrency {
             if (app != null) {
                 int unit = BRSharedPrefs.getCurrencyUnit(app);
                 switch (unit) {
-                    case CURRENT_UNIT_BITS:
+                    case CURRENT_UNIT_SATOSHI:
                         currencySymbolString = BRConstants.bitcoinLowercase;
-                        break;
-                    case BRConstants.CURRENT_UNIT_MBITS:
-                        currencySymbolString = "m" + BRConstants.bitcoinUppercase;
                         break;
                     case BRConstants.CURRENT_UNIT_BITCOINS:
                         currencySymbolString = BRConstants.bitcoinUppercase;
@@ -114,10 +122,8 @@ public class BRCurrency {
             if (app != null) {
                 int unit = BRSharedPrefs.getCurrencyUnit(app);
                 switch (unit) {
-                    case CURRENT_UNIT_BITS:
-                        return "Bits";
-                    case BRConstants.CURRENT_UNIT_MBITS:
-                        return "MBits";
+                    case CURRENT_UNIT_SATOSHI:
+                        return "SAT";
                     case BRConstants.CURRENT_UNIT_BITCOINS:
                         return "BTC";
                 }
@@ -126,11 +132,21 @@ public class BRCurrency {
         return iso;
     }
 
-    public static int getMaxDecimalPlaces(String iso) {
-        if (Utils.isNullOrEmpty(iso)) return 8;
+    public static int getMaxDecimalPlaces(Context app, String iso) {
+        if (Utils.isNullOrEmpty(iso)) {
+            if (BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_SATOSHI) {
+                return 0;
+            } else {
+                return 8;
+            }
+        }
 
         if (iso.equalsIgnoreCase("BTC")) {
-            return 8;
+            if (BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_SATOSHI) {
+                return 0;
+            } else {
+                return 8;
+            }
         } else {
             Currency currency = Currency.getInstance(iso);
             return currency.getDefaultFractionDigits();

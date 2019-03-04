@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.app.Activity;
 import android.util.Log;
@@ -10,9 +10,9 @@ import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.BRHTTPHelper;
-import com.platform.interfaces.Plugin;
-import com.platform.tools.BRBitId;
+import co.platform.BRHTTPHelper;
+import co.platform.interfaces.Plugin;
+import co.platform.tools.BRBitId;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.eclipse.jetty.continuation.Continuation;
@@ -80,8 +80,8 @@ public class WalletPlugin implements Plugin {
                 /**the current receive address*/
                 jsonResp.put("receive_address", BRWalletManager.getReceiveAddress());
 
-                /**how digits after the decimal point. 2 = bits 8 = btc 6 = mbtc*/
-                jsonResp.put("btc_denomiation_digits", BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS ? 8 : 2);
+                /**how digits after the decimal point. 8 = btc 0 = sat*/
+                jsonResp.put("btc_denomiation_digits", BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS ? 8 : 0);
 
                 /**the users native fiat currency as an ISO 4217 code. Should be uppercased */
                 jsonResp.put("local_currency_code", Currency.getInstance(Locale.getDefault()).getCurrencyCode().toUpperCase());

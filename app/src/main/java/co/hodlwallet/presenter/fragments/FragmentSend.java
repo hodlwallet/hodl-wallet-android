@@ -67,7 +67,7 @@ import co.hodlwallet.wallet.BRWalletManager;
 import java.math.BigDecimal;
 
 import static co.hodlwallet.tools.security.BitcoinUrlHandler.getRequestFromString;
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static co.platform.HTTPServer.URL_SUPPORT;
 
 
 /**
@@ -368,8 +368,33 @@ public class FragmentSend extends Fragment {
             @Override
             public void onClick(View v) {
                 if (selectedIso.equalsIgnoreCase(BRSharedPrefs.getIso(getContext()))) {
+                    if (amountBuilder.length() > 0) {
+                        BigDecimal tmpAmount = BRExchange.getSatoshisFromAmount(getContext(), selectedIso, new BigDecimal(amountBuilder.toString()));
+
+                        if (BRSharedPrefs.getCurrencyUnit(getContext()) == BRConstants.CURRENT_UNIT_BITCOINS)
+                            tmpAmount = BRExchange.getBitcoinForSatoshis(getContext(), tmpAmount);
+
+                        amountBuilder = new StringBuilder(tmpAmount.toString());
+                        amountEdit.setText(amountBuilder.toString());
+                    }
+
                     selectedIso = "BTC";
                 } else {
+                    if (amountBuilder.length() > 0) {
+                        BigDecimal currentAmountInSatoshi = null;
+
+                        if (BRSharedPrefs.getCurrencyUnit(getContext()) == BRConstants.CURRENT_UNIT_BITCOINS) {
+                            currentAmountInSatoshi = new BigDecimal(amountBuilder.toString()).multiply(new BigDecimal(100000000));
+                        } else {
+                            currentAmountInSatoshi = new BigDecimal(amountBuilder.toString());
+                        }
+
+                        BigDecimal tmpAmount = BRExchange.getAmountFromSatoshis(getContext(), BRSharedPrefs.getIso(getContext()), currentAmountInSatoshi);
+
+                        amountBuilder = new StringBuilder(tmpAmount.toString());
+                        amountEdit.setText(amountBuilder.toString());
+                    }
+
                     selectedIso = BRSharedPrefs.getIso(getContext());
                 }
                 updateText();
@@ -642,7 +667,7 @@ public class FragmentSend extends Fragment {
                 <= BRExchange.getMaxAmount(getActivity(), iso).doubleValue()) {
             //do not insert 0 if the balance is 0 now
             if (currAmount.equalsIgnoreCase("0")) amountBuilder = new StringBuilder("");
-            if ((currAmount.contains(".") && (currAmount.length() - currAmount.indexOf(".") > BRCurrency.getMaxDecimalPlaces(iso))))
+            if ((currAmount.contains(".") && (currAmount.length() - currAmount.indexOf(".") > BRCurrency.getMaxDecimalPlaces(getContext(), iso))))
                 return;
             amountBuilder.append(dig);
             updateText();
@@ -651,7 +676,7 @@ public class FragmentSend extends Fragment {
 
     private void handleSeparatorClick() {
         String currAmount = amountBuilder.toString();
-        if (currAmount.contains(".") || BRCurrency.getMaxDecimalPlaces(selectedIso) == 0)
+        if (currAmount.contains(".") || BRCurrency.getMaxDecimalPlaces(getContext(), selectedIso) == 0)
             return;
         amountBuilder.append(".");
         updateText();

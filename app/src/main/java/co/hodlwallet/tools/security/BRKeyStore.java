@@ -30,8 +30,8 @@ import co.hodlwallet.tools.util.BytesUtil;
 import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.entities.WalletInfo;
-import com.platform.tools.KVStoreManager;
+import co.platform.entities.WalletInfo;
+import co.platform.tools.KVStoreManager;
 
 import junit.framework.Assert;
 

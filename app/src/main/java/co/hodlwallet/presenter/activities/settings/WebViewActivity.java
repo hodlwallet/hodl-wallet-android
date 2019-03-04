@@ -42,8 +42,8 @@ import co.hodlwallet.presenter.customviews.BRText;
 import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.animation.BRDialog;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.HTTPServer;
-import com.platform.middlewares.plugins.LinkPlugin;
+import co.platform.HTTPServer;
+import co.platform.middlewares.plugins.LinkPlugin;
 
 import org.json.JSONException;
 import org.json.JSONObject;

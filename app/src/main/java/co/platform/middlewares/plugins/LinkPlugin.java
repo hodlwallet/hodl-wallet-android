@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,8 +10,8 @@ import co.hodlwallet.HodlApp;
 import co.hodlwallet.R;
 import co.hodlwallet.presenter.activities.settings.WebViewActivity;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.BRHTTPHelper;
-import com.platform.interfaces.Plugin;
+import co.platform.BRHTTPHelper;
+import co.platform.interfaces.Plugin;
 
 import org.eclipse.jetty.server.Request;
 import org.json.JSONException;

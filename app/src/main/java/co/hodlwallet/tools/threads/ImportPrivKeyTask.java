@@ -59,7 +59,11 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public ImportPrivKeyTask(Activity activity) {
         app = activity;
-        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://test-insight.bitpay.com/api/addrs/" : "https://insight.bitpay.com/api/addrs/";
+        // FIXME
+        // - Update domain to HODL Wallet's
+        // - Update testnet address
+        //UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/testnet/address/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/address/";
+        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/mainnet/address/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/address/";
     }
 
     @Override
@@ -67,8 +71,8 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         if (params.length == 0) return null;
         key = params[0];
         if (key == null || key.isEmpty() || app == null) return null;
-        String tmpAddrs = BRWalletManager.getInstance().getAddressFromPrivKey(key);
-        String url = UNSPENT_URL + tmpAddrs + "/utxo";
+        String tmpAddrs = BRWalletManager.getInstance().getLegacyAddressFromPrivKey(key);
+        String url = UNSPENT_URL + tmpAddrs + "/transactions?unspent=true";
         importPrivKeyEntity = createTx(url);
         if (importPrivKeyEntity == null) {
             app.runOnUiThread(new Runnable() {
@@ -157,8 +161,8 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
                 JSONObject obj = jsonArray.getJSONObject(i);
                 String txid = obj.getString("txid");
                 int vout = obj.getInt("vout");
-                String scriptPubKey = obj.getString("scriptPubKey");
-                long amount = obj.getLong("satoshis");
+                String scriptPubKey = obj.getString("script");
+                long amount = obj.getLong("value");
                 byte[] txidBytes = hexStringToByteArray(txid);
                 byte[] scriptPubKeyBytes = hexStringToByteArray(scriptPubKey);
                 BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, scriptPubKeyBytes, amount);

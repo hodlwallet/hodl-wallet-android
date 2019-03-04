@@ -1,4 +1,4 @@
-package com.platform.tools;
+package co.platform.tools;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,13 +6,13 @@ import android.util.Log;
 import co.hodlwallet.tools.crypto.CryptoHelper;
 import co.hodlwallet.tools.util.BRCompressor;
 import co.hodlwallet.tools.util.Utils;
-import com.platform.APIClient;
-import com.platform.entities.TxMetaData;
-import com.platform.entities.WalletInfo;
-import com.platform.kvstore.CompletionObject;
-import com.platform.kvstore.RemoteKVStore;
-import com.platform.kvstore.ReplicatedKVStore;
-import com.platform.sqlite.KVItem;
+import co.platform.APIClient;
+import co.platform.entities.TxMetaData;
+import co.platform.entities.WalletInfo;
+import co.platform.kvstore.CompletionObject;
+import co.platform.kvstore.RemoteKVStore;
+import co.platform.kvstore.ReplicatedKVStore;
+import co.platform.sqlite.KVItem;
 
 import org.json.JSONException;
 import org.json.JSONObject;

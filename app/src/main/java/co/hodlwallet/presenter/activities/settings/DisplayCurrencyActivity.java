@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import co.hodlwallet.R;
-import co.hodlwallet.presenter.activities.util.ActivityUTILS;
 import co.hodlwallet.presenter.activities.util.BRActivity;
 import co.hodlwallet.presenter.entities.CurrencyEntity;
 import co.hodlwallet.tools.animation.BRAnimator;
@@ -119,8 +118,8 @@ public class DisplayCurrencyActivity extends BRActivity {
         CurrencyEntity entity = CurrencyDataSource.getInstance(this).getCurrencyByIso(iso);
         if (entity != null) {
             String finalExchangeRate = BRCurrency.getFormattedCurrencyString(DisplayCurrencyActivity.this, BRSharedPrefs.getIso(this), new BigDecimal(entity.rate));
-            boolean bits = BRSharedPrefs.getCurrencyUnit(this) == BRConstants.CURRENT_UNIT_BITS;
-            exchangeText.setText(BRCurrency.getFormattedCurrencyString(this, "BTC", new BigDecimal(bits ? 1000000 : 1)) + " = " + finalExchangeRate);
+            boolean satoshi = BRSharedPrefs.getCurrencyUnit(this) == BRConstants.CURRENT_UNIT_SATOSHI;
+            exchangeText.setText(BRCurrency.getFormattedCurrencyString(this, "BTC", new BigDecimal(satoshi ? 100000000 : 1)) + " = " + finalExchangeRate);
         }
         adapter.notifyDataSetChanged();
     }
@@ -133,7 +132,7 @@ public class DisplayCurrencyActivity extends BRActivity {
             rightButton.setTextColor(getColor(R.color.white));
             rightButton.setBackground(getDrawable(R.drawable.b_half_right_white_stroke));
         } else {
-            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_BITS);
+            BRSharedPrefs.putCurrencyUnit(this, BRConstants.CURRENT_UNIT_SATOSHI);
             leftButton.setTextColor(getColor(R.color.white));
             leftButton.setBackground(getDrawable(R.drawable.b_half_left_white_stroke));
             rightButton.setTextColor(getColor(R.color.almost_black));

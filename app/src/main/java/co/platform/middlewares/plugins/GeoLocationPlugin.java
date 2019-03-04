@@ -1,4 +1,4 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,9 +13,9 @@ import co.hodlwallet.HodlApp;
 import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.BRHTTPHelper;
-import com.platform.GeoLocationManager;
-import com.platform.interfaces.Plugin;
+import co.platform.BRHTTPHelper;
+import co.platform.GeoLocationManager;
+import co.platform.interfaces.Plugin;
 
 import org.eclipse.jetty.continuation.Continuation;
 import org.eclipse.jetty.continuation.ContinuationSupport;

@@ -22,7 +22,7 @@ import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 
 import java.util.concurrent.TimeUnit;
 

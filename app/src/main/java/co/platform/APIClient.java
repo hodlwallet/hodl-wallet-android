@@ -1,4 +1,4 @@
-package com.platform;
+package co.platform;
 
 import android.annotation.TargetApi;
 
@@ -21,9 +21,9 @@ import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.jniwrappers.BRKey;
-import com.platform.kvstore.RemoteKVStore;
-import com.platform.kvstore.ReplicatedKVStore;
+import co.jniwrappers.BRKey;
+import co.platform.kvstore.RemoteKVStore;
+import co.platform.kvstore.ReplicatedKVStore;
 
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;

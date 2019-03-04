@@ -23,7 +23,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.platform.APIClient.BREAD_POINT;
+import static co.platform.APIClient.BREAD_POINT;
 
 /**
  * BreadWallet

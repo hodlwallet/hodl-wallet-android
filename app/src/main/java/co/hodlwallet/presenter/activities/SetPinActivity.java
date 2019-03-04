@@ -16,7 +16,7 @@ import co.hodlwallet.presenter.customviews.BRKeyboard;
 import co.hodlwallet.tools.animation.BRAnimator;
 import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.HTTPServer;
+import co.platform.HTTPServer;
 
 public class SetPinActivity extends BRActivity {
     private static final String TAG = SetPinActivity.class.getName();

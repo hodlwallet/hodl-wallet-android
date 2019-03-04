@@ -35,15 +35,15 @@ import co.hodlwallet.tools.util.BRCurrency;
 import co.hodlwallet.tools.util.BRExchange;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRPeerManager;
-import com.platform.entities.TxMetaData;
-import com.platform.tools.KVStoreManager;
+import co.platform.entities.TxMetaData;
+import co.platform.tools.KVStoreManager;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static co.platform.HTTPServer.URL_SUPPORT;
 
 /**
  * BreadWallet

@@ -19,11 +19,11 @@ import co.hodlwallet.tools.sqlite.PeerDataSource;
 import co.hodlwallet.tools.sqlite.TransactionDataSource;
 import co.hodlwallet.tools.threads.BRExecutor;
 import co.hodlwallet.tools.util.BRConstants;
-import com.platform.interfaces.KVStoreAdaptor;
-import com.platform.kvstore.CompletionObject;
-import com.platform.kvstore.ReplicatedKVStore;
-import com.platform.sqlite.KVItem;
-import com.platform.sqlite.PlatformSqliteHelper;
+import co.platform.interfaces.KVStoreAdaptor;
+import co.platform.kvstore.CompletionObject;
+import co.platform.kvstore.ReplicatedKVStore;
+import co.platform.sqlite.KVItem;
+import co.platform.sqlite.PlatformSqliteHelper;
 
 import org.junit.After;
 import org.junit.Assert;

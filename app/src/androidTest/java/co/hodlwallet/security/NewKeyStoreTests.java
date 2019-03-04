@@ -11,7 +11,7 @@ import co.hodlwallet.presenter.activities.settings.AboutActivity;
 import co.hodlwallet.presenter.activities.settings.TestActivity;
 import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.threads.BRExecutor;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package com.platform.middlewares;
+package co.platform.middlewares;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,10 +11,10 @@ import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.util.TypesConverter;
 import co.hodlwallet.tools.util.Utils;
 import co.hodlwallet.wallet.BRWalletManager;
-import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
-import com.platform.HTTPServer;
-import com.platform.interfaces.Middleware;
+import co.platform.APIClient;
+import co.platform.BRHTTPHelper;
+import co.platform.HTTPServer;
+import co.platform.interfaces.Middleware;
 
 
 import org.apache.commons.io.FileUtils;

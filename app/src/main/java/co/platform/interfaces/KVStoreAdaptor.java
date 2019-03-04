@@ -1,6 +1,6 @@
-package com.platform.interfaces;
+package co.platform.interfaces;
 
-import com.platform.kvstore.CompletionObject;
+import co.platform.kvstore.CompletionObject;
 
 import static android.R.attr.value;
 

@@ -13,7 +13,7 @@
 
 static BRKey _key;
 
-JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_compactSign(
+JNIEXPORT jbyteArray JNICALL Java_co_jniwrappers_BRKey_compactSign(
     JNIEnv *env,
     jobject thiz,
     jbyteArray data) {
@@ -32,7 +32,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_compactSign(
     return result;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_jniwrappers_BRKey_setPrivKey(
+JNIEXPORT jboolean JNICALL Java_co_jniwrappers_BRKey_setPrivKey(
     JNIEnv *env,
     jobject thiz,
     jbyteArray privKey) {
@@ -47,7 +47,7 @@ JNIEXPORT jboolean JNICALL Java_com_jniwrappers_BRKey_setPrivKey(
 //    __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "key is set, _key: %s", _key.secret);
 }
 
-JNIEXPORT void JNICALL Java_com_jniwrappers_BRKey_setSecret(
+JNIEXPORT void JNICALL Java_co_jniwrappers_BRKey_setSecret(
     JNIEnv *env,
     jobject thiz,
     jbyteArray privKey) {
@@ -59,7 +59,7 @@ JNIEXPORT void JNICALL Java_com_jniwrappers_BRKey_setSecret(
     __android_log_print(ANDROID_LOG_ERROR, "Message from C: ", "key is set, res: %d", res);
 }
 
-JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_encryptNative(JNIEnv *env, jobject thiz,
+JNIEXPORT jbyteArray JNICALL Java_co_jniwrappers_BRKey_encryptNative(JNIEnv *env, jobject thiz,
         jbyteArray data,
         jbyteArray nonce) {
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, NULL);
@@ -81,7 +81,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_encryptNative(JNIEnv *en
     return result;
 }
 
-JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_decryptNative(JNIEnv *env, jobject thiz,
+JNIEXPORT jbyteArray JNICALL Java_co_jniwrappers_BRKey_decryptNative(JNIEnv *env, jobject thiz,
         jbyteArray data,
         jbyteArray nonce) {
     jbyte *byteData = (*env)->GetByteArrayElements(env, data, NULL);
@@ -104,7 +104,7 @@ JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_decryptNative(JNIEnv *en
 }
 
 
-JNIEXPORT jbyteArray JNICALL Java_com_jniwrappers_BRKey_address(JNIEnv *env, jobject thiz) {
+JNIEXPORT jbyteArray JNICALL Java_co_jniwrappers_BRKey_address(JNIEnv *env, jobject thiz) {
     BRAddress address = BR_ADDRESS_NONE;
     BRKeyAddress(&_key, address.s, sizeof(address));
     assert(address.s[0] != '\0');

@@ -2,7 +2,7 @@ package co.hodlwallet.presenter.entities;
 
 
 import co.hodlwallet.tools.util.Utils;
-import com.platform.entities.TxMetaData;
+import co.platform.entities.TxMetaData;
 
 /**
  * BreadWallet

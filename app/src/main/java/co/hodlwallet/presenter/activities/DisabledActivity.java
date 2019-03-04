@@ -19,7 +19,7 @@ import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.security.AuthManager;
 import co.hodlwallet.tools.security.BRKeyStore;
 import co.hodlwallet.tools.util.BRConstants;
-import com.jniwrappers.BRKey;
+import co.jniwrappers.BRKey;
 
 import java.util.Locale;
 

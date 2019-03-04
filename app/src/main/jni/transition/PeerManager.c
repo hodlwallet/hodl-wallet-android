@@ -37,6 +37,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <BRPeerManager.h>
+#include <malloc.h>
 
 #define fprintf(...) __android_log_print(ANDROID_LOG_ERROR, "bread", _va_rest(__VA_ARGS__, NULL))
 

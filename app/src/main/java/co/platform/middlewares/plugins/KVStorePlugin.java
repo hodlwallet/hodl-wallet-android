@@ -1,17 +1,17 @@
-package com.platform.middlewares.plugins;
+package co.platform.middlewares.plugins;
 
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
 import co.hodlwallet.HodlApp;
-import com.platform.APIClient;
-import com.platform.BRHTTPHelper;
-import com.platform.interfaces.Plugin;
-import com.platform.kvstore.CompletionObject;
-import com.platform.kvstore.RemoteKVStore;
-import com.platform.kvstore.ReplicatedKVStore;
-import com.platform.sqlite.KVItem;
+import co.platform.APIClient;
+import co.platform.BRHTTPHelper;
+import co.platform.interfaces.Plugin;
+import co.platform.kvstore.CompletionObject;
+import co.platform.kvstore.RemoteKVStore;
+import co.platform.kvstore.ReplicatedKVStore;
+import co.platform.sqlite.KVItem;
 
 import org.eclipse.jetty.server.Request;
 import org.json.JSONException;

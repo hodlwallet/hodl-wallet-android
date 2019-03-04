@@ -1,10 +1,10 @@
-package com.platform.kvstore;
+package co.platform.kvstore;
 
 import android.util.Log;
 
-import com.platform.APIClient;
-import com.platform.interfaces.KVStoreAdaptor;
-import com.platform.sqlite.KVItem;
+import co.platform.APIClient;
+import co.platform.interfaces.KVStoreAdaptor;
+import co.platform.sqlite.KVItem;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -18,7 +18,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static android.R.attr.key;
-import static com.platform.kvstore.CompletionObject.RemoteKVStoreError.unknown;
+import static co.platform.kvstore.CompletionObject.RemoteKVStoreError.unknown;
 
 /**
  * BreadWallet

@@ -1,6 +1,6 @@
-package com.platform.kvstore;
+package co.platform.kvstore;
 
-import com.platform.sqlite.KVItem;
+import co.platform.sqlite.KVItem;
 
 import java.util.List;
 

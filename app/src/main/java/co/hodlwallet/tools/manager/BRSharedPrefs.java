@@ -117,6 +117,18 @@ public class BRSharedPrefs {
         return prefs.getBoolean("segwitShown", false);
     }
 
+    public static boolean getCurrencyReset(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        return prefs.getBoolean("currencyReset", false);
+    }
+
+    public static void putCurrencyReset(Context context, boolean reset) {
+        SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("currencyReset", reset);
+        editor.apply();
+    }
+
     public static void putGreetingsShown(Context context, boolean shown) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
