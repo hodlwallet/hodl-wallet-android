@@ -95,8 +95,6 @@ android {
         disable 'MissingTranslation'
     }
     buildTypes {
-        gitUpdateModules()
-//        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         release {
             minifyEnabled = false
             debuggable = false
@@ -126,12 +124,6 @@ task copyResDirectoryToClasses(type: Copy) {
 
 gradle.projectsEvaluated {
     assembleDebug.dependsOn(copyResDirectoryToClasses)
-}
-
-
-def gitUpdateModules() {
-    ['sh', '-c', 'git submodule foreach git pull origin master'].execute().text.trim()
-    getLogger().debug("gitUpdateModules done!")
 }
 
 repositories {
