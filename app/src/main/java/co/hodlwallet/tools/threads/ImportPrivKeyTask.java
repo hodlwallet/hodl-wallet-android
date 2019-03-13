@@ -163,10 +163,10 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public static ImportPrivKeyEntity createTx(String legacyUrl, String bech32Url) {
         String[] urls = {legacyUrl, bech32Url};
+        boolean inputArrayCreated = false;
 
         for (int i = 0; i <= 1; i++) {
             String url = urls[i];
-            boolean inputArrayCreated = false;
 
             if (url == null || url.isEmpty()) return null;
             String jsonString = callURL(url);
