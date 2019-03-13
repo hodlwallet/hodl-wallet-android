@@ -148,7 +148,6 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
     public static ImportPrivKeyEntity createTx(String legacyUrl, String bech32Url) {
         String[] urls = {legacyUrl, bech32Url};
-        ImportPrivKeyEntity result = null;
 
         for (int i = 0; i <= 1; i++) {
             String url = urls[i];
@@ -198,16 +197,12 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
                     BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, scriptPubKeyBytes, value);
                 }
-
-                result = BRWalletManager.getInstance().getPrivKeyObject();
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-
-        return result;
+        return BRWalletManager.getInstance().getPrivKeyObject();
     }
 
     public static byte[] hexStringToByteArray(String s) {
