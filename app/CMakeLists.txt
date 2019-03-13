@@ -106,7 +106,7 @@ add_library( # Specifies the name of the library.
              src/main/jni/breadwallet-core/Java/co_hodlwallet_core_BRCoreWallet.h
 )
 
-
+include_directories(src/main/jni/breadwallet-core/Java)
 include_directories(src/main/jni/breadwallet-core/)
 include_directories(src/main/secp/secp256k1/include/)
 include_directories(src/main/secp/secp256k1/src/)
