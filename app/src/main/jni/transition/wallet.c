@@ -884,7 +884,7 @@ Java_co_hodlwallet_wallet_BRWalletManager_confirmKeySweep(JNIEnv *env, jobject t
     uint8_t buf[BRTransactionSerialize(tmpTx, NULL, 0)];
     size_t len = BRTransactionSerialize(tmpTx, buf, sizeof(buf));
 
-    BRPeerManagerPublishTx(_peerManager, tmpTx, NULL, callback);
+    BRPeerManagerPublishTx(_peerManager, tmpTx, tmpTx, callback);
     return JNI_TRUE;
 }
 

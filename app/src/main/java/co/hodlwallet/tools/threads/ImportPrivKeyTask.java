@@ -168,7 +168,8 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
 
                     boolean confirmed = status.getBoolean("confirmed");
 
-                    if (confirmed && !inputArrayCreated) {
+                    if (!confirmed) continue;
+                    if (!inputArrayCreated) {
                         BRWalletManager.getInstance().createInputArray();
 
                         inputArrayCreated = true;
