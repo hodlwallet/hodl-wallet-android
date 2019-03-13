@@ -131,6 +131,21 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
                             });
 
                         }
+                        else {
+                            app.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    BRDialog.showCustomDialog(app, app.getString(R.string.Import_importing),
+                                            app.getString(R.string.Import_success), app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
+                                                @Override
+                                                public void onClick(BRDialogView brDialogView) {
+                                                    brDialogView.dismissWithAnimation();
+                                                }
+                                            }, null, null, 0);
+                                }
+                            });
+
+                        }
                     }
                 });
 
