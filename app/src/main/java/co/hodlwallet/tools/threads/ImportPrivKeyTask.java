@@ -3,13 +3,11 @@ package co.hodlwallet.tools.threads;
 import android.app.Activity;
 import android.os.AsyncTask;
 
-import co.hodlwallet.HodlApp;
 import co.hodlwallet.BuildConfig;
 import co.hodlwallet.R;
 import co.hodlwallet.presenter.customviews.BRDialogView;
 import co.hodlwallet.presenter.entities.ImportPrivKeyEntity;
 import co.hodlwallet.tools.animation.BRDialog;
-import co.hodlwallet.tools.manager.BRSharedPrefs;
 import co.hodlwallet.tools.util.BRCurrency;
 import co.hodlwallet.tools.util.BRExchange;
 import co.hodlwallet.wallet.BRWalletManager;
@@ -52,18 +50,17 @@ import java.nio.charset.Charset;
 
 public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
     public static final String TAG = ImportPrivKeyTask.class.getName();
-    public static String UNSPENT_URL;
+    public static String UTXO_URL;
+    public static String TX_URL;
     private Activity app;
     private String key;
     private ImportPrivKeyEntity importPrivKeyEntity;
 
     public ImportPrivKeyTask(Activity activity) {
         app = activity;
-        // FIXME
-        // - Update domain to HODL Wallet's
-        // - Update testnet address
-        //UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/testnet/address/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/address/";
-        UNSPENT_URL = BuildConfig.BITCOIN_TESTNET ? "https://bitcore.guajiro.cash/api/BTC/mainnet/address/" : "https://bitcore.guajiro.cash/api/BTC/mainnet/address/";
+
+        UTXO_URL = BuildConfig.BITCOIN_TESTNET ? "https://blockstream.info/testnet/api/address/%s/utxo" : "https://blockstream.info/api/address/%s/utxo";
+        TX_URL = BuildConfig.BITCOIN_TESTNET ? "https://blockstream.info/testnet/api/tx/%s" : "https://blockstream.info/api/tx/%s";
     }
 
     @Override
@@ -71,9 +68,13 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         if (params.length == 0) return null;
         key = params[0];
         if (key == null || key.isEmpty() || app == null) return null;
-        String tmpAddrs = BRWalletManager.getInstance().getLegacyAddressFromPrivKey(key);
-        String url = UNSPENT_URL + tmpAddrs + "/transactions?unspent=true";
-        importPrivKeyEntity = createTx(url);
+
+        String legacyAddress = BRWalletManager.getInstance().getLegacyAddressFromPrivKey(key);
+        String legacyUrl = String.format(UTXO_URL, legacyAddress);
+        String bech32Address = BRWalletManager.getInstance().getAddressFromPrivKey(key);
+        String bech32Url = String.format(UTXO_URL, bech32Address);
+
+        importPrivKeyEntity = createTx(legacyUrl, bech32Url);
         if (importPrivKeyEntity == null) {
             app.runOnUiThread(new Runnable() {
                 @Override
@@ -130,6 +131,21 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
                             });
 
                         }
+                        else {
+                            app.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    BRDialog.showCustomDialog(app, app.getString(R.string.Import_importing),
+                                            app.getString(R.string.Import_success), app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
+                                                @Override
+                                                public void onClick(BRDialogView brDialogView) {
+                                                    brDialogView.dismissWithAnimation();
+                                                }
+                                            }, null, null, 0);
+                                }
+                            });
+
+                        }
                     }
                 });
 
@@ -145,35 +161,64 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         super.onPostExecute(s);
     }
 
-    public static ImportPrivKeyEntity createTx(String url) {
-        if (url == null || url.isEmpty()) return null;
-        String jsonString = callURL(url);
-        if (jsonString == null || jsonString.isEmpty()) return null;
-        ImportPrivKeyEntity result = null;
-        JSONArray jsonArray = null;
-        try {
-            jsonArray = new JSONArray(jsonString);
-            int length = jsonArray.length();
-            if (length > 0)
-                BRWalletManager.getInstance().createInputArray();
+    public static ImportPrivKeyEntity createTx(String legacyUrl, String bech32Url) {
+        String[] urls = {legacyUrl, bech32Url};
+        boolean inputArrayCreated = false;
 
-            for (int i = 0; i < length; i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
-                String txid = obj.getString("txid");
-                int vout = obj.getInt("vout");
-                String scriptPubKey = obj.getString("script");
-                long amount = obj.getLong("value");
-                byte[] txidBytes = hexStringToByteArray(txid);
-                byte[] scriptPubKeyBytes = hexStringToByteArray(scriptPubKey);
-                BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, scriptPubKeyBytes, amount);
+        for (int i = 0; i <= 1; i++) {
+            String url = urls[i];
+
+            if (url == null || url.isEmpty()) return null;
+            String jsonString = callURL(url);
+            if (jsonString == null || jsonString.isEmpty()) return null;
+
+            JSONArray jsonArray = null;
+            try {
+                jsonArray = new JSONArray(jsonString);
+                int length = jsonArray.length();
+
+                for (int j = 0; j < length; j++) {
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    JSONObject status = obj.getJSONObject("status");
+
+                    boolean confirmed = status.getBoolean("confirmed");
+
+                    if (!confirmed) continue;
+                    if (!inputArrayCreated) {
+                        BRWalletManager.getInstance().createInputArray();
+
+                        inputArrayCreated = true;
+                    }
+
+                    String txid = obj.getString("txid");
+                    int vout = obj.getInt("vout");
+                    long value = obj.getLong("value");
+
+                    String txUrl = String.format(TX_URL, txid);
+
+                    if (txUrl == null || txUrl.isEmpty()) return null;
+                    String txJsonString = callURL(txUrl);
+                    if (txJsonString == null || txJsonString.isEmpty()) return null;
+
+                    JSONObject txJsonObject = new JSONObject(txJsonString);
+                    JSONArray vouts = txJsonObject.getJSONArray("vout");
+
+                    String scriptPubKey = null;
+                    if (vouts.length() >= (vout + 1)) {
+                        JSONObject voutItem = vouts.getJSONObject(vout);
+                        scriptPubKey = voutItem.getString("scriptpubkey");
+                    }
+                    byte[] txidBytes = hexStringToByteArray(txid);
+                    byte[] scriptPubKeyBytes = hexStringToByteArray(scriptPubKey);
+
+                    BRWalletManager.getInstance().addInputToPrivKeyTx(txidBytes, vout, scriptPubKeyBytes, value);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            result = BRWalletManager.getInstance().getPrivKeyObject();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-        return result;
+
+        return BRWalletManager.getInstance().getPrivKeyObject();
     }
 
     public static byte[] hexStringToByteArray(String s) {
@@ -187,7 +232,6 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
     }
 
     private static String callURL(String myURL) {
-//        System.out.println("Requested URL_EA:" + myURL);
         StringBuilder sb = new StringBuilder();
         URLConnection urlConn = null;
         InputStreamReader in = null;
