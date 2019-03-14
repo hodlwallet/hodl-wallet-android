@@ -70,3 +70,6 @@ crash.txt
 /app/src/main/java/co/hodlwallet/presenter/fragments/FragmentBreadSignal.java
 /fastlane/
 fastlane/
+
+# release directory
+/app/hodl
