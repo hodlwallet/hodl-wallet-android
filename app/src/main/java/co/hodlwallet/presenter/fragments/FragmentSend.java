@@ -280,89 +280,122 @@ public class FragmentSend extends Fragment {
         });
 
 //        commentEdit.addTextChangedListener(new BRTextWatcher());
-//        addressEdit.addTextChangedListener(new BRTextWatcher());
+        addressEdit.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
-        paste.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!BRAnimator.isClickAllowed()) return;
-                String bitcoinUrl = BRClipboardManager.getClipboard(getActivity());
-                if (Utils.isNullOrEmpty(bitcoinUrl) || !isInputValid(bitcoinUrl)) {
-                    showClipboardError();
-                    return;
-                }
-                String address = null;
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
-                RequestObject obj = getRequestFromString(bitcoinUrl);
+               @Override
+               public void afterTextChanged(Editable s) {
+                    // Here's an easier way to know if the content was pasted.
+                    // Check if what changed is the content of the clipboard, we can assume that's a paste.
+                    String clipboardContent = BRClipboardManager.getClipboard(getActivity());
+                    if (clipboardContent.equals(s.toString())) {
+                        if (s.toString().startsWith("bitcoin:")) {
+                            Log.d(TAG, "afterTextChanged: Processing clipboard content: " + s.toString());
 
-                if (obj == null || obj.address == null) {
-                    showClipboardError();
-                    return;
-                }
-                address = obj.address;
-                final BRWalletManager wm = BRWalletManager.getInstance();
+                            RequestObject obj = getRequestFromString(s.toString());
 
-                if (BRWalletManager.validateAddress(address)) {
-                    final String finalAddress = address;
-                    final Activity app = getActivity();
-                    if (app == null) {
-                        Log.e(TAG, "paste onClick: app is null");
-                        return;
-                    }
-                    BRExecutor.getInstance().forLightWeightBackgroundTasks().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (wm.addressContainedInWallet(finalAddress)) {
-                                app.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        BRDialog.showCustomDialog(getActivity(), "", getResources().getString(R.string.Send_containsAddress), getResources().getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
-                                            @Override
-                                            public void onClick(BRDialogView brDialogView) {
-                                                brDialogView.dismiss();
-                                            }
-                                        }, null, null, 0);
-                                        BRClipboardManager.putClipboard(getActivity(), "");
-                                    }
-                                });
+                            String address = null;
+                            String amount = null;
+                            String label = null;
+                            String message = null;
+                            String memo = null;
 
-                            } else if (wm.addressIsUsed(finalAddress)) {
-                                app.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        BRDialog.showCustomDialog(getActivity(), getString(R.string.Send_UsedAddress_firstLine), getString(R.string.Send_UsedAddress_secondLIne), "Ignore", "Cancel", new BRDialogView.BROnClickListener() {
-                                            @Override
-                                            public void onClick(BRDialogView brDialogView) {
-                                                brDialogView.dismiss();
-                                                addressEdit.setText(finalAddress);
-                                            }
-                                        }, new BRDialogView.BROnClickListener() {
-                                            @Override
-                                            public void onClick(BRDialogView brDialogView) {
-                                                brDialogView.dismiss();
-                                            }
-                                        }, null, 0);
-                                    }
-                                });
+                            if (obj.r != null) {
+                                // Check for compatibility mode if address and amount are present
+                                if (!obj.address.isEmpty() && !obj.amount.isEmpty()) {
+                                    address = obj.address;
+                                    amount = obj.amount;
+                                } else {
+                                    BitcoinUrlHandler.processRequest(getActivity(), s.toString());
 
+                                    return;
+                                }
                             } else {
-                                app.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        addressEdit.setText(finalAddress);
-
-                                    }
-                                });
+                                address = obj.address;
+                                amount = obj.amount;
+                                label = obj.label;
+                                message = obj.message;
                             }
+
+                            // if address is null at this point, we fail.
+
+                            // Build the label and the message into a nice memo: "label: Message"
+                            if (!label.isEmpty())
+                                memo += label;
+
+                            if (!message.isEmpty())
+                                if (!label.isEmpty()) // if it has label then add a ": "
+                                    memo += ": ";
+
+                                memo += message;
+
+                            addressEdit.setText(address);
+
+                            if (!amount.isEmpty())
+                                updateAmountWithSatoshis(amount);
+
+                            if (!memo.isEmpty())
+                                commentEdit.setText(memo);
+
+                            return;
+                        } else if (BRWalletManager.validateAddress(s.toString())) {
+                            // First we check if the address is already used. (e.g. send to yourself)
+                            final String address = s.toString();
+                            final BRWalletManager walletManager = BRWalletManager.getInstance();
+                            final Context app = getContext();
+
+                            if (app == null) {
+                                Log.e(TAG, "paste onClick: app is null");
+                                return;
+                            }
+
+                            if (walletManager.addressContainedInWallet(address)) {
+                                BRDialog.showCustomDialog(getActivity(), "", getResources().getString(R.string.Send_containsAddress), getResources().getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
+                                    @Override
+                                    public void onClick(BRDialogView brDialogView) {
+                                        brDialogView.dismiss();
+                                        addressEdit.setText("");
+                                    }
+                                }, null, null, 0);
+                            } else if (walletManager.addressIsUsed(address)) {
+                                BRDialog.showCustomDialog(getActivity(), getString(R.string.Send_UsedAddress_firstLine), getString(R.string.Send_UsedAddress_secondLIne), "Ignore", "Cancel", new BRDialogView.BROnClickListener() {
+                                    @Override
+                                    public void onClick(BRDialogView brDialogView) {
+                                        brDialogView.dismiss();
+                                    }
+                                }, new BRDialogView.BROnClickListener() {
+                                    @Override
+                                    public void onClick(BRDialogView brDialogView) {
+                                        brDialogView.dismiss();
+                                        addressEdit.setText("");
+                                    }
+                                }, null, 0);
+                            } else {
+                                // Address is valid.. we get out.
+                                return;}
+
+                        } else { // error, it's not "bitcoin:" or a valid address
+                            showClipboardError();
+
+                            return;
                         }
-                    });
+                    }
+               }
+           });
 
-                } else {
-                    showClipboardError();
+            paste.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!BRAnimator.isClickAllowed()) return;
+
+                    String bitcoinUrl = BRClipboardManager.getClipboard(getActivity());
+                    addressEdit.setText(bitcoinUrl);
                 }
-
-            }
-        });
+            });
 
         isoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -557,6 +590,25 @@ public class FragmentSend extends Fragment {
             }
         });
 
+    }
+
+    private void updateAmountWithSatoshis(String amount) {
+        // 0. clear what we currently have in amount
+        amountBuilder.replace(0, amountBuilder.length(), "");
+
+        if (!selectedIso.equals("BTC")) {
+            isoButton.performClick();
+        }
+
+        if (BRSharedPrefs.getCurrencyUnit(getContext()) == BRConstants.CURRENT_UNIT_BITCOINS) {
+            amount = new BigDecimal(amount).divide(new BigDecimal("100000000")).toString();
+        } else {
+            amount = new BigDecimal(amount).toBigInteger().toString();
+        }
+
+        amountBuilder.replace(0, amount.length(), amount);
+
+        updateText();
     }
 
     private void showKeyboard(boolean b) {
@@ -787,10 +839,6 @@ public class FragmentSend extends Fragment {
             }
         }
         amountEdit.setText(newAmount.toString());
-    }
-
-    private boolean isInputValid(String input) {
-        return input.matches("[a-zA-Z0-9]*");
     }
 
     // from the link above
