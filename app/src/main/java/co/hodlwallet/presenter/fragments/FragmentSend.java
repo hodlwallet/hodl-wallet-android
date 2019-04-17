@@ -279,7 +279,6 @@ public class FragmentSend extends Fragment {
             }
         });
 
-//        commentEdit.addTextChangedListener(new BRTextWatcher());
         addressEdit.addTextChangedListener(new TextWatcher() {
                @Override
                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -298,15 +297,15 @@ public class FragmentSend extends Fragment {
 
                             RequestObject obj = getRequestFromString(s.toString());
 
-                            String address = null;
-                            String amount = null;
-                            String label = null;
-                            String message = null;
-                            String memo = null;
+                            String address = "";
+                            String amount = "";
+                            String label = "";
+                            String message = "";
+                            String memo = "";
 
                             if (obj.r != null) {
                                 // Check for compatibility mode if address and amount are present
-                                if (!obj.address.isEmpty() && !obj.amount.isEmpty()) {
+                                if (obj.address != null && obj.amount != null) {
                                     address = obj.address;
                                     amount = obj.amount;
                                 } else {
@@ -324,21 +323,21 @@ public class FragmentSend extends Fragment {
                             // if address is null at this point, we fail.
 
                             // Build the label and the message into a nice memo: "label: Message"
-                            if (!label.isEmpty())
+                            if (label != null && !label.isEmpty())
                                 memo += label;
 
-                            if (!message.isEmpty())
-                                if (!label.isEmpty()) // if it has label then add a ": "
+                            if (message != null && !message.isEmpty())
+                                if (label != null && !label.isEmpty()) // if it has label then add a ": "
                                     memo += ": ";
 
                                 memo += message;
 
                             addressEdit.setText(address);
 
-                            if (!amount.isEmpty())
+                            if (amount != null && !amount.isEmpty())
                                 updateAmountWithSatoshis(amount);
 
-                            if (!memo.isEmpty())
+                            if (memo != null && !memo.isEmpty())
                                 commentEdit.setText(memo);
 
                             return;
@@ -376,8 +375,8 @@ public class FragmentSend extends Fragment {
                                 }, null, 0);
                             } else {
                                 // Address is valid.. we get out.
-                                return;}
-
+                                return;
+                            }
                         } else { // error, it's not "bitcoin:" or a valid address
                             showClipboardError();
 
