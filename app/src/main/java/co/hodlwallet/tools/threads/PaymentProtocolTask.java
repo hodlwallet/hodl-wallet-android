@@ -108,7 +108,7 @@ public class PaymentProtocolTask extends AsyncTask<String, String, String> {
                 return null;
             } else if (paymentRequest.error == PaymentRequestWrapper.INSUFFICIENT_FUNDS_ERROR) {
                 Log.e(TAG, "insufficient amount!!!");
-                BRDialog.showCustomDialog(app, "", app.getString(R.string.Alerts_sendFailure), app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
+                BRDialog.showCustomDialog(app, "", app.getString(R.string.Alerts_paymentRequestNotEnoughFunds), app.getString(R.string.Button_ok), null, new BRDialogView.BROnClickListener() {
                     @Override
                     public void onClick(BRDialogView brDialogView) {
                         brDialogView.dismissWithAnimation();
@@ -354,7 +354,7 @@ public class PaymentProtocolTask extends AsyncTask<String, String, String> {
                 app.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        AuthManager.getInstance().authPrompt(app, "Confirmation", message, false, false,new BRAuthCompletion() {
+                        AuthManager.getInstance().authPrompt(app, "Confirmation", message, false, false, new BRAuthCompletion() {
                             @Override
                             public void onComplete() {
                                 PostAuth.getInstance().setTmpPaymentRequest(paymentRequest);
