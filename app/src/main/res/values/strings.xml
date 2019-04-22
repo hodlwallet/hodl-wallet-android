@@ -50,6 +50,8 @@
   <string name="Alerts.pinSet">PIN Set</string>
   <!-- Send failure alert header label (the send failed to happen) -->
   <string name="Alerts.sendFailure">Send failed</string>
+  <!-- Alert the user that the payment request is too expensive for them to afford -->
+  <string name="Alerts.paymentRequestNotEnoughFunds">Send failed. Insufficient funds to pay this invoice.</string>
   <!-- Send success alert header label (confirmation that the send happened) -->
   <string name="Alerts.sendSuccess">Send Confirmation</string>
   <!-- Send success alert subheader label (e.g. the money was sent) -->
