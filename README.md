@@ -8,7 +8,7 @@ This is the Android port of the Hodl Wallet iOS app, which can be found [here](h
 
 ### A completely standalone Bitcoin wallet
 
-Unlike other Andriod Bitcoin wallets, **Hodl** is a standalone Bitcoin client. It connects directly to the Bitcoin network using [SPV](https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients) mode, and doesn't rely on servers that can be hacked or disabled. Even if Hodl disappears, the app will continue to function, allowing users to access their money at any time. You can also recover Hodls revoery seed in other Bitcoin wallets if necessary as we follow BIP standards for wallet generation.
+Unlike other Andriod Bitcoin wallets, **Hodl** is a standalone Bitcoin client. It connects directly to the Bitcoin network using [SPV](https://en.bitcoin.it/wiki/Thin_Client_Security#Header-Only_Clients) mode, and doesn't rely on servers that can be hacked or disabled. Even if **Hodl** disappears, the app will continue to function, allowing users to access their money at any time. You can also recover **Hodl's** backup up recovery key in other Bitcoin wallets if necessary as we follow BIP standards for wallet generation.
 
 ### The next step in wallet security
 
@@ -20,12 +20,12 @@ Simplicity and ease-of-use is **Hodl**'s core design principle. A simple recover
 
 ### Features
 
-- ["simplified payment verification"](https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki) for fast mobile performance
-- no server to get hacked or go down
-- single backup phrase that works forever
-- private keys never leave your device
-- import [password protected](https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki) paper wallets
-- ["payment protocol"](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki) payee identity certification
+- [Simplified payment verification](https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki) for fast mobile performance
+- No server to get hacked or go down
+- Single backup phrase that works forever
+- Private keys never leave your device
+- Import [password protected](https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki) paper wallets
+- [Payment protocol](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki) payee identity certification
 
 ### Localization
 
@@ -60,7 +60,7 @@ Derivation Path - `m/0'`
 
 If you find yourself with the need to recvor your funds with an external app, Hodl Wallet reccomends [Electrum](https://electrum.org/#home).
 
-It's importnat that you make sure you our downloading Electrum from the real source. You can do this by double checking the ssl certificate at the site or building from source.
+It's important that you make sure you our downloading Electrum from the real source. You can do this by double checking the ssl certificate at the site or building from source.
 
 Steps to recovering your bitcoin using Electrum:
 
