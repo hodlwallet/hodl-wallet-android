@@ -54,7 +54,7 @@ It may be necessary at somepoint to recover your bitcoin via your Hodl Wallet Ba
 
 Hodl Wallet conforms to [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) standards when generating your wallet. 
 
-Derivation Path - `m/0'/0`
+Derivation Path - `m/0'`
 
 ### Recovering funds with Electrum
 
