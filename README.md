@@ -1,7 +1,6 @@
 ## [Hodl Wallet](https://hodlwallet.com/) - The easy and secure bitcoin wallet for Android
 
-[![download](/images/icon-google-play.png)]
-(https://play.google.com/store/apps/details?id=co.hodlwallet)
+[[download](/images/icon-google-play.png)](https://play.google.com/store/apps/details?id=co.hodlwallet)
 
 ### Bitcoin done right
 
