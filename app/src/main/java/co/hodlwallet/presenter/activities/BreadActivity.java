@@ -529,6 +529,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
             @Override
             public void run() {
                 TxManager.getInstance().updateTxList(BreadActivity.this);
+                emptyTip.setText("");
             }
         });
         BRWalletManager.getInstance().refreshBalance(BreadActivity.this);
