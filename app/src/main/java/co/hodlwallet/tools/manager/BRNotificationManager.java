@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import co.hodlwallet.presenter.activities.BreadActivity;
+import co.hodlwallet.tools.util.BRConstants;
 
 
 /**
@@ -42,7 +43,7 @@ public class BRNotificationManager {
     public static void sendNotification(Context ctx, int icon, String title, String message, int mId) {
         if (ctx == null) return;
         android.support.v4.app.NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(ctx)
+                new NotificationCompat.Builder(ctx, BRConstants.NOTIFICATION_CHANNEL_ID_TRANSACTIONS)
                         .setSmallIcon(icon)
                         .setContentTitle(title)
                         .setContentText(message);
