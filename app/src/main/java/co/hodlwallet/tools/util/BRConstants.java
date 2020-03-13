@@ -155,6 +155,9 @@ public class BRConstants {
     public static final String wipeWallet = "erasing-your-wallet";
     public static final String loopBug = "android-loop-bug";
 
+
+    public static final String NOTIFICATION_CHANNEL_ID_TRANSACTIONS = "hodlwallet.notifications.transactions";
+
     private BRConstants() {
     }
 
