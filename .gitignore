@@ -43,6 +43,7 @@ gradle.properties
 *.ipr
 *~
 *.swp
+.idea/
 .idea/.name
 .idea/workspace.xml
 .idea/libraries
@@ -74,3 +75,6 @@ fastlane/
 # release directory
 /app/hodl
 /app/hodlTestnet
+
+# other stuff
+/app/.cxx
