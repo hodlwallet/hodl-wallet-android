@@ -3,6 +3,8 @@ package co.hodlwallet;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Point;
 import android.hardware.fingerprint.FingerprintManager;
@@ -13,6 +15,7 @@ import android.view.WindowManager;
 
 import co.hodlwallet.presenter.activities.util.BRActivity;
 import co.hodlwallet.tools.listeners.SyncReceiver;
+import co.hodlwallet.tools.util.BRConstants;
 import co.hodlwallet.tools.util.Utils;
 
 import java.util.ArrayList;
@@ -103,6 +106,34 @@ public class HodlApp extends Application {
 //            }
 //        });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannels();
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    private void createNotificationChannels() {
+        //Transactions
+        createNotificationChannel(BRConstants.NOTIFICATION_CHANNEL_ID_TRANSACTIONS,
+                "Transactions",
+                "Receive alerts about incoming transactions",
+                NotificationManager.IMPORTANCE_HIGH);
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    private void createNotificationChannel(String channelId, String channelName,
+                                           String channelDescription, int importance) {
+        CharSequence name = channelName;
+        String description = channelDescription;
+
+        NotificationChannel channel = new NotificationChannel(channelId, name, importance);
+        channel.setDescription(description);
+
+        // Register the channel with the system
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        if (notificationManager != null) {
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.N)
