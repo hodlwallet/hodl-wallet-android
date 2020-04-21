@@ -8,8 +8,8 @@ android {
         applicationId = 'co.hodlwallet'
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 11
-        versionName "3.3.3"
+        versionCode 12
+        versionName "3.3.4"
         multiDexEnabled true
 
         // Similar to other properties in the defaultConfig block,
