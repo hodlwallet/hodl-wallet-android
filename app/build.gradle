@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion = 27
+    compileSdkVersion = 28
     buildToolsVersion = '28.0.3'
     defaultConfig {
         testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
         applicationId = 'co.hodlwallet'
         minSdkVersion 23
-        targetSdkVersion 27
-        versionCode 12
+        targetSdkVersion 28
+        versionCode 14
         versionName "3.3.4"
         multiDexEnabled true
 
